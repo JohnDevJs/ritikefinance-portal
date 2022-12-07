@@ -58,7 +58,6 @@ function FormInput3() {
                     </Row>
                 </Col>
             </Row>
-
             <Row>
                 <Col md={4}>
                     <div className="mb-3">
@@ -92,42 +91,6 @@ function FormInput3() {
                             placeholder="Enter your job title"
                             required
                         />
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={4}>
-                    <div className="mb-3">
-                        <AvField
-                            name="accountNumber"
-                            label="Account Number"
-                            className="form-control"
-                            placeholder="Enter account number"
-                            type="number"
-                            required
-                        />
-                    </div>
-                </Col>
-                <Col md={4}>
-                    <div className="mb-3">
-                        <AvField name="bankName" label="Bank Name" type="select" required>
-                            <option> Select...</option>
-                            <option> FNB</option>
-                            <option> ABSA</option>
-                            <option> CAPITEC</option>
-                            <option> NEDBANK</option>
-                            <option> STANDARD BANK</option>
-                            <option> TYME BANK</option>
-                        </AvField>
-                    </div>
-                </Col>
-                <Col md={4}>
-                    <div className="mb-3">
-                        <AvField name="accountType" label="Account Type" type="select" required>
-                            <option> Select...</option>
-                            <option> Saving </option>
-                            <option> Current </option>
-                        </AvField>
                     </div>
                 </Col>
             </Row>

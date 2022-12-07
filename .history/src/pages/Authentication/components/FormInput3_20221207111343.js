@@ -1,18 +1,18 @@
 import React from 'react'
-import { AvField } from "availity-reactstrap-validation"
+import { AvField, } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function FormInput1() {
+function FormInput3() {
     return (
         <div>
             <Row>
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="firstName"
-                            label="First Name"
+                            name="province"
+                            label="Province"
                             className="form-control"
-                            placeholder="Enter your first name"
+                            placeholder="Enter province"
                             type="text"
                             required
                         />
@@ -21,10 +21,10 @@ function FormInput1() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="lastName"
-                            label="Last Name"
+                            name="city"
+                            label="City"
                             className="form-control"
-                            placeholder="Enter your last name"
+                            placeholder="Enter city"
                             type="text"
                             required
                         />
@@ -33,11 +33,10 @@ function FormInput1() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="phoneNumber"
-                            label="Phone Number"
-                            className="form-control"
-                            placeholder="phone number"
+                            name="areaCode"
+                            label="Area Code"
                             type="text"
+                            placeholder="Enter your area code"
                             required
                         />
                     </div>
@@ -47,42 +46,34 @@ function FormInput1() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="email"
-                            label="Email"
+                            name="postalCode"
+                            label="Postal Code"
                             className="form-control"
-                            placeholder="Enter your email"
-                            type="email"
+                            placeholder="Enter postal code"
+                            type="number"
                             required
                         />
                     </div>
                 </Col>
-
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="gender"
-                            label="Gender"
+                            name="referralCode"
+                            label="Referral Code"
                             className="form-control"
-                            type="select"
+                            placeholder="Enter referral code"
+                            type="number"
                             required
-                        >
-                            <option> Select... </option>
-                            <option> Male </option>
-                            <option> Female </option>
-                            <option> Others </option>
-
-                        </AvField>
+                        />
                     </div>
                 </Col>
-
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="address"
-                            label="Street Address"
-                            className="form-control"
-                            placeholder="Street address"
+                            name="areaCode"
+                            label="Area Code"
                             type="text"
+                            placeholder="Enter your area code"
                             required
                         />
                     </div>
@@ -92,4 +83,4 @@ function FormInput1() {
     )
 }
 
-export default FormInput1
+export default FormInput3

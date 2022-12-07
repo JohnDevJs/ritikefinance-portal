@@ -56,7 +56,6 @@ function FormInput1() {
                         />
                     </div>
                 </Col>
-
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
@@ -78,10 +77,10 @@ function FormInput1() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="address"
-                            label="Street Address"
+                            name="phoneNumber"
+                            label="Phone Number"
                             className="form-control"
-                            placeholder="Street address"
+                            placeholder="phone number"
                             type="text"
                             required
                         />

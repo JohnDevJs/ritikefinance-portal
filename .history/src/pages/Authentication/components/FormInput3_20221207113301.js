@@ -123,11 +123,13 @@ function FormInput3() {
                 </Col>
                 <Col md={4}>
                     <div className="mb-3">
-                        <AvField name="accountType" label="Account Type" type="select" required>
-                            <option> Select...</option>
-                            <option> Saving </option>
-                            <option> Current </option>
-                        </AvField>
+                        <AvField
+                            name="jobTitle"
+                            label="Job Title"
+                            type="text"
+                            placeholder="Enter your job title"
+                            required
+                        />
                     </div>
                 </Col>
             </Row>

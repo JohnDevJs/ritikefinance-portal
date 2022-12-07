@@ -43,7 +43,7 @@ const LoginComp = () => {
       <Row className="Container_h">
         <LoginRightLabel text="" />
 
-        <FromWraper title="Login">
+        <FromWraper size={50} title="Login">
           <AvForm className="form-horizontal mt-4" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
             <LoginForm />
             <CustomBtn Pending={pending} btnName="Submit" />

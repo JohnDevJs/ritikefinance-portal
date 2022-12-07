@@ -47,41 +47,34 @@ function FormInput1() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="email"
-                            label="Email"
+                            name="firstName"
+                            label="First Name"
                             className="form-control"
-                            placeholder="Enter your email"
-                            type="email"
+                            placeholder="Enter your first name"
+                            type="text"
                             required
                         />
                     </div>
                 </Col>
-
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="gender"
-                            label="Gender"
+                            name="lastName"
+                            label="Last Name"
                             className="form-control"
-                            type="select"
+                            placeholder="Enter your last name"
+                            type="text"
                             required
-                        >
-                            <option> Select... </option>
-                            <option> Male </option>
-                            <option> Female </option>
-                            <option> Others </option>
-
-                        </AvField>
+                        />
                     </div>
                 </Col>
-
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="address"
-                            label="Street Address"
+                            name="phoneNumber"
+                            label="Phone Number"
                             className="form-control"
-                            placeholder="Street address"
+                            placeholder="phone number"
                             type="text"
                             required
                         />

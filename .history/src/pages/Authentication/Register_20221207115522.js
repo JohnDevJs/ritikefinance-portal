@@ -45,7 +45,6 @@ const Register = () => {
       "passwordConfirm": values.passwordConfirm,
       "role": "user",
     });
-
     execute(endPoint, raw, Method, RegisterMsg)
   }
 

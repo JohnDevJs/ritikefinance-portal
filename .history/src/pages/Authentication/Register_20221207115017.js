@@ -27,25 +27,10 @@ const Register = () => {
       "phoneNumber": values.phoneNumber,
       "agreed": values.agreed[0],
       "email": values.email,
-      "address": values.address,
-      "areaCode": values.areaCode,
-      "companyName": values.companyName,
-      "jobTitle": values.jobTitle,
-      "city": values.city,
-      "province": values.province,
-      "postalCode": values.postalCode,
-      "referralCode": values.referralCode,
-      "accountNumber": values.accountNumber,
-      "bankName": values.bankName,
-      "accountType": values.accountType,
-      "blackListed": values.blackListed[0],
-      "passportPhoto": "",
-      "photoProfile": "",
       "password": values.password,
       "passwordConfirm": values.passwordConfirm,
-      "role": "user",
+      "role": "student",
     });
-
     execute(endPoint, raw, Method, RegisterMsg)
   }
 

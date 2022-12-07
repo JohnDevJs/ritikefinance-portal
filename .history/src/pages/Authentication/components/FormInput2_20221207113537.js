@@ -20,10 +20,11 @@ function FormInput2() {
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="passportPhoto"
-                            label="Passport Photo"
+                            name="passwordConfirm"
+                            label="Confirm Password"
                             className="form-control"
-                            type="file"
+                            placeholder="Re enter your password"
+                            type="password"
                             required
                         />
                     </div>

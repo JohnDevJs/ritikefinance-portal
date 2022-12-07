@@ -27,25 +27,10 @@ const Register = () => {
       "phoneNumber": values.phoneNumber,
       "agreed": values.agreed[0],
       "email": values.email,
-      "address": values.address,
-      "areaCode": values.areaCode,
-      "companyName": values.companyName,
-      "jobTitle": values.jobTitle,
-      "city": values.city,
-      "province": values.province,
-      "postalCode": values.postalCode,
-      "referralCode": values.referralCode,
-      "accountNumber": values.accountNumber,
-      "bankName": values.bankName,
-      "accountType": values.accountType,
-      "blackListed": values.blackListed[0],
-      "passportPhoto": "",
-      "photoProfile": "",
       "password": values.password,
       "passwordConfirm": values.passwordConfirm,
-      "role": "user",
+      "role": "student",
     });
-
     execute(endPoint, raw, Method, RegisterMsg)
   }
 
@@ -54,7 +39,7 @@ const Register = () => {
       <MetaTagComp title_sco={RegisterPage} />
 
       <Row className="Container_h">
-        {/* <LoginRightLabel text="" size={4} /> */}
+        <LoginRightLabel text="" size={3} />
         {
           data?.status === 'success' ?
             (<FromWraper>
@@ -62,7 +47,7 @@ const Register = () => {
               You did not received it ? <Link onClick={() => location.reload()} className='text-primary'> Try again </Link>
             </FromWraper>)
             :
-            (<FromWraper title="SignUp" size={12} >
+            (<FromWraper title="SignUp" size={10} >
               <AvForm className="mt-4" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                 <FormInput1 />
                 <FormInput3 />

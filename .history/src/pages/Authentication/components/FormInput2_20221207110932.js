@@ -6,31 +6,7 @@ function FormInput2() {
     return (
         <div>
             <Row>
-                <Col md={6}>
-                    <div className="mb-3">
-                        <AvField
-                            name="photoProfile"
-                            label="Photo Profile"
-                            className="form-control"
-                            type="file"
-                            required
-                        />
-                    </div>
-                </Col>
-                <Col md={6}>
-                    <div className="mb-3">
-                        <AvField
-                            name="passportPhoto"
-                            label="Passport Photo"
-                            className="form-control"
-                            type="file"
-                            required
-                        />
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={6}>
+                <Col md={4}>
                     <div className="mb-3">
                         <AvField
                             name="password"
@@ -42,7 +18,7 @@ function FormInput2() {
                         />
                     </div>
                 </Col>
-                <Col md={6}>
+                <Col md={4}>
                     <div className="mb-3">
                         <AvField
                             name="passwordConfirm"
@@ -58,10 +34,6 @@ function FormInput2() {
 
             <AvCheckboxGroup inline name="agreed" required className="mt-5">
                 <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
-            </AvCheckboxGroup>
-
-            <AvCheckboxGroup inline name="blackListed" className="mt-5">
-                <AvCheckbox customInput label="Black listed ? " className="me-3 bg-white" value={true} />
             </AvCheckboxGroup>
         </div>
     )
