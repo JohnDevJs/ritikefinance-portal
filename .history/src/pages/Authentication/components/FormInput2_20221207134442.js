@@ -2,8 +2,11 @@ import React from 'react'
 import { AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function FormInput2({ setPhotoPassport }) {
+function FormInput2({ setProfilePic, setPhotoPassport }) {
 
+    const handleProfilePic = (e) => {
+        setProfilePic(e.target.files[0])
+    }
     const handlePhotoPassport = (e) => {
         setPhotoPassport(e.target.files[0])
     }
