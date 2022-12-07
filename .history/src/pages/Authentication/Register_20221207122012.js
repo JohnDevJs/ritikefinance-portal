@@ -16,36 +16,43 @@ import { RegisterMsg } from "components/NotifyMessage";
 
 const Register = () => {
 
+  const [profilePic, setProfilePic] = React.useState(null);
   const [photoPassport, setPhotoPassport] = React.useState(null);
   const { execute, pending, data } = usePost()
 
+  console.log("selectedFile : ", profilePic)
+  console.log("selectedFile : ", photoPassport)
+
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
-    const Method = 'POST', endPoint = 'users/signUp', isJSON = true, token = null;
+    const Method = 'POST', endPoint = 'users/signUp', isJSON = true;
 
-    const formdata = new FormData();
-    formdata.append("firstName", values.firstName);
-    formdata.append("lastName", values.lastName);
-    formdata.append("phoneNumber", values.phoneNumber);
-    formdata.append("gender", values.gender);
-    formdata.append("email", values.email);
-    formdata.append("address", values.address);
-    formdata.append("areaCode", values.areaCode);
-    formdata.append("companyName", values.companyName);
-    formdata.append("jobTitle", values.jobTitle);
-    formdata.append("province", values.province);
-    formdata.append("city", values.city);
-    formdata.append("postalCode", values.postalCode);
-    formdata.append("referralCode", values.referralCode);
-    formdata.append("accountNumber", values.accountNumber);
-    formdata.append("bankName", values.bankName);
-    formdata.append("accountType", values.accountType);
-    formdata.append("agreed", values.agreed[0]);
-    formdata.append("blackListed", values.blackListed[0]);
-    formdata.append("passportPhoto", photoPassport);
-    formdata.append("password", values.password);
-    formdata.append("passwordConfirm", values.passwordConfirm);
-    execute(endPoint, formdata, Method, RegisterMsg, token, isJSON)
+    const raw = JSON.stringify({
+      "firstName": values.firstName,
+      "lastName": values.lastName,
+      "phoneNumber": values.phoneNumber,
+      "agreed": values.agreed[0],
+      "email": values.email,
+      "address": values.address,
+      "areaCode": values.areaCode,
+      "companyName": values.companyName,
+      "jobTitle": values.jobTitle,
+      "city": values.city,
+      "province": values.province,
+      "postalCode": values.postalCode,
+      "referralCode": values.referralCode,
+      "accountNumber": values.accountNumber,
+      "bankName": values.bankName,
+      "accountType": values.accountType,
+      "blackListed": values.blackListed[0],
+      "passportPhoto": profilePic,
+      "photoProfile": photoPassport,
+      "password": values.password,
+      "passwordConfirm": values.passwordConfirm,
+      "role": "user",
+    });
+
+    execute(endPoint, raw, Method, RegisterMsg)
   }
 
   return (
@@ -65,7 +72,7 @@ const Register = () => {
               <AvForm className="mt-4" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                 <FormInput1 />
                 <FormInput3 />
-                <FormInput2 setPhotoPassport={setPhotoPassport} />
+                <FormInput2 setProfilePic={setProfilePic} />
 
                 <CustomBtn Pending={pending} btnName="Submit" />
               </AvForm>

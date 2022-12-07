@@ -2,7 +2,11 @@ import React from 'react'
 import { AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function FormInput2({ setPhotoPassport }) {
+function FormInput2({ setProfilePic, setPhotoPassport }) {
+
+    const handleProfilePic = (e) => {
+        setProfilePic(e.target.files[0])
+    }
     const handlePhotoPassport = (e) => {
         setPhotoPassport(e.target.files[0])
     }
@@ -10,7 +14,19 @@ function FormInput2({ setPhotoPassport }) {
     return (
         <div>
             <Row>
-                <Col md={4}>
+                {/* <Col md={6}>
+                    <div className="mb-3">
+                        <AvField
+                            name="photoProfile"
+                            label="Photo Profile"
+                            className="form-control"
+                            type="file"
+                            required
+                            onChange={handleProfilePic}
+                        />
+                    </div>
+                </Col> */}
+                <Col md={6}>
                     <div className="mb-3">
                         <AvField
                             name="passportPhoto"
@@ -22,7 +38,9 @@ function FormInput2({ setPhotoPassport }) {
                         />
                     </div>
                 </Col>
-                <Col md={4}>
+            </Row>
+            <Row>
+                <Col md={6}>
                     <div className="mb-3">
                         <AvField
                             name="password"
@@ -34,7 +52,7 @@ function FormInput2({ setPhotoPassport }) {
                         />
                     </div>
                 </Col>
-                <Col md={4}>
+                <Col md={6}>
                     <div className="mb-3">
                         <AvField
                             name="passwordConfirm"
@@ -48,18 +66,13 @@ function FormInput2({ setPhotoPassport }) {
                 </Col>
             </Row>
 
-            <Row>
-                <Col md={6}>
-                    <AvCheckboxGroup inline name="agreed" required className="mt-5">
-                        <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
-                    </AvCheckboxGroup>
-                </Col>
-                <Col md={6}>
-                    <AvCheckboxGroup inline name="blackListed" className="mt-5">
-                        <AvCheckbox customInput label="Black listed ? " className="me-3 bg-white" value={true} />
-                    </AvCheckboxGroup>
-                </Col>
-            </Row>
+            <AvCheckboxGroup inline name="agreed" required className="mt-5">
+                <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
+            </AvCheckboxGroup>
+
+            <AvCheckboxGroup inline name="blackListed" className="mt-5">
+                <AvCheckbox customInput label="Black listed ? " className="me-3 bg-white" value={true} />
+            </AvCheckboxGroup>
         </div>
     )
 }

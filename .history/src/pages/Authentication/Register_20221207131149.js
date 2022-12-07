@@ -23,6 +23,34 @@ const Register = () => {
     e.preventDefault();
     const Method = 'POST', endPoint = 'users/signUp', isJSON = true, token = null;
 
+    //   const raw = JSON.stringify({
+    //     "firstName": values.firstName,
+    //     "lastName": values.lastName,
+    //     "phoneNumber": values.phoneNumber,
+    //     "agreed": values.agreed[0],
+    //     "email": values.email,
+    //     "address": values.address,
+    //     "areaCode": values.areaCode,
+    //     "companyName": values.companyName,
+    //     "jobTitle": values.jobTitle,
+    //     "city": values.city,
+    //     "province": values.province,
+    //     "postalCode": values.postalCode,
+    //     "referralCode": values.referralCode,
+    //     "accountNumber": values.accountNumber,
+    //     "bankName": values.bankName,
+    //     "accountType": values.accountType,
+    //     "blackListed": values.blackListed[0],
+    //     "passportPhoto": profilePic,
+    //     "photoProfile": photoPassport,
+    //     "password": values.password,
+    //     "passwordConfirm": values.passwordConfirm,
+    //     "role": "user",
+    //   });
+
+    //   execute(endPoint, raw, Method, RegisterMsg)
+    // }
+
     const formdata = new FormData();
     formdata.append("firstName", values.firstName);
     formdata.append("lastName", values.lastName);
@@ -45,6 +73,8 @@ const Register = () => {
     formdata.append("passportPhoto", photoPassport);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
+    // formdata.append("photoProfile", "");
+    // formdata.append("role", "user");
     execute(endPoint, formdata, Method, RegisterMsg, token, isJSON)
   }
 

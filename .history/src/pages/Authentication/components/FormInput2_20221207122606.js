@@ -2,13 +2,32 @@ import React from 'react'
 import { AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function FormInput2({ setPhotoPassport }) {
+function FormInput2({ setProfilePic, setPhotoPassport }) {
+
+    const handleProfilePic = (e) => {
+        setProfilePic(e.target.files[0])
+    }
     const handlePhotoPassport = (e) => {
         setPhotoPassport(e.target.files[0])
     }
 
     return (
         <div>
+            <Row>
+                {/* <Col md={6}>
+                    <div className="mb-3">
+                        <AvField
+                            name="photoProfile"
+                            label="Photo Profile"
+                            className="form-control"
+                            type="file"
+                            required
+                            onChange={handleProfilePic}
+                        />
+                    </div>
+                </Col> */}
+
+            </Row>
             <Row>
                 <Col md={4}>
                     <div className="mb-3">
@@ -54,11 +73,10 @@ function FormInput2({ setPhotoPassport }) {
                         <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
                     </AvCheckboxGroup>
                 </Col>
-                <Col md={6}>
-                    <AvCheckboxGroup inline name="blackListed" className="mt-5">
-                        <AvCheckbox customInput label="Black listed ? " className="me-3 bg-white" value={true} />
-                    </AvCheckboxGroup>
-                </Col>
+
+                <AvCheckboxGroup inline name="blackListed" className="mt-5">
+                    <AvCheckbox customInput label="Black listed ? " className="me-3 bg-white" value={true} />
+                </AvCheckboxGroup>
             </Row>
         </div>
     )
