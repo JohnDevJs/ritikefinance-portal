@@ -1,0 +1,53 @@
+import React from 'react';
+import { Card, CardBody, Row, Progress, Col } from 'reactstrap';
+
+const Cards = () => {
+
+    return (
+        <React.Fragment>
+            <Row>
+                <Col md={4}>
+                    <Card>
+                        <CardBody>
+                            <Row className="align-items-center">
+                                <div>
+                                    <p className="mb-2 text-primary">TOTAL LOAN AMOUNT</p>
+                                    <h4 className="mb-0">R 50 </h4>
+                                </div>
+                            </Row>
+                        </CardBody>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card>
+                        <CardBody>
+                            <Row className="align-items-center">
+                                <div>
+                                    <p className="mb-2 text-warning"> TOTAL LOAN AMOUNT + INTEREST </p>
+                                    <h4 className="mb-0">R 60 </h4>
+                                </div>
+                            </Row>
+                        </CardBody>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card>
+                        <CardBody>
+                            <Row className="align-items-center">
+                                <div>
+                                    <p className="mb-2 text-success"> TOTAL LOAN AMOUNT + INTEREST </p>
+                                    <h4 className="mb-0">R 450 </h4>
+                                </div>
+                            </Row>
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+
+
+
+        </React.Fragment>
+    )
+}
+
+export default Cards;
