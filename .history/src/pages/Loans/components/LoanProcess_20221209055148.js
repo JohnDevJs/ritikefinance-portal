@@ -47,7 +47,7 @@ function App() {
 
     return (
         <div className="my-4">
-            <Stepper className={`${c.root}  card-border-radius`} activeStep={2} >
+            <Stepper className={`${c.root}  card-border-radius`} activeStep={1} >
                 <Step>
                     <StepButton>Pending</StepButton>
                 </Step>

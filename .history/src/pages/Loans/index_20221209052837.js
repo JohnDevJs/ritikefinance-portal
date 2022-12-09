@@ -26,7 +26,7 @@ const Loans = () => {
 
                 <Container fluid>
                     <div className="page-title-box mx-4">
-                        <button className="btn text-white"> Apply for loan</button>
+                        <button> Apply for loan</button>
                         <LoanProcess />
                         <LoanCardProcess />
                         <Table />

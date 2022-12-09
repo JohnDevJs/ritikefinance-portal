@@ -39,7 +39,7 @@ function App() {
         root: {
             "& .MuiStepIcon-active": { color: "#2A4C7E" },
             "& .MuiStepIcon-completed": { color: "green" },
-            // "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
+            "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
         }
     }));
 
@@ -47,7 +47,7 @@ function App() {
 
     return (
         <div className="my-4">
-            <Stepper className={`${c.root}  card-border-radius`} activeStep={2} >
+            <Stepper className={`${c.root}  card-border-radius`} activeStep={0} >
                 <Step>
                     <StepButton>Pending</StepButton>
                 </Step>

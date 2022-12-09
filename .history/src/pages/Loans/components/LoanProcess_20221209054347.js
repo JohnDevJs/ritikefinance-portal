@@ -37,9 +37,9 @@ import {
 function App() {
     const useStyles = makeStyles(() => ({
         root: {
-            "& .MuiStepIcon-active": { color: "#2A4C7E" },
+            "& .MuiStepIcon-active": { color: "blue" },
             "& .MuiStepIcon-completed": { color: "green" },
-            // "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
+            "& .Mui-disabled .MuiStepIcon-root": { color: "yellow" }
         }
     }));
 
@@ -47,7 +47,7 @@ function App() {
 
     return (
         <div className="my-4">
-            <Stepper className={`${c.root}  card-border-radius`} activeStep={2} >
+            <Stepper className={`${c.root}  card-border-radius`} activeStep={1} >
                 <Step>
                     <StepButton>Pending</StepButton>
                 </Step>

@@ -37,25 +37,25 @@ import {
 function App() {
     const useStyles = makeStyles(() => ({
         root: {
-            "& .MuiStepIcon-active": { color: "#2A4C7E" },
+            "& .MuiStepIcon-active": { color: "red" },
             "& .MuiStepIcon-completed": { color: "green" },
-            // "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
+            "& .Mui-disabled .MuiStepIcon-root": { color: "cyan" }
         }
     }));
 
     const c = useStyles();
 
     return (
-        <div className="my-4">
-            <Stepper className={`${c.root}  card-border-radius`} activeStep={2} >
+        <div style={{ margin: 2 }}>
+            <Stepper className={c.root} activeStep={1}>
                 <Step>
-                    <StepButton>Pending</StepButton>
+                    <StepButton>Register your name</StepButton>
                 </Step>
                 <Step>
-                    <StepLabel>Verification</StepLabel>
+                    <StepLabel>Register your email</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Approved</StepLabel>
+                    <StepLabel>Click on Finish</StepLabel>
                 </Step>
             </Stepper>
         </div>

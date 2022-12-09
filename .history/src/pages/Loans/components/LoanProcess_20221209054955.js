@@ -39,7 +39,7 @@ function App() {
         root: {
             "& .MuiStepIcon-active": { color: "#2A4C7E" },
             "& .MuiStepIcon-completed": { color: "green" },
-            // "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
+            "& .Mui-disabled .MuiStepIcon-root": { color: "#2A4C7E" }
         }
     }));
 
