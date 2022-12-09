@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (url, token) => {
+const useFetch = (url, token, status) => {
 
     const [data, setData] = useState([]);
     const [length, setLength] = useState();
@@ -10,15 +10,15 @@ const useFetch = (url, token) => {
     useEffect(() => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`)
-        // myHeaders.append("Content-Type", "application/json");
-        // const raw = JSON.stringify({ "status": status });
+        myHeaders.append("Content-Type", "application/json");
+        const raw = JSON.stringify({ "status": status });
 
         setLoading(true);
 
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
-            // body: raw,
+            body: raw,
             redirect: 'follow',
         };
 
@@ -28,7 +28,7 @@ const useFetch = (url, token) => {
                 console.log(" Result :", result);
                 if (result.status === "success") {
                     setData(result.data.data)
-                    setLength(result.result)
+                    setLength(result.results)
                     setLoading(false);
                 }
             })

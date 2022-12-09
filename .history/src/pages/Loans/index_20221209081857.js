@@ -18,18 +18,16 @@ const Loans = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, loading, length, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+    const { execute, pending, data } = usePost()
+    const LoginMsg = "hello"
 
-    // const { execute, pending, data } = usePost()
-    // const noToast = true
-    // useEffect(() => {
-    //     const Method = 'POST', endPoint = `loans/loanStatus/${userId}`;
-    //     const raw = JSON.stringify({ "status": "pending" });
-    //     execute(endPoint, raw, Method, noToast, token)
-    // }, [])
+    useEffect(() => {
+        const Method = 'POST', endPoint = 'loans/loanStatus/637fc2c2b4cbd5010f109f73';
+        const raw = JSON.stringify({ "status": "pending" });
+        execute(endPoint, raw, Method, LoginMsg, token)
+    }, [])
 
-    console.log(length)
-
+    console.log(" data : ", data)
 
     return (
         <React.Fragment>
@@ -41,15 +39,15 @@ const Loans = () => {
                     <div className="page-title-box mx-4">
                         <button className="btn text-white"> Apply for loan</button>
                         <LoanProcess />
-                        <LoanCardProcess length={length} />
-
-                        {loading ? <Loading /> : <Table data={data} />}
-
+                        <LoanCardProcess />
+                        <Table />
                     </div>
                 </Container>
+
             </div>
         </React.Fragment>
     )
 }
+
 
 export default Loans

@@ -32,7 +32,11 @@ const usePost = () => {
                         data: res,
                         error: undefined
                     });
-                    displayMessage === true ? null : successMessage(`${displayMessage}`);
+                    if (displayMessage === true) {
+                        return null
+                    } else {
+                        successMessage(`${displayMessage}`);
+                    }
                 }
                 if (res?.status === 'fail') {
                     updatePostData({

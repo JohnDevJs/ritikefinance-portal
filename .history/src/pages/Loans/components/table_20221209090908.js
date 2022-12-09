@@ -55,7 +55,7 @@ const Table = ({ data }) => {
                                             <td>
                                                 <div className="text-center">{data?.loanPercentage}</div> <Progress color="success" value={data?.loanPercentage} />
                                             </td>
-                                            <td> <button className='btn text-white'> <IoIosEye size={22} /> </button> </td>
+                                            <td> <button className='btn text-white'> <IoIosEye /> </button> </td>
                                         </tr>
                                     </tbody>
                                 )

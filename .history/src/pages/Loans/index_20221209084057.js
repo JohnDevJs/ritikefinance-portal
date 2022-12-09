@@ -18,17 +18,21 @@ const Loans = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, loading, length, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+
+    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+    if (loading) return <Loading />
+
+    console.log(" data : ", data)
+
 
     // const { execute, pending, data } = usePost()
     // const noToast = true
+
     // useEffect(() => {
     //     const Method = 'POST', endPoint = `loans/loanStatus/${userId}`;
     //     const raw = JSON.stringify({ "status": "pending" });
     //     execute(endPoint, raw, Method, noToast, token)
     // }, [])
-
-    console.log(length)
 
 
     return (
@@ -41,10 +45,8 @@ const Loans = () => {
                     <div className="page-title-box mx-4">
                         <button className="btn text-white"> Apply for loan</button>
                         <LoanProcess />
-                        <LoanCardProcess length={length} />
-
-                        {loading ? <Loading /> : <Table data={data} />}
-
+                        <LoanCardProcess />
+                        <Table />
                     </div>
                 </Container>
             </div>

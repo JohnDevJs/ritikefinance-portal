@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Progress, Badge } from 'reactstrap';
-import { IoIosEye } from 'react-icons/io';
+import { BsFillEyeFill } from 'react-icons/bs';
 
 const Table = ({ data }) => {
 
@@ -55,7 +55,7 @@ const Table = ({ data }) => {
                                             <td>
                                                 <div className="text-center">{data?.loanPercentage}</div> <Progress color="success" value={data?.loanPercentage} />
                                             </td>
-                                            <td> <button className='btn text-white'> <IoIosEye size={22} /> </button> </td>
+                                            <td> <button className='btn text-white'> <BsFillEyeFill /> </button> </td>
                                         </tr>
                                     </tbody>
                                 )

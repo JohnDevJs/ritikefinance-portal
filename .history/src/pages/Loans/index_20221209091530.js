@@ -18,7 +18,7 @@ const Loans = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, loading, length, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+    const { data, loading, length } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
 
     // const { execute, pending, data } = usePost()
     // const noToast = true
@@ -41,7 +41,7 @@ const Loans = () => {
                     <div className="page-title-box mx-4">
                         <button className="btn text-white"> Apply for loan</button>
                         <LoanProcess />
-                        <LoanCardProcess length={length} />
+                        <LoanCardProcess length={data?.result} />
 
                         {loading ? <Loading /> : <Table data={data} />}
 

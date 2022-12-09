@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Progress, Badge } from 'reactstrap';
-import { IoIosEye } from 'react-icons/io';
 
 const Table = ({ data }) => {
 
@@ -25,7 +24,6 @@ const Table = ({ data }) => {
                                 <th className="align-middle">Pai date</th>
                                 <th className="align-middle">Status</th>
                                 <th className="align-middle">Status</th>
-                                <th className="align-middle">View</th>
                             </tr>
                         </thead>
 
@@ -47,15 +45,13 @@ const Table = ({ data }) => {
                                             <td>{data?.createdAt.split("T")[0]}</td>
                                             <td>{"2022-05-20"}</td>
 
-                                            {data?.status === "pending" ? <td> <Badge className="bg-warning p-2"> {data?.status} </Badge></td> : null}
+                                            {data?.status === "pending" ? <td> <Badge className="bg-warning btn  p-2"> {data?.status} </Badge></td> : null}
                                             {data?.status === "decline" ? <td> <Badge className="bg-danger  p-2"> {data?.status} </Badge></td> : null}
-                                            {data?.status === "verification" ? <td> <Badge className="bg-info  p-2"> {data?.status} </Badge></td> : null}
-                                            {data?.status === "approve" ? <td> <Badge className="bg-success  p-2"> {data?.status} </Badge></td> : null}
+                                            {data?.status === "decline" ? <td> <Badge className="bg-danger  p-2"> {data?.status} </Badge></td> : null}
 
                                             <td>
                                                 <div className="text-center">{data?.loanPercentage}</div> <Progress color="success" value={data?.loanPercentage} />
                                             </td>
-                                            <td> <button className='btn text-white'> <IoIosEye size={22} /> </button> </td>
                                         </tr>
                                     </tbody>
                                 )

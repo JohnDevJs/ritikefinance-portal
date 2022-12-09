@@ -11,25 +11,18 @@ import LoanCardProcess from "./components/LoanCardProcess";
 import LoanProcess from "./components/LoanProcess";
 import { loginUser } from "../../Redux/Slices/userSlice";
 import { useStore1Selector } from 'index';
-import usePost from './../../hooks/usePost';
 
 const Loans = () => {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, loading, length, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+    const status = "pending";
+    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${'637fc2c2b4cbd5010f109f73'}`, token, status);
 
-    // const { execute, pending, data } = usePost()
-    // const noToast = true
-    // useEffect(() => {
-    //     const Method = 'POST', endPoint = `loans/loanStatus/${userId}`;
-    //     const raw = JSON.stringify({ "status": "pending" });
-    //     execute(endPoint, raw, Method, noToast, token)
-    // }, [])
+    if (loading) return <Loading />
 
-    console.log(length)
-
+    console.log(" data : ", process.env.REACT_APP_BACKEND_URL);
 
     return (
         <React.Fragment>
@@ -41,15 +34,15 @@ const Loans = () => {
                     <div className="page-title-box mx-4">
                         <button className="btn text-white"> Apply for loan</button>
                         <LoanProcess />
-                        <LoanCardProcess length={length} />
-
-                        {loading ? <Loading /> : <Table data={data} />}
-
+                        <LoanCardProcess />
+                        <Table />
                     </div>
                 </Container>
+
             </div>
         </React.Fragment>
     )
 }
+
 
 export default Loans

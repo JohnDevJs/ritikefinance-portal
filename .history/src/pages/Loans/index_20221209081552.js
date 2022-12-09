@@ -12,23 +12,23 @@ import LoanProcess from "./components/LoanProcess";
 import { loginUser } from "../../Redux/Slices/userSlice";
 import { useStore1Selector } from 'index';
 import usePost from './../../hooks/usePost';
+import { useStore1Dispatch } from './../../index';
 
 const Loans = () => {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, loading, length, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token);
+    const dispatch = useStore1Dispatch();
+    const { execute, pending, data } = usePost()
 
-    // const { execute, pending, data } = usePost()
-    // const noToast = true
-    // useEffect(() => {
-    //     const Method = 'POST', endPoint = `loans/loanStatus/${userId}`;
-    //     const raw = JSON.stringify({ "status": "pending" });
-    //     execute(endPoint, raw, Method, noToast, token)
-    // }, [])
+    useEffect(() => {
+        const raw = JSON.stringify({
+            "status": "pending"
+        });
+        execute(endPoint, raw, Method, LoginMsg)
+    }, [])
 
-    console.log(length)
 
 
     return (
@@ -41,15 +41,15 @@ const Loans = () => {
                     <div className="page-title-box mx-4">
                         <button className="btn text-white"> Apply for loan</button>
                         <LoanProcess />
-                        <LoanCardProcess length={length} />
-
-                        {loading ? <Loading /> : <Table data={data} />}
-
+                        <LoanCardProcess />
+                        <Table />
                     </div>
                 </Container>
+
             </div>
         </React.Fragment>
     )
 }
+
 
 export default Loans

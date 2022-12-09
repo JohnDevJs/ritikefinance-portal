@@ -28,7 +28,7 @@ const useFetch = (url, token) => {
                 console.log(" Result :", result);
                 if (result.status === "success") {
                     setData(result.data.data)
-                    setLength(result.result)
+                    setLength(result.results)
                     setLoading(false);
                 }
             })

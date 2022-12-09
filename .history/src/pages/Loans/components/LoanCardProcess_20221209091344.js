@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { LoansRoute } from 'components/RouteName';
 
 const LoanCardProcess = ({ length }) => {
+    console.log(length)
 
     return (
         <React.Fragment>
