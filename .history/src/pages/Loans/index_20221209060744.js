@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Container } from "reactstrap";
 import Breadcrumb from "../../components/Common/Breadcrumb";
 import MetaTag from "../../components/MetaTag";
@@ -11,18 +11,23 @@ import LoanCardProcess from "./components/LoanCardProcess";
 import LoanProcess from "./components/LoanProcess";
 import { loginUser } from "../../Redux/Slices/userSlice";
 import { useStore1Selector } from 'index';
+import usePost from './../../hooks/usePost';
+
 
 const Loans = () => {
 
     const userDet = useStore1Selector(loginUser);
-    const token = userDet?.token;
-    const userId = userDet?.data?.data?._id;
-    const status = "decline";
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token, status);
+    const { execute, pending, data } = usePost();
+    const token = userDet.token;
+    const userId = userDet?.data?.data?._id
 
-    if (loading) return <Loading />
+    console.log(" userDet : ", userDet)
+    useEffect(() => {
+        const Method = 'GET', endPoint = `loans/loanStatus/${userId}`;
+        const raw = JSON.stringify({ "status": "decline" });
+        execute(endPoint, raw, Method, "", token)
+    }, []);
 
-    console.log(" data : ", data);
 
     return (
         <React.Fragment>

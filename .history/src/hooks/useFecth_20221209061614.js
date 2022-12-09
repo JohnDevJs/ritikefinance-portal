@@ -11,6 +11,7 @@ const useFetch = (url, token, status) => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`)
         myHeaders.append("Content-Type", "application/json");
+
         const raw = JSON.stringify({ "status": status });
 
         setLoading(true);
@@ -18,8 +19,7 @@ const useFetch = (url, token, status) => {
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
-            body: raw,
-            redirect: 'follow',
+            redirect: 'follow'
         };
 
         fetch(url, requestOptions)

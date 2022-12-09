@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (url, token, status) => {
+const useFetch = (url, token, raw) => {
 
     const [data, setData] = useState([]);
     const [length, setLength] = useState();
@@ -11,7 +11,6 @@ const useFetch = (url, token, status) => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`)
         myHeaders.append("Content-Type", "application/json");
-        const raw = JSON.stringify({ "status": status });
 
         setLoading(true);
 

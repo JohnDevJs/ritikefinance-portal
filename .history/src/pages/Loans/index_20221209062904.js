@@ -22,7 +22,7 @@ const Loans = () => {
 
     if (loading) return <Loading />
 
-    console.log(" data : ", data);
+    console.log(" data : ", userId);
 
     return (
         <React.Fragment>

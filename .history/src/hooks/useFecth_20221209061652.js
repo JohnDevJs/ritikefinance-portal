@@ -18,8 +18,8 @@ const useFetch = (url, token, status) => {
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
-            body: raw,
             redirect: 'follow',
+            body: raw,
         };
 
         fetch(url, requestOptions)

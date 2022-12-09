@@ -17,8 +17,9 @@ const Loans = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const status = "decline";
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token, status);
+
+    const raw = JSON.stringify({ "status": "decline" });
+    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/loanStatus/${userId}`, token, raw);
 
     if (loading) return <Loading />
 
