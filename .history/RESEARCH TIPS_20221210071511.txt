@@ -1,0 +1,4 @@
+===========================
+(MULTIPLE TERNARY OPERATOR)
+===========================
+// => data?.loanPercentage <= 50 ? "danger" : data?.loanPercentage <= 99 ? "info" : "success"
