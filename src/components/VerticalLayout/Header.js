@@ -81,18 +81,22 @@ const Header = props => {
                 <span className="logo-sm">
                   <img src={logosmDark} alt="" height="45" />
                 </span>
-                <span className="logo-lg">
+                {/* <span className="logo-lg">
                   <img src={logolightBG} alt="" height="45" />
-                </span>
+                </span> */}
+                {/* <h4 className='mt-4 text-white'> Ritike Loans </h4> */}
               </Link>
 
               <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
+              <span className="logo-sm">
                   <img src={logosmImg} alt="" height="45" />
                 </span>
+                {/* 
                 <span className="logo-lg">
                   <img src={logolightImg} alt="" height="45" />
-                </span>
+                </span> */}
+                {/* <h4 className='mt-4 text-white'> Ritike Loans </h4> */}
+
               </Link>
 
             </div>

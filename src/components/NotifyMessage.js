@@ -16,6 +16,8 @@ const UnSuspendedMsg = "Successful unsuspended  "
 const ApprovedMsg = "Successful Approved  "
 const DeclineMsg = "Successful Decline  "
 const ApplyLongMsg = "Successful apply  "
+const ServerError = "Something went wrong  "
+
 export {
     LoginMsg,
     ForgotPasswordMsg,
@@ -34,5 +36,6 @@ export {
     UnSuspendedMsg,
     ApprovedMsg,
     DeclineMsg,
-    ApplyLongMsg
+    ApplyLongMsg,
+    ServerError
 } 
