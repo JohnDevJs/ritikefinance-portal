@@ -1,4 +1,4 @@
-import { AdminDashboardRoute, UsersRoute } from 'components/RouteName';
+import { AdminDashboardRoute, UsersRoute, LoanRequestRoute } from 'components/RouteName';
 import React from 'react'
 import { Link } from 'react-router-dom';
 
@@ -18,6 +18,11 @@ function AdminSidebarLinks() {
                     <li>
                         <Link to={UsersRoute}>
                             <i className="ti-users"></i> <span> Users </span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={LoanRequestRoute}>
+                            <i className="ti-users"></i> <span> Loan request </span>
                         </Link>
                     </li>
                 </ul>

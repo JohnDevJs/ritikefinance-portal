@@ -9,6 +9,7 @@ const DashboardPage = "Ritike Loans | Dashboard "
 const ApproveLoanPage = "Ritike Loans | Approve loan "
 const DeclineLoanPage = "Ritike Loans | Decline loan "
 const UsersPage = "Ritike Loans | Users "
+const LoanRequestPage = "Ritike Loans | Loan requests "
 
 export {
     LoginPage,
@@ -21,5 +22,6 @@ export {
     LoangPage,
     ApproveLoanPage,
     DeclineLoanPage,
-    UsersPage
+    UsersPage,
+    LoanRequestPage
 } 

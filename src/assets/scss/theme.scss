@@ -630,7 +630,6 @@ ul li {
 .btn-suspend {
     border-radius: 15px !important;
     border: none;
-    // font-size: 10px;
     -webkit-box-shadow: -1px 0px 24px -12px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 0px 24px -12px rgba(0, 0, 0, 0.75);
     box-shadow: -1px 0px 24px -12px rgba(0, 0, 0, 0.75);
@@ -652,12 +651,17 @@ ul li {
 }
 
 .color__red {
-    background: #FF0000;
+    background: #ff6060;
     color: #ffffff;
 }
 
 .color__black {
     background: #000000;
+    color: #ffffff;
+}
+
+.color__download{
+    background: #cc9e0a;
     color: #ffffff;
 }
 

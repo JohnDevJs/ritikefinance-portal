@@ -13,6 +13,7 @@ const LoansRoute = "/loans"
 const ApproveLoanRoute = "/approve-loans"
 const DeclineLoanRoute = "/decline-loans"
 const UsersRoute = "/users"
+const LoanRequestRoute = "/loan-request"
 
 
 export {
@@ -30,5 +31,6 @@ export {
     ApproveLoanRoute,
     DeclineLoanRoute,
     AdminDashboardRoute,
-    UsersRoute
+    UsersRoute,
+    LoanRequestRoute
 } 

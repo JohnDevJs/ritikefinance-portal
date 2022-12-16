@@ -17,6 +17,8 @@ const ApprovedMsg = "Successful Approved  "
 const DeclineMsg = "Successful Decline  "
 const ApplyLongMsg = "Successful apply  "
 const ServerError = "Something went wrong  "
+const ApprovedLoanMsg = "Successfully approved  "
+const DeclinedLoanMsg = "Successfully declined  "
 
 export {
     LoginMsg,
@@ -37,5 +39,7 @@ export {
     ApprovedMsg,
     DeclineMsg,
     ApplyLongMsg,
-    ServerError
+    ServerError,
+    ApprovedLoanMsg,
+    DeclinedLoanMsg
 } 
