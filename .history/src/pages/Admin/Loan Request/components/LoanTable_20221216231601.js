@@ -11,11 +11,10 @@ const column = [
     { label: "duration", field: "duration", sort: "asc", width: 150 },
     { label: "Payment Date", field: "payment_Date", sort: "asc", width: 150 },
     // { label: "Status", field: "status", sort: "asc", width: 150 },
-    { label: "View", field: "viewBtn", sort: "asc", width: 150 },
-    { label: "Verify", field: "verifyBtn", sort: "asc", width: 150 },
-    { label: "Approve", field: "approveBtn", sort: "asc", width: 150 },
-    { label: "Decline", field: "declineBtn", sort: "asc", width: 150 },
-    { label: "Download", field: "downloadBtn", sort: "asc", width: 150 },
+    { label: "View", field: "viewBtn", sort: "asc", width: 150 },    
+    { label: "Approve", field: "approveBtn", sort: "asc", width: 150 },    
+    { label: "Decline", field: "declineBtn", sort: "asc", width: 150 },    
+    { label: "Download", field: "downloadBtn", sort: "asc", width: 150 },    
 ];
 
 const loanTable = ({ data }) => {

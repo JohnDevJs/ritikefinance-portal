@@ -15,7 +15,7 @@ const SmallModal = ({ open, onClose, ModalTitle, cancel, deleteBtn, Components }
             </Modal.Body>
 
             <Modal.Footer className="d-flex justify-content-end p-2">
-                <button className="btn  text-white w-25" onClick={onClose}> {cancel} </button>
+                <button className="  text-white w-25" onClick={onClose}> {cancel} </button>
                 {
                     !deleteBtn ? null : (
                         <button className="btn  text-white" onClick={onClose}> {deleteBtn} </button>

@@ -87,7 +87,7 @@ const Index = () => {
                 open={openModal}
                 onClose={() => setOpenModal(false)}
                 ModalTitle="Move to verification"
-                cancel="close"
+                cancel="cancel"
                 Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
             />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from "react-bootstrap";
 
-const SmallModal = ({ open, onClose, ModalTitle, cancel, deleteBtn, Components }) => {
+const SmallModal = ({ open, onClose, ModalTitle, cancel, deleteBtn, CourseForm }) => {
 
     if (!open) return null;
 
@@ -11,7 +11,7 @@ const SmallModal = ({ open, onClose, ModalTitle, cancel, deleteBtn, Components }
                 <h4 className="p-2"> {ModalTitle} </h4>
             </Modal.Header>
             <Modal.Body>
-                {Components}
+                {CourseForm}
             </Modal.Body>
 
             <Modal.Footer className="d-flex justify-content-end p-2">

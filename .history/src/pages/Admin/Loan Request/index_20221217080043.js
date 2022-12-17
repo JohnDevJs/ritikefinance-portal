@@ -11,7 +11,7 @@ import Loading from "components/Loading";
 import LoanTable from "./components/LoanTable";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
-import { RiCheckDoubleLine, RiFileExcel2Fill } from "react-icons/ri";
+import { RiCheckDoubleLine } from "react-icons/ri";
 import { ImCross } from "react-icons/im";
 import { MdDeleteForever } from "react-icons/md";
 import usePost from "hooks/usePost";
@@ -64,7 +64,7 @@ const Index = () => {
                 verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res._id)}>  Verification </button>,
                 approveBtn: <button className="btn btn__table color__green" onClick={() => approveFunc(res._id)}> Approve </button>,
                 declineBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res._id)}> Decline </button>,
-                downloadBtn: <button className="btn btn__table color__download"> Download <RiFileExcel2Fill size={18} /> </button>,
+                downloadBtn: <button className="btn btn__table color__download"> Download </button>,
             })
         });
     }
@@ -87,7 +87,7 @@ const Index = () => {
                 open={openModal}
                 onClose={() => setOpenModal(false)}
                 ModalTitle="Move to verification"
-                cancel="close"
+                cancel="cancel"
                 Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
             />
 
