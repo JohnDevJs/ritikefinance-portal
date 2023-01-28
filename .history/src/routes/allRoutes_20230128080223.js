@@ -18,7 +18,7 @@ import ApproveLoan from "../pages/Users/Loans/ApproveLoan";
 import DeclineLoan from "../pages/Users/Loans/DeclineLoan";
 import Users from "../pages/Admin/Users/index";
 import LoanRequest from "../pages/Admin/Loan Request/index";
-import Teams from "../pages/Admin/Team/index";
+import Teams from "../pages/Admin/Team/Index";
 
 const userRoutes = [
   { path: DashboardRoute, component: Dashboard },
