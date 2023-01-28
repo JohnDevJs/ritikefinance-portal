@@ -11,11 +11,12 @@ import Loading from "components/Loading";
 import TeamTable from "./components/TeamTable.js";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
+import { RiCheckDoubleLine } from "react-icons/ri";
+import { ImCross } from "react-icons/im";
 import { MdDeleteForever } from "react-icons/md";
 import ModalComp from '../../../Modal';
 import InputForm from "./components/InputForm"
-import SuspendComp from "./components/SuspendComp"
-import SmallModal from './../../../SmallModal';
+import ModalSmall from "./components/Modal"
 
 
 const Index = () => {
@@ -24,7 +25,6 @@ const Index = () => {
     const [openModal_2, setOpenModal_2] = useState(false);
     const [btnName, setBtnName] = React.useState();
     const [userId, setUserId] = React.useState();
-    const [apiQuery, setApiQuery] = React.useState();
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
@@ -38,7 +38,7 @@ const Index = () => {
         data.forEach(res => {
             res_data.push({
                 ...res,
-                actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
+                actionBtn: <button onClick={() => suspendUser(res._id)} className={`btn  ${!res.status ? "color__black" : "color__red"}`}> {!res.status ? "Unsuspend" : "Suspend"} </button>,
                 deleteBtn: <button className="btn btn-danger"> <MdDeleteForever size={22} /> </button>,
             })
         });
@@ -46,27 +46,27 @@ const Index = () => {
     filterArr();
 
     const suspendUser = (id) => {
+        console.log("id : ", id)
         setOpenModal_2(true)
+        // setStatus("approve")
         setUserId(id)
-        setBtnName("Suspend")
-        setApiQuery("suspended")
+        setBtnName("Suspend this user")
     }
-    const unSuspend = (id) => {
+    const declineFunc = (id) => {
         setOpenModal_2(true)
+        // setStatus("decline")
         setUserId(id)
-        setBtnName("Unsuspend")
-        setApiQuery("un-suspended")
-
+        setBtnName("Move to decline")
     }
 
     return (
         <React.Fragment>
-
             <div className="page-content px-5">
                 <Breadcrumb default={UsersRoute} defaultName="Users" title={UserTitle} />
                 <MetaTag title_sco={UsersPage} />
 
                 <Container fluid>
+
                     <button className="btn btn__table  color__blue" onClick={() => setOpenModal(true)}> <h6> + add a new team member </h6>  </button>
 
                     <div className="page-title-box">
@@ -83,13 +83,14 @@ const Index = () => {
                 Component={<InputForm onClose={() => setOpenModal(false)} reFetch={reFetch} />}
             />
 
-            <SmallModal
+            <ModalSmall
                 open={openModal_2}
                 onClose={() => setOpenModal_2(false)}
-                ModalTitle="Are you sure you want to take this action ?"
+                ModalTitle="Are you sure you want to suspend"
                 cancel="close"
-                Components={<SuspendComp reFetch={reFetch} onClose={() => setOpenModal_2(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
+                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal_2(false)} user_Id={userId} btnName={btnName} />}
             />
+
 
         </React.Fragment>
     )

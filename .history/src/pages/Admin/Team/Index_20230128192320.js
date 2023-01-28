@@ -61,7 +61,6 @@ const Index = () => {
 
     return (
         <React.Fragment>
-
             <div className="page-content px-5">
                 <Breadcrumb default={UsersRoute} defaultName="Users" title={UserTitle} />
                 <MetaTag title_sco={UsersPage} />
@@ -86,10 +85,11 @@ const Index = () => {
             <SmallModal
                 open={openModal_2}
                 onClose={() => setOpenModal_2(false)}
-                ModalTitle="Are you sure you want to take this action ?"
+                ModalTitle="Are you sure you want take this action ?"
                 cancel="close"
                 Components={<SuspendComp reFetch={reFetch} onClose={() => setOpenModal_2(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
             />
+
 
         </React.Fragment>
     )

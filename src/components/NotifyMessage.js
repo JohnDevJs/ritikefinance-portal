@@ -20,6 +20,7 @@ const ServerError = "Something went wrong  "
 const ApprovedLoanMsg = "Successfully approved  "
 const DeclinedLoanMsg = "Successfully declined  "
 const VerificationLoanMsg = "Successfully moved to verification  "
+const SuspendUserMsg = "Successfully suspend the user  "
 
 export {
     LoginMsg,
@@ -43,5 +44,7 @@ export {
     ServerError,
     ApprovedLoanMsg,
     DeclinedLoanMsg,
-    VerificationLoanMsg
+    VerificationLoanMsg,
+    SuspendUserMsg
+
 } 
