@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Container } from "reactstrap";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
 import MetaTag from "../../../components/MetaTag";
@@ -8,22 +8,20 @@ import { UsersRoute } from "components/RouteName";
 import useFetch from '../../../hooks/useFecth';
 import { ServerError } from "components/NotifyMessage";
 import Loading from "components/Loading";
-import TeamTable from "./components/TeamTable.js";
+import UserTable from "./components/UserTable";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
+import { RiCheckDoubleLine } from "react-icons/ri";
+import { ImCross } from "react-icons/im";
 import { MdDeleteForever } from "react-icons/md";
-import ModalComp from '../../../Modal';
-import InputForm from "./components/InputForm"
-import SuspendComp from "./components/SuspendComp"
-import SmallModal from './../../../SmallModal';
 import ErrorPage from "components/ErrorPage";
 
 
 const Index = () => {
 
-    const [openModal, setOpenModal] = useState(false);
-    const [openModal_2, setOpenModal_2] = useState(false);
-    const [deleteUser, setDeleteUser] = useState(false);
+    const [openModal, setOpenModal] = React.useState(false);
+    const [openModal_2, setOpenModal_2] = React.useState(false);
+    const [deleteUser, setDeleteUser] = React.useState(false);
     const [btnName, setBtnName] = React.useState();
     const [userId, setUserId] = React.useState();
     const [apiQuery, setApiQuery] = React.useState();
@@ -31,20 +29,23 @@ const Index = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const res_data = [];
-
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users?role=worker`, token);
+    const { data, loading, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/users?role=user`, token);
     if (error) return <ErrorPage message={ServerError} />
 
     const filterArr = () => {
         data.forEach(res => {
             res_data.push({
                 ...res,
+                verify: <button className="btn-status text-white color__blue"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
+                active: <button className="btn-status text-white color__green"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
+                viewBtn: <button className="btn btn-danger color__blue"> View </button>,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
                 deleteBtn: <button className="btn btn-danger" onClick={() => deleteUserFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
         });
     }
     filterArr();
+
 
     const suspendUser = (id) => {
         setOpenModal_2(true)
@@ -67,27 +68,17 @@ const Index = () => {
 
     return (
         <React.Fragment>
-
             <div className="page-content px-5">
                 <Breadcrumb default={UsersRoute} defaultName="Users" title={UserTitle} />
                 <MetaTag title_sco={UsersPage} />
 
                 <Container fluid>
-                    <button className="btn btn__table  color__blue" onClick={() => setOpenModal(true)}> <h6> + add a new team member </h6>  </button>
-
                     <div className="page-title-box">
-                        {loading ? <Loading /> : (<TeamTable data={res_data} />)}
+                        {loading ? <Loading /> : (<UserTable data={res_data} />)}
                     </div>
                 </Container>
             </div>
 
-            <ModalComp
-                ModalTitle="Add a new team member"
-                open={openModal}
-                onClose={() => setOpenModal(false)}
-                cancel="close"
-                Component={<InputForm onClose={() => setOpenModal(false)} reFetch={reFetch} />}
-            />
 
             <SmallModal
                 open={openModal_2}

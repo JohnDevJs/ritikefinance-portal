@@ -16,14 +16,13 @@ import ModalComp from '../../../Modal';
 import InputForm from "./components/InputForm"
 import SuspendComp from "./components/SuspendComp"
 import SmallModal from './../../../SmallModal';
-import ErrorPage from "components/ErrorPage";
 
 
 const Index = () => {
 
     const [openModal, setOpenModal] = useState(false);
     const [openModal_2, setOpenModal_2] = useState(false);
-    const [deleteUser, setDeleteUser] = useState(false);
+    const [delete, setDelete] = useState(false);
     const [btnName, setBtnName] = React.useState();
     const [userId, setUserId] = React.useState();
     const [apiQuery, setApiQuery] = React.useState();
@@ -32,7 +31,8 @@ const Index = () => {
     const token = userDet?.token;
     const res_data = [];
 
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users?role=worker`, token);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/users?role=admin`, token);
+
     if (error) return <ErrorPage message={ServerError} />
 
     const filterArr = () => {
@@ -40,7 +40,7 @@ const Index = () => {
             res_data.push({
                 ...res,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
-                deleteBtn: <button className="btn btn-danger" onClick={() => deleteUserFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
+                deleteBtn: <button className="btn btn-danger" onClick={() => deleteUser(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
         });
     }
@@ -58,11 +58,10 @@ const Index = () => {
         setBtnName("Unsuspend")
         setApiQuery("un-suspended")
     }
-    const deleteUserFunc = (id) => {
-        setDeleteUser(true)
+    const deleteUser = (id) => {
+        setDelete(true)
         setUserId(id)
-        setBtnName("Delete")
-        setApiQuery("Deleted")
+        setApiQuery(null)
     }
 
     return (
@@ -95,14 +94,6 @@ const Index = () => {
                 ModalTitle="Are you sure you want to take this action ?"
                 cancel="close"
                 Components={<SuspendComp reFetch={reFetch} onClose={() => setOpenModal_2(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
-            />
-
-            <SmallModal
-                open={deleteUser}
-                onClose={() => setDeleteUser(false)}
-                ModalTitle="Are you sure you want to delete this user ?"
-                cancel="close"
-                Components={<SuspendComp reFetch={reFetch} onClose={() => setDeleteUser(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
             />
 
         </React.Fragment>

@@ -7,7 +7,7 @@ import CustomBtn from "components/CustomBtn";
 import { CiLogin } from "react-icons/ci";
 import { RegisterMsg } from 'components/NotifyMessage';
 
-function InputForm({ onClose }) {
+function InputForm() {
 
     const { execute, pending, data } = usePost()
 
@@ -22,18 +22,11 @@ function InputForm({ onClose }) {
             "agreed": true,
             "role": values.role,
             "email": values.email,
-            "password": 123456,
+            "password": 13456,
             "passwordConfirm": 123456,
         });
 
         execute(endPoint, userDate, Method, RegisterMsg, token, isJSON)
-    }
-
-    if (data?.status === 'success') {
-        onClose();
-        setTimeout(() => {
-            reFetch()
-        }, 2000)
     }
 
 

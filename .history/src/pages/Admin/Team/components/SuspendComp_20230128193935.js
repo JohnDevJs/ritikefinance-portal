@@ -11,7 +11,7 @@ function SuspendComp({ reFetch, onClose, user_Id, btnName, apiQuery }) {
     const notificationDisplay = `Successfully ${apiQuery}`
 
     const changeStatusFunc = () => {
-        const Method = apiQuery === "Deleted" ? 'DELETE' : 'POST', endPoint = apiQuery === "Deleted" ? `users/${user_Id}` : `users/${user_Id}/${apiQuery}`;
+        const Method = 'POST', endPoint = apiQuery === "Deleted" ? `users/${user_Id}` : `users/${user_Id}/${apiQuery}`;
         const raw = "";
         execute(endPoint, raw, Method, notificationDisplay, token)
     }

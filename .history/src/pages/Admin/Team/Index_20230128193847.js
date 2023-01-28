@@ -16,7 +16,6 @@ import ModalComp from '../../../Modal';
 import InputForm from "./components/InputForm"
 import SuspendComp from "./components/SuspendComp"
 import SmallModal from './../../../SmallModal';
-import ErrorPage from "components/ErrorPage";
 
 
 const Index = () => {
@@ -32,7 +31,8 @@ const Index = () => {
     const token = userDet?.token;
     const res_data = [];
 
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users?role=worker`, token);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/users?role=admin`, token);
+
     if (error) return <ErrorPage message={ServerError} />
 
     const filterArr = () => {
