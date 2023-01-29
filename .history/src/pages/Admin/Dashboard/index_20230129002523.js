@@ -89,10 +89,10 @@ const Index = () => {
 
             <SmallModal
                 open={deleteRequest}
-                onClose={() => setDeleteRequest(false)}
+                onClose={() => setRequestId(false)}
                 ModalTitle="Are you sure you want to delete this request ?"
                 cancel="close"
-                Components={<ModalComp reFetch={reFetch} onClose={() => setDeleteRequest(false)} request_Id={requestId} btnName={btnName} apiQuery={apiQuery} />}
+                Components={<ModalComp reFetch={reFetch} onClose={() => setRequestId(false)} request_Id={requestId} btnName={btnName} apiQuery={apiQuery} />}
             />
 
 

@@ -71,7 +71,7 @@ const Index = () => {
     }
 
     const viewDetails = (id) => {
-        setViewUserDet(true)
+        setOpenModal_2(true)
         setUserId(id)
     }
 
@@ -90,7 +90,7 @@ const Index = () => {
 
 
             <ModalComp
-                ModalTitle="View more details"
+                ModalTitle="view more details"
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"

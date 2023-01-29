@@ -27,7 +27,7 @@ const Index = () => {
 
     const res_data = [];
     let pendingLenght, paidLenght;
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans`, null);
+    const { data, loading, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans`, null);
 
     {
         const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=pending`, null)
@@ -89,10 +89,10 @@ const Index = () => {
 
             <SmallModal
                 open={deleteRequest}
-                onClose={() => setDeleteRequest(false)}
+                onClose={() => setRequestId(false)}
                 ModalTitle="Are you sure you want to delete this request ?"
                 cancel="close"
-                Components={<ModalComp reFetch={reFetch} onClose={() => setDeleteRequest(false)} request_Id={requestId} btnName={btnName} apiQuery={apiQuery} />}
+                Components={<ModalComp reFetch={reFetch} onClose={() => setRequestId(false)} request_Id={requestId} btnName={btnName} apiQuery={apiQuery} />}
             />
 
 

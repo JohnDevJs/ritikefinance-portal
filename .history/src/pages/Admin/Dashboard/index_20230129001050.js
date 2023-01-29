@@ -13,21 +13,13 @@ import Loading from "components/Loading";
 import ErrorPage from "components/ErrorPage";
 import { ServerError } from "components/NotifyMessage";
 import { MdDeleteForever } from "react-icons/md";
-import SmallModal from "SmallModal";
-import ModalComp from "./components/ModalComp";
 
 
 const Index = () => {
 
-    const [openModal_2, setOpenModal_2] = React.useState(false);
-    const [deleteRequest, setDeleteRequest] = React.useState(false);
-    const [btnName, setBtnName] = React.useState();
-    const [requestId, setRequestId] = React.useState();
-    const [apiQuery, setApiQuery] = React.useState();
-
     const res_data = [];
     let pendingLenght, paidLenght;
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans`, null);
+    const { data, loading, error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans`, null);
 
     {
         const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=pending`, null)
@@ -53,15 +45,15 @@ const Index = () => {
                         color={res?.loanPercentage <= 50 ? "danger" : res?.loanPercentage <= 99 ? "info" : "success"}
                         value={res?.loanPercentage} />
                 </div>,
-                deleteBtn: <button className="btn btn-danger" onClick={() => deleteRequestFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
+                deleteBtn: <button className="btn btn-danger" onClick={() => deleteRequest(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
         });
     }
     filterArr();
 
-    const deleteRequestFunc = (id) => {
-        setDeleteRequest(true)
-        setRequestId(id)
+    const deleteRequest = (id) => {
+        setDeleteUser(true)
+        setUserId(id)
         setBtnName("Delete")
         setApiQuery("Deleted")
     }
@@ -85,17 +77,8 @@ const Index = () => {
                         }
                     </div>
                 </Container>
+
             </div>
-
-            <SmallModal
-                open={deleteRequest}
-                onClose={() => setDeleteRequest(false)}
-                ModalTitle="Are you sure you want to delete this request ?"
-                cancel="close"
-                Components={<ModalComp reFetch={reFetch} onClose={() => setDeleteRequest(false)} request_Id={requestId} btnName={btnName} apiQuery={apiQuery} />}
-            />
-
-
         </React.Fragment>
     )
 }

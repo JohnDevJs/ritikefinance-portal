@@ -16,16 +16,13 @@ import { ImCross } from "react-icons/im";
 import { MdDeleteForever } from "react-icons/md";
 import ErrorPage from "components/ErrorPage";
 import SmallModal from './../../../SmallModal';
-import ModalComp from '../../../Modal';
 import SuspendComp from "./components/SuspendComp";
-import UserDetails from "./components/UserDetails";
 
 
 const Index = () => {
 
     const [openModal_2, setOpenModal_2] = React.useState(false);
     const [deleteUser, setDeleteUser] = React.useState(false);
-    const [viewUserDet, setViewUserDet] = React.useState(false);
     const [btnName, setBtnName] = React.useState();
     const [userId, setUserId] = React.useState();
     const [apiQuery, setApiQuery] = React.useState();
@@ -42,7 +39,7 @@ const Index = () => {
                 ...res,
                 verify: <button className="btn-status text-white color__blue"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
                 active: <button className="btn-status text-white color__green"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
-                viewBtn: <button className="btn btn-danger color__blue" onClick={() => viewDetails(res._id)}> View </button>,
+                viewBtn: <button className="btn btn-danger color__blue"> View </button>,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
                 deleteBtn: <button className="btn btn-danger" onClick={() => deleteUserFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
@@ -70,11 +67,6 @@ const Index = () => {
         setApiQuery("Deleted")
     }
 
-    const viewDetails = (id) => {
-        setViewUserDet(true)
-        setUserId(id)
-    }
-
     return (
         <React.Fragment>
             <div className="page-content px-5">
@@ -88,14 +80,6 @@ const Index = () => {
                 </Container>
             </div>
 
-
-            <ModalComp
-                ModalTitle="View more details"
-                open={viewUserDet}
-                onClose={() => setViewUserDet(false)}
-                cancel="close"
-                Component={<UserDetails onClose={() => setViewUserDet(false)} user_Id={userId} />}
-            />
 
             <SmallModal
                 open={openModal_2}

@@ -18,7 +18,6 @@ import ErrorPage from "components/ErrorPage";
 import SmallModal from './../../../SmallModal';
 import ModalComp from '../../../Modal';
 import SuspendComp from "./components/SuspendComp";
-import UserDetails from "./components/UserDetails";
 
 
 const Index = () => {
@@ -42,7 +41,7 @@ const Index = () => {
                 ...res,
                 verify: <button className="btn-status text-white color__blue"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
                 active: <button className="btn-status text-white color__green"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
-                viewBtn: <button className="btn btn-danger color__blue" onClick={() => viewDetails(res._id)}> View </button>,
+                viewBtn: <button className="btn btn-danger color__blue"> View </button>,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
                 deleteBtn: <button className="btn btn-danger" onClick={() => deleteUserFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
@@ -71,7 +70,7 @@ const Index = () => {
     }
 
     const viewDetails = (id) => {
-        setViewUserDet(true)
+        setOpenModal_2(true)
         setUserId(id)
     }
 
@@ -90,7 +89,7 @@ const Index = () => {
 
 
             <ModalComp
-                ModalTitle="View more details"
+                ModalTitle="view more details"
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"

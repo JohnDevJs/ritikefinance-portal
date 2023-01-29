@@ -90,7 +90,7 @@ const Index = () => {
 
 
             <ModalComp
-                ModalTitle="View more details"
+                ModalTitle="View details"
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"
