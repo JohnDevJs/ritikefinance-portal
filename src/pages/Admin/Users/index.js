@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import "./style.scss";
 import { Container } from "reactstrap";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
 import MetaTag from "../../../components/MetaTag";

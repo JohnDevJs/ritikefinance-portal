@@ -17,7 +17,9 @@ import { MdDeleteForever } from "react-icons/md";
 import usePost from "hooks/usePost";
 import SmallModal from './../../../SmallModal';
 import Modal from "./components/Modal";
+import LoanDetails from "./components/LoanDetails";
 import { BsEyeFill } from "react-icons/bs";
+import ModalComp from '../../../Modal';
 
 
 const Index = () => {
@@ -30,6 +32,7 @@ const Index = () => {
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
+    const [viewUserDet, setViewUserDet] = React.useState(false);
 
     if (error) return <ErrorPage message={ServerError} />
 
@@ -52,6 +55,11 @@ const Index = () => {
         setBtnName("Move to decline")
     }
 
+    const viewDetails = (id) => {
+        setViewUserDet(true)
+        setLoanId(id)
+    }
+
     const filterArr = () => {
         data.forEach(res => {
             res_data.push({
@@ -60,7 +68,7 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue"> <BsEyeFill size={14} /> View </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res._id)}> <BsEyeFill size={14} /> View </button>,
                 verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res._id)}>  Verification </button>,
                 approveBtn: <button className="btn btn__table color__green" onClick={() => approveFunc(res._id)}> Approve </button>,
                 declineBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res._id)}> Decline </button>,
@@ -82,6 +90,16 @@ const Index = () => {
                     </div>
                 </Container>
             </div>
+
+            
+            <ModalComp
+                ModalTitle="View more details"
+                open={viewUserDet}
+                onClose={() => setViewUserDet(false)}
+                cancel="close"
+                Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
+            />
+
 
             <SmallModal
                 open={openModal}
