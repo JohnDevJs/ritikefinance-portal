@@ -2,7 +2,9 @@ import React from "react"
 import ReactApexChart from "react-apexcharts"
 import { Card } from "reactstrap"
 
-const ChartAmount = () => {
+const ChartAmount = ({ data }) => {
+
+    console.log("data : ", data)
 
     const series = [
         {
