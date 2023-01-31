@@ -2,27 +2,29 @@ import React from 'react'
 import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
+import { VerificationLoanMsg } from 'components/NotifyMessage';
 
-function VerifyModal() {
+function Modal({ reFetch, onClose, status, loanId, btnName }) {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const { execute, data } = usePost()
 
-    const verificationFunc = (id) => {
-        const Method = 'POST', endPoint = `loans/loanStatus/${id}`;
-        const raw = JSON.stringify({ "status": "verification" });
+    const changeStatusFunc = () => {
+        const Method = 'POST', endPoint = `loans/loanStatus/${loanId}/status`;
+        const raw = JSON.stringify({ "status": status });
         execute(endPoint, raw, Method, VerificationLoanMsg, token)
     }
 
     if (data?.status === 'success') {
+        onClose();
         setTimeout(() => {
             reFetch()
-        }, 2500)
+        }, 2000)
     }
 
     return (
-        <button className='btn text-white w-100' onClick={verificationFunc}>Mo to verification</button>
+        <button className='btn text-white w-100' onClick={changeStatusFunc}> {btnName} </button>
     )
 }
 
-export default VerifyModal
+export default Modal

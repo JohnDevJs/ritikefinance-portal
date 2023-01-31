@@ -4,13 +4,13 @@ import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
 import { VerificationLoanMsg } from 'components/NotifyMessage';
 
-function Modal({ reFetch, onClose, status, loanId }) {
+function Modal({ reFetch, onClose, status, loanId, btnName }) {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const { execute, data } = usePost()
 
     const changeStatusFunc = () => {
-        const Method = 'POST', endPoint = `loans/loanStatus/${loanId}`;
+        const Method = 'POST', endPoint = `loans/loanStatus/${loanId}/status`;
         const raw = JSON.stringify({ "status": status });
         execute(endPoint, raw, Method, VerificationLoanMsg, token)
     }
@@ -19,11 +19,11 @@ function Modal({ reFetch, onClose, status, loanId }) {
         onClose();
         setTimeout(() => {
             reFetch()
-        }, 2500)
+        }, 2000)
     }
 
     return (
-        <button className='btn text-white w-100' onClick={changeStatusFunc}>Mo to verification</button>
+        <button className='btn text-white w-100' onClick={changeStatusFunc}> {btnName} </button>
     )
 }
 

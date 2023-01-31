@@ -20,21 +20,21 @@ function LoanDetails({ loan_Id }) {
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Duration : </span> {data?.duration} </p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Status : </span>{data?.status}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan percentage : </span>{data?.loanPercentage}</p>
-                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Payment data : </span>{data?.paymentDate?.split('T')[0]}</p>
+                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Payment data : </span>{data?.paymentDate}</p>
             </Col>
 
             <div>
                 <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Bank Statement  : </h4>
                 {
-                    data?.bankStatement?.map((img) => (
-                        <img className="avatar-lg" src={`${process.env.REACT_APP_IMG_API}img/bankStatement/${img}`} />
+                    data?.bankStatement?.map((img) =>(
+                        <img className="avatar-lg"  src={`${process.env.REACT_APP_IMG_API}img/bankStatement/${img}`} />
                     ))
                 }
             </div>
 
 
             <div className="profile__img">
-                <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Payslip : </h4>
+            <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Payslip : </h4>
                 <img className="img-thumbnail" src={`${process.env.REACT_APP_IMG_API}img/payslip/${data?.paySlip}`} />
             </div>
 

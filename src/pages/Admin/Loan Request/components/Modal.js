@@ -10,7 +10,7 @@ function Modal({ reFetch, onClose, status, loanId, btnName }) {
     const { execute, data } = usePost()
 
     const changeStatusFunc = () => {
-        const Method = 'POST', endPoint = `loans/loanStatus/${loanId}`;
+        const Method = 'POST', endPoint = `loans/loanStatus/${loanId}/status`;
         const raw = JSON.stringify({ "status": status });
         execute(endPoint, raw, Method, VerificationLoanMsg, token)
     }
