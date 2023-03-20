@@ -3,7 +3,7 @@ import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
 
-function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery }) {
+function DeleteComp({ reFetch, onClose, user_Id, btnName, apiQuery }) {
 
     console.log('delete', btnName)
     const userDet = useStore1Selector(loginUser);
@@ -13,7 +13,7 @@ function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery }) {
     const notificationDisplay = `Successfully ${apiQuery}`
 
     const changeStatusFunc = () => {
-        const Method = apiQuery === "Deleted" ? 'DELETE' : 'POST', endPoint = apiQuery === "Deleted" ? `users/${request_Id}` : `users/${request_Id}/${apiQuery}`;
+        const Method = apiQuery === "Deleted" ? 'DELETE' : 'POST', endPoint = apiQuery === "Deleted" ? `users/${user_Id}` : `users/${user_Id}/${apiQuery}`;
         const raw = "";
         execute(endPoint, raw, Method, notificationDisplay, token)
     }

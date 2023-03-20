@@ -15,7 +15,6 @@ const Table = ({ data }) => {
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
-    const [requestId, setRequestId] = React.useState();
 
     const verifyFunc = (id) => {
         setOpenModal(true)
@@ -25,7 +24,7 @@ const Table = ({ data }) => {
     }
     const deleteUserFunc = (id) => {
         setDeleteUser(true)
-        setRequestId(id)
+        setUserId(id)
         setBtnName("Delete")
         setApiQuery("Deleted")
     }
@@ -135,7 +134,7 @@ const Table = ({ data }) => {
                 onClose={() => setDeleteUser(false)}
                 ModalTitle="Are you sure you want to delete this request ?"
                 cancel="close"
-                Components={<Modal onClose={() => setDeleteUser(false)} request_Id={requestId} btnName={btnName} apiQuery="query" />}
+                Components={<Modal onClose={() => setDeleteUser(false)} btnName={btnName} apiQuery="query" />}
             //Components={<Modal reFetch={reFetch} onClose={() => setDeleteUser(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
             />
 
