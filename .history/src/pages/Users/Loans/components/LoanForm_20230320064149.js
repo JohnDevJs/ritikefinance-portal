@@ -16,13 +16,12 @@ function LoanForm({ onClose, reFetch }) {
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
     const { execute, pending, data } = usePost()
+    const [amount, setAmount] = React.useState(100)
+    const [days, setDays] = React.useState(5)
     const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
+    const percentage = days <= 15 ? 22.5 : 40;
+    const Total_pay_back = amount * percentage / 100 * 10
 
-    const [inputValue, setInputValue] = React.useState('');
-    const [inputValue2, setInputValue2] = React.useState('');
-    const percentage = inputValue2 > 15 ? 40 : 22.5;
-    const Total = inputValue * percentage;
-    const Total_pay_back = Total / 100;
 
     const refFileUploadPaySleep = React.useRef(null);
     const refFileUploadBankStatement = React.useRef(null);
@@ -42,6 +41,7 @@ function LoanForm({ onClose, reFetch }) {
             refFileUploadBankStatement.current.dispatchEvent(new MouseEvent('click'));
         }
     };
+
 
     const changeThumbPaySleep = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -66,6 +66,9 @@ function LoanForm({ onClose, reFetch }) {
             reader.readAsDataURL(event.target.files[0]);
         }
     };
+
+    const [inputValue, setInputValue] = React.useState('');
+    const [inputValue2, setInputValue2] = React.useState('');
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -129,12 +132,12 @@ function LoanForm({ onClose, reFetch }) {
                 </Col>
 
 
-                <Col md={6}>
+                <Col md={6} className='mt-4'>
                     <Card>
                         <div className="p-3">
-                            <h4 className="font-size-14 mb-3 mt-0">Loan amount</h4>
+                            <h4 className="font-size-14 mt-0">Amount</h4>
                             <span className="float-start ">R100</span>
-                            <span className="float-end ">R2000</span>
+                            <span className="float-end  ">R2000</span>
                             {/* <Slider
                                 value={amount}
                                 min={100}
@@ -152,8 +155,8 @@ function LoanForm({ onClose, reFetch }) {
 
                         <div className="px-3">
                             {/* <h4 className="font-size-14  mt-0">Number of days</h4> */}
-                            <span className="float-start ">Number of days </span>
-                            {/* <span className="float-end ">30 Days</span> */}
+                            {/* <span className="float-start ">5 Days </span>
+                            <span className="float-end ">30 Days</span> */}
                             {/* <Slider
                                 value={days}
                                 min={5}
@@ -161,13 +164,17 @@ function LoanForm({ onClose, reFetch }) {
                                 orientation="horizontal"
                                 onChange={day => { setDays(day) }}
                             /> */}
-                            <input type="number" value={inputValue2} className="form-control" onChange={handleInputChange2} />
+                            <select type="select" value={inputValue2} className="form-control" onChange={handleInputChange2}>
+                                <option>Select...</option>
+                                <option>22.5</option>
+                                <option>40%</option>
+                            </select>
                         </div>
 
                     </Card>
                 </Col>
 
-                <Col md={6}>
+                <Col md={6} className='mt-4'>
                     <Card>
                         <CardBody>
                             {/* <div className="d-flex justify-content-between p-3">
@@ -179,8 +186,8 @@ function LoanForm({ onClose, reFetch }) {
                                 <input type="date" className="form-control" onChange={onChangeDate} />
                             </form>
                             <div className="d-flex justify-content-between p-3">
-                                <h3><b> Total pay back </b></h3>
-                                <h3> <b> R {Math.round(Total_pay_back)} % </b>  </h3>
+                                <p><b> Total pay back </b></p>
+                                <h3> <b> R {Math.round(Total_pay_back)} </b>  </h3>
                             </div>
                             <div className="px-3">
                                 <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />

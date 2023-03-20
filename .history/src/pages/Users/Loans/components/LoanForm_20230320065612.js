@@ -179,8 +179,8 @@ function LoanForm({ onClose, reFetch }) {
                                 <input type="date" className="form-control" onChange={onChangeDate} />
                             </form>
                             <div className="d-flex justify-content-between p-3">
-                                <h3><b> Total pay back </b></h3>
-                                <h3> <b> R {Math.round(Total_pay_back)} % </b>  </h3>
+                                <p><b> Total pay back </b></p>
+                                <p> <b> R {Math.round(Total_pay_back)} </b>  </p>
                             </div>
                             <div className="px-3">
                                 <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />

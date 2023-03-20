@@ -132,7 +132,7 @@ function LoanForm({ onClose, reFetch }) {
                 <Col md={6}>
                     <Card>
                         <div className="p-3">
-                            <h4 className="font-size-14 mb-3 mt-0">Loan amount</h4>
+                            <h4 className="font-size-14 mb-3 mt-0">Loan Amount</h4>
                             <span className="float-start ">R100</span>
                             <span className="float-end ">R2000</span>
                             {/* <Slider
@@ -179,8 +179,8 @@ function LoanForm({ onClose, reFetch }) {
                                 <input type="date" className="form-control" onChange={onChangeDate} />
                             </form>
                             <div className="d-flex justify-content-between p-3">
-                                <h3><b> Total pay back </b></h3>
-                                <h3> <b> R {Math.round(Total_pay_back)} % </b>  </h3>
+                                <p><b> Total pay back </b></p>
+                                <p> <b> R {Math.round(Total_pay_back)} </b>  </p>
                             </div>
                             <div className="px-3">
                                 <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
