@@ -16,12 +16,14 @@ const Table = ({ data }) => {
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
 
+
     const verifyFunc = (id) => {
         setOpenModal(true)
         setStatus("verification")
         setLoanId(id)
         setBtnName("Verification")
     }
+
     const deleteUserFunc = (id) => {
         setDeleteUser(true)
         setUserId(id)
@@ -126,7 +128,7 @@ const Table = ({ data }) => {
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"
-            //Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
+            // Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
             />
 
             <SmallModal
@@ -135,7 +137,7 @@ const Table = ({ data }) => {
                 ModalTitle="Are you sure you want to delete this request ?"
                 cancel="close"
                 Components={<Modal onClose={() => setDeleteUser(false)} btnName={btnName} />}
-            //Components={<Modal reFetch={reFetch} onClose={() => setDeleteUser(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
+            // Components={<Modal reFetch={reFetch} onClose={() => setDeleteUser(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
             />
 
         </React.Fragment>

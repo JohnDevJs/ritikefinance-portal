@@ -5,16 +5,16 @@ import { FiEdit } from 'react-icons/fi';
 import { MdDeleteForever } from 'react-icons/md';
 import SmallModal from 'SmallModal';
 import ModalComp from '../../../../Modal';
-import Modal from '../Modal';
+import Modal from './../../../Admin/Loan Request/components/Modal';
 
 const Table = ({ data }) => {
 
     const [viewUserDet, setViewUserDet] = React.useState(false);
     const [openModal, setOpenModal] = React.useState(false);
-    const [deleteUser, setDeleteUser] = React.useState(false);
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
+
 
     const verifyFunc = (id) => {
         setOpenModal(true)
@@ -22,12 +22,19 @@ const Table = ({ data }) => {
         setLoanId(id)
         setBtnName("Verification")
     }
-    const deleteUserFunc = (id) => {
-        setDeleteUser(true)
-        setUserId(id)
-        setBtnName("Delete")
-        setApiQuery("Deleted")
+    const approveFunc = (id) => {
+        setOpenModal(true)
+        setStatus("approve")
+        setLoanId(id)
+        setBtnName("Move to approve")
     }
+    const declineFunc = (id) => {
+        setOpenModal(true)
+        setStatus("decline")
+        setLoanId(id)
+        setBtnName("Delete the request")
+    }
+
     const viewDetails = (id) => {
         setViewUserDet(true)
         setLoanId(id)
@@ -92,23 +99,21 @@ const Table = ({ data }) => {
 
                                             <td> <button className='btn text-white' onClick={() => viewDetails(data?._id)}> <IoIosEye size={22} /> </button> </td>
 
-                                            {
-                                                data?.status === "pending" ?
-                                                    <td> <button className='btn  text-white'> <FiEdit size={20} /> </button> </td> : <td> <button className='btn  text-white' disabled> <FiEdit size={20} />
-                                                    </button>
-                                                    </td>
+                                            {data?.status === "pending" ?
+                                                <td> <button className='btn  text-white'> <FiEdit size={20} /> </button> </td> : <td> <button className='btn  text-white' disabled> <FiEdit size={20} />
+                                                </button>
+                                                </td>
                                             }
 
 
-                                            {
-                                                data?.status === "pending" ?
-                                                    <td> <button className='btn text-white'
-                                                        onClick={() => deleteUserFunc(data?._id)}
-                                                    >
-                                                        <MdDeleteForever size={20} />
-                                                    </button>
-                                                    </td> : <td> <button className='btn text-white' disabled> <MdDeleteForever size={20} /> </button>
-                                                    </td>
+                                            {data?.status === "pending" ?
+                                                <td> <button className='btn text-white'
+                                                    onClick={() => declineFunc(data?._id)}
+                                                >
+                                                    <MdDeleteForever size={20} />
+                                                </button>
+                                                </td> : <td> <button className='btn text-white' disabled> <MdDeleteForever size={20} /> </button>
+                                                </td>
                                             }
 
                                         </tr>
@@ -121,22 +126,25 @@ const Table = ({ data }) => {
                 </div>
             </Card>
 
+
+
             <ModalComp
                 ModalTitle="See details"
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"
-            //Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
+            // Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
             />
 
+
             <SmallModal
-                open={deleteUser}
-                onClose={() => setDeleteUser(false)}
-                ModalTitle="Are you sure you want to delete this request ?"
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                ModalTitle="Are you sure you ant to delete this request ?"
                 cancel="close"
-                Components={<Modal onClose={() => setDeleteUser(false)} btnName={btnName} />}
-            //Components={<Modal reFetch={reFetch} onClose={() => setDeleteUser(false)} user_Id={userId} btnName={btnName} apiQuery={apiQuery} />}
+                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
             />
+
 
         </React.Fragment>
     )

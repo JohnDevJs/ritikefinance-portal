@@ -54,6 +54,7 @@ const Index = () => {
         setLoanId(id)
         setBtnName("Move to decline")
     }
+
     const viewDetails = (id) => {
         setViewUserDet(true)
         setLoanId(id)
@@ -90,6 +91,7 @@ const Index = () => {
                 </Container>
             </div>
 
+
             <ModalComp
                 ModalTitle="View more details"
                 open={viewUserDet}
@@ -97,6 +99,7 @@ const Index = () => {
                 cancel="close"
                 Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
             />
+
 
             <SmallModal
                 open={openModal}

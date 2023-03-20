@@ -22,6 +22,7 @@ const Table = ({ data }) => {
         setLoanId(id)
         setBtnName("Verification")
     }
+
     const deleteUserFunc = (id) => {
         setDeleteUser(true)
         setUserId(id)

@@ -16,12 +16,14 @@ const Table = ({ data }) => {
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
 
+
     const verifyFunc = (id) => {
         setOpenModal(true)
         setStatus("verification")
         setLoanId(id)
         setBtnName("Verification")
     }
+
     const deleteUserFunc = (id) => {
         setDeleteUser(true)
         setUserId(id)
