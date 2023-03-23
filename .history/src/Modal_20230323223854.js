@@ -9,8 +9,8 @@ const ModalComp = ({ open, onClose, ModalTitle, cancel, deleteBtn, Component }) 
 
     return (
         <Modal show={open} onHide={onClose} size="lg">
-            <Modal.Header className="d-flex justify-content-center">
-                <h2 className="p-2"> {ModalTitle} </h2>
+            <Modal.Header className="d-flex justify-content-center modal__header">
+                <h4 className="p-2"> {ModalTitle} </h4>
             </Modal.Header>
 
             <Modal.Body>
