@@ -90,6 +90,7 @@
         "react-rating": "^2.0.5",
         "react-rating-tooltip": "^1.2.0",
         "react-redux": "^7.2.8",
+        "react-responsive": "^9.0.2",
         "react-responsive-carousel": "^3.2.18",
         "react-router-dom": "^5.2.0",
         "react-router-use-location-state": "^3.0.2",
