@@ -17,7 +17,6 @@ const LoanRequestRoute = "/loan-request"
 const ApprovedLoanRoute = "/approved-loans"
 const TeamRoute = "/my-team"
 const MondateFormroute = "/mondate-form"
-const MondateApplicationRoute = "/application/:id"
 
 
 export {
@@ -40,5 +39,4 @@ export {
     TeamRoute,
     ApprovedLoanRoute,
     MondateFormroute,
-    MondateApplicationRoute
 } 

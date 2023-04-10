@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, LogoutRoute, RegisterRoute, DashboardRoute, LoansRoute, ApproveLoanRoute, DeclineLoanRoute, AdminDashboardRoute, UsersRoute, LoanRequestRoute, TeamRoute, ApprovedLoanRoute, MondateFormroute, MondateApplicationRoute } from "../components/RouteName"
+import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, LogoutRoute, RegisterRoute, DashboardRoute, LoansRoute, ApproveLoanRoute, DeclineLoanRoute, AdminDashboardRoute, UsersRoute, LoanRequestRoute, TeamRoute, ApprovedLoanRoute, MondateFormroute, MondateApplication } from "../components/RouteName"
 
 //* => AUTHENTICATION
 import Login from "../pages/Authentication/Login"
@@ -33,7 +33,7 @@ const userRoutes = [
   { path: LoanRequestRoute, component: LoanRequest },
   { path: ApprovedLoanRoute, component: ApprovedLoanPage },
   { path: MondateFormroute, component: MondatePage },
-  { path: MondateApplicationRoute, component: MondateApplication },
+  { path: MondateApplication, component: MondateApplication },
   { path: TeamRoute, component: Teams },
   { path: "/", exact: true, component: () => <Redirect to={DashboardRoute} /> },
 ];
