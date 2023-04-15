@@ -55,7 +55,7 @@ const Register = () => {
       <Row className="fixed_height">
         {/* <LoginRightLabel text="" size={4} /> */}
         {
-          data?.status === 'success' ?
+          data?.status !== 'success' ?
             (<FromWraper>
               <p className="text-primary">  We sent you a link to your mailbox, verify your email to continue </p>
               You did not received it ? <Link onClick={() => location.reload()} className='text-primary'> Try again </Link>

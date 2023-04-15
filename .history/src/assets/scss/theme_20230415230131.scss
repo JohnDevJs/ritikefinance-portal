@@ -791,17 +791,6 @@ ul li {
     --bs-tooltip-bg: var(--bs-primary);
 }
 
-// !!!! NEW CHANGE
-.fixed_height {
-    min-height: 100vh;
-    // overflow: hidden !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 @media (max-width: 768px) {
     .bg-image {
         display: none;
@@ -811,5 +800,6 @@ ul li {
 @media (min-width: 768px) {
     .input-card {
         width: 60%;
+        min-height: 100%;
     }
 }

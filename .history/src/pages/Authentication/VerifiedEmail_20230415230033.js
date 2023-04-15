@@ -30,7 +30,7 @@ const VerifiedEmail = () => {
     return (
         <React.Fragment>
             <MetaTagComp title_sco={VerifyEmailPage} />
-            <Row className="fixed_height">
+            <Row>
                 <LoginRightLabel text="Verify your email" />
                 {
                     data?.status === 'success' ?

@@ -30,7 +30,7 @@ const VerifiedEmail = () => {
     return (
         <React.Fragment>
             <MetaTagComp title_sco={VerifyEmailPage} />
-            <Row className="fixed_height">
+            <Row>
                 <LoginRightLabel text="Verify your email" />
                 {
                     data?.status === 'success' ?
@@ -41,12 +41,14 @@ const VerifiedEmail = () => {
                             </div>
                         </FromWraper> :
 
-                        <FromWraper>
-                            <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>
-                            <div className=" text-center p-3">
-                                <CustomBtn Pending={pending} btnName="Verify your email" onClick={verifyFunc} />
-                            </div>
-                        </FromWraper>
+                        <div>
+                            <FromWraper>
+                                <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>
+                                <div className=" text-center p-3">
+                                    <CustomBtn Pending={pending} btnName="Verify your email" onClick={verifyFunc} />
+                                </div>
+                            </FromWraper>
+                        </div>
                 }
             </Row>
         </React.Fragment>
