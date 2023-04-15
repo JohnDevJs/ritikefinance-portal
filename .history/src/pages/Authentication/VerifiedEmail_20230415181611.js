@@ -1,5 +1,6 @@
 import React from "react"
-import "../Styles.scss";
+// import "../Styles.scss";
+// import "../Style.scss";
 import { Row } from "reactstrap"
 import { Link, useParams } from "react-router-dom"
 import MetaTagComp from 'components/MetaTag';
@@ -10,16 +11,20 @@ import LoginRightLabel from './components/LoginRightLabel';
 import FromWraper from './components/FromWraper';
 import { verifyMsg } from 'components/NotifyMessage';
 import { LoginRoute } from "components/RouteName";
+import { useStore1Selector } from "index";
+import { loginUser } from "Redux/Slices/userSlice";
 
 const VerifiedEmail = () => {
 
     const { userId, token } = useParams()
     const { execute, pending, data } = usePost()
+    const userDet = useStore1Selector(loginUser);
+    const accessToken = userDet?.token;
 
     const verifyFunc = () => {
         const Method = 'POST', endPoint = `users/verify/${userId}/${token}`;
         const raw = "";
-        execute(endPoint, raw, Method, verifyMsg)
+        execute(endPoint, raw, Method, verifyMsg, accessToken)
     }
 
     return (
