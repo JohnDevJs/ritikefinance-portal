@@ -32,7 +32,7 @@ function FormInput3() {
                 </Col>
                 <Col md={4}>
                     <Row>
-                        <Col md={12}>
+                        <Col md={6}>
                             <div className="mb-3">
                                 <AvField
                                     name="postalCode"

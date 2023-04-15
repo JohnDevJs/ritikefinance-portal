@@ -41,7 +41,7 @@ const Register = () => {
     formdata.append("bankName", values.bankName);
     formdata.append("accountType", values.accountType);
     formdata.append("agreed", values.agreed[0]);
-    formdata.append("blackListed", !values.blackListed[0] ? false : values.blackListed[0]);
+    formdata.append("blackListed", values.blackListed[0]);
     formdata.append("passportPhoto", photoPassport);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
