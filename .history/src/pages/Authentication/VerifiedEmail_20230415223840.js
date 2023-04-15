@@ -22,7 +22,7 @@ const VerifiedEmail = () => {
     const token = userDet?.token;
 
     const verifyFunc = () => {
-        const Method = 'POST', endPoint = `users/verify/${userId}/${verifyToken}`;
+        const Method = 'GET', endPoint = `users/verify/${userId}/${verifyToken}`;
         const raw = "";
         execute(endPoint, raw, Method, verifyMsg, token)
     }

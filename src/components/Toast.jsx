@@ -17,7 +17,7 @@ export const successMessage = (message) => {
 }
 
 export const dangerMessage = (message) => {
-  toast.danger(message, {
+  toast.warning(message, {
     position: toast.POSITION.BOTTOM_CENTER,
     className: 'danger-message'
   });

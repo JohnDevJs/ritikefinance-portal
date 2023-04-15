@@ -16,15 +16,15 @@ import { loginUser } from "Redux/Slices/userSlice";
 
 const VerifiedEmail = () => {
 
-    const { userId, verifyToken } = useParams()
+    const { userId, token } = useParams()
     const { execute, pending, data } = usePost()
     const userDet = useStore1Selector(loginUser);
-    const token = userDet?.token;
+    const accessToken = userDet?.token;
 
     const verifyFunc = () => {
-        const Method = 'POST', endPoint = `users/verify/${userId}/${verifyToken}`;
+        const Method = 'GET', endPoint = `users/verify/${userId}/${token}`;
         const raw = "";
-        execute(endPoint, raw, Method, verifyMsg, token)
+        execute(endPoint, raw, Method, verifyMsg, accessToken)
     }
 
     return (
