@@ -22,7 +22,7 @@ const DeclinedLoanMsg = "Successfully declined  "
 const VerificationLoanMsg = "Successfully moved to verification  "
 const SuspendUserMsg = "Successfully suspend the user  "
 const PaidPercentageMsg = "Successfully paid  "
-const SendFormMsg = "Successfully sent the form application "
+const SendFormMsg = "Successfully send the form  "
 
 export {
     LoginMsg,
