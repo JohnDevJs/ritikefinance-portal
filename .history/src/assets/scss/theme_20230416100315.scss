@@ -811,11 +811,14 @@ ul li {
 
 //* this is for the Toastify
 @media screen and (max-width: 600px) {
-    .Toastify__toast-container,
     .Toastify__toast {
         font-size: 16px;
         width: 100%;
         padding: 0 10px;
-        margin-top: 0.5em;
+    }
+    .my-toast {
+        font-size: 16px;
+        width: 100%;
+        padding: 10px;
     }
 }

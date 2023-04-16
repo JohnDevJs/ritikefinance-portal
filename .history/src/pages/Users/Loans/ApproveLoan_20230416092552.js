@@ -18,6 +18,7 @@ const ApproveLoan = () => {
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
 
+    console.log(" userId : ", userId);
 
     const noToast = true
     const { execute, data, pending } = usePost()
