@@ -16,6 +16,8 @@ function LoanForm({ onClose, reFetch }) {
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
 
+    console.log(userId);
+
     const { execute, pending, data } = usePost()
     const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
 
@@ -87,6 +89,9 @@ function LoanForm({ onClose, reFetch }) {
         setPaymentDate(newDate);
     };
 
+    console.log("paySleepServer : ", paySleepServer)
+    console.log("bankStatementServer : ", bankStatementServer)
+
     const applyLoan = () => {
         const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
         const formdata = new FormData();
@@ -126,6 +131,13 @@ function LoanForm({ onClose, reFetch }) {
                         </h4>
                         <span className="float-start ">From   R 100</span>
                         <span className="float-end ">up to    R 2000</span>
+                        {/* <Slider
+                                value={amount}
+                                min={100}
+                                max={1000}
+                                orientation="horizontal"
+                                onChange={value => { setAmount(value) }}
+                            /> */}
                         <input
                             min="100"
                             max="2000"

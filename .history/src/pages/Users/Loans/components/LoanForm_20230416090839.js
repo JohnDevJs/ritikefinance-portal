@@ -126,6 +126,13 @@ function LoanForm({ onClose, reFetch }) {
                         </h4>
                         <span className="float-start ">From   R 100</span>
                         <span className="float-end ">up to    R 2000</span>
+                        {/* <Slider
+                                value={amount}
+                                min={100}
+                                max={1000}
+                                orientation="horizontal"
+                                onChange={value => { setAmount(value) }}
+                            /> */}
                         <input
                             min="100"
                             max="2000"

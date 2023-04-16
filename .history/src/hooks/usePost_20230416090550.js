@@ -27,6 +27,7 @@ const usePost = () => {
         return fetch(`${process.env.REACT_APP_BACKEND_URL}/${endPoint}`, requestOptions)
             .then(response => response.json())
             .then(res => {
+                console.log(res)
                 if (res?.status === 'success') {
                     updatePostData({
                         pending: false,
@@ -52,11 +53,11 @@ const usePost = () => {
                         error: res?.message,
                         lengths: undefined
                     });
-                    if (res?.message === 'jwt malformed') {
-                        warningMessage("You need to login");
-                    } else {
-                        warningMessage("You have a network issue please try again after few minutes");
-                    }
+                    // if (res?.message === 'jwt malformed') {
+                    //     warningMessage("You need to login");
+                    // } else {
+                    //     warningMessage("Something went wrong from the server");
+                    // }
                 }
             })
             .catch(error => {

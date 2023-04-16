@@ -19,6 +19,8 @@ function LoanForm({ onClose, reFetch }) {
     const { execute, pending, data } = usePost()
     const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
 
+    console.log(" paymentDate : ", paymentDate)
+
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
     const percentage = inputValue2 > 15 ? 40 : 22.5;
@@ -92,7 +94,7 @@ function LoanForm({ onClose, reFetch }) {
         const formdata = new FormData();
         formdata.append("amount", inputValue);
         formdata.append("duration", inputValue2);
-        formdata.append("paymentDate", paymentDate);
+        formdata.append("paymentDate", "2023-04-18");
         formdata.append("totalAmount", Total_pay_back);
         formdata.append("paySlip", paySleepServer);
         formdata.append("bankStatement", bankStatementServer);
@@ -126,6 +128,13 @@ function LoanForm({ onClose, reFetch }) {
                         </h4>
                         <span className="float-start ">From   R 100</span>
                         <span className="float-end ">up to    R 2000</span>
+                        {/* <Slider
+                                value={amount}
+                                min={100}
+                                max={1000}
+                                orientation="horizontal"
+                                onChange={value => { setAmount(value) }}
+                            /> */}
                         <input
                             min="100"
                             max="2000"
