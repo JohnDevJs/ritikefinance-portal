@@ -5,7 +5,7 @@ const ForgotPasswordRoute = "/forgot-password"
 const ResetPasswordRoute = "/resetPassword/:token"
 const RegisterRoute = "/register"
 const StudentRegRoute = "/student"
-const VerifyEmailRoute = "/verify/:userId/:token"
+const VerifyEmailRoute = "/verify/:userId/:verifyToken"
 const LogoutRoute = "/logout"
 const RegisterAsRoute = "/register-as"
 const ProfileRoute = "/profile"
@@ -16,6 +16,8 @@ const UsersRoute = "/users"
 const LoanRequestRoute = "/loan-request"
 const ApprovedLoanRoute = "/approved-loans"
 const TeamRoute = "/my-team"
+const MondateFormroute = "/mondate-form"
+const MondateApplicationRoute = "/application/:id"
 
 
 export {
@@ -36,5 +38,7 @@ export {
     UsersRoute,
     LoanRequestRoute,
     TeamRoute,
-    ApprovedLoanRoute
+    ApprovedLoanRoute,
+    MondateFormroute,
+    MondateApplicationRoute
 } 
