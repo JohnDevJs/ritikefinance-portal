@@ -129,89 +129,11 @@ function AccountForm() {
                                             <AvField value={userDet?.data?.data?.phoneNumber} name="phoneNumber" label="Phone Number" type="number" required />
                                         </div>
                                     </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.companyName} name="companyName" label="company Name" type="text" required />
-                                        </div>
-                                    </Col>
                                 </Row>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.jobTitle} name="jobTitle" label="Job Title" className="form-control" type="text" required />
-                                </div>
-                            </Col>
-
-                            <Col md={6} lg={6}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.streetAddress} name="address" label="Address" type="text" required />
-                                </div>
-
-                                <Row>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.city} name="city" label="City" type="text" required />
-                                        </div>
-                                    </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.province} name="province" label="Province" type="text" required />
-                                        </div>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.postalCode} name="postalCode" label="Postal Code" type="text" required />
-                                        </div>
-                                    </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.referralCode} name="referralCode" label="Referral Code" type="text" required />
-                                        </div>
-                                    </Col>
-                                </Row>
-
-
-
-                                {/* <div className="mb-3">
-                                    <AvField
-                                        name="passportPhoto"
-                                        label="Passport Photo"
-                                        className="form-control"
-                                        type="file"
-                                        onChange={handlePhotoPassport}
-                                    />
-                                </div> */}
-
-
-
                             </Col>
                         </Row>
 
-                        <Row>
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.accountNumber} name="accountNumber" label="Account Number" type="number" required />
-                                </div>
-                            </Col>
 
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField name="accountType" value={userDet?.data?.data?.accountType} label="Account Type" type="select" required>
-                                        <option> {userDet?.data?.data?.accountType} </option>
-                                        <option> Savings </option>
-                                        <option> Current/Cheque </option>
-                                    </AvField>
-                                </div>
-                            </Col>
-
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.bankName} name="bankName" label="Bank Name" type="text" required />
-                                </div>
-                            </Col>
-
-                        </Row>
 
                         <div className="mb-3 profile__btn">
                             <button className="btn  w-100 text-white text-center" type="submit">

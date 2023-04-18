@@ -163,9 +163,7 @@ function LoanForm({ onClose, reFetch }) {
                         <h5><b> Total to pay back </b></h5>
                         <h5> <b> R {Math.round(Total_pay_back)} </b>  </h5>
                     </div>
-                    <div className="px-3">
-                        <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
-                    </div>
+
 
                 </Col>
 
@@ -192,6 +190,9 @@ function LoanForm({ onClose, reFetch }) {
                     </div>
                 </Col>
 
+                <div className="px-3">
+                    <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
+                </div>
 
             </Row>
         </>

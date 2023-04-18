@@ -11,6 +11,7 @@ import { useStore1Selector } from "index";
 const Profile = () => {
 
     const userDet = useStore1Selector(loginUser)
+    console.log(" userDet : ", userDet)
 
     return (
         <React.Fragment>
@@ -23,9 +24,8 @@ const Profile = () => {
                         <CardBody className="px-4">
                             <Row>
                                 <Col className="account" md={12}>
-                                    {
-                                        userDet?.data?.data?.role === "user" ? <AccountForm /> : <AdminAccountForm />
-                                    }
+                                    <AccountForm />
+                                    <AdminAccountForm />
                                 </Col>
                             </Row>
                         </CardBody>

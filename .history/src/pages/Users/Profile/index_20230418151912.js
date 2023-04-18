@@ -11,6 +11,7 @@ import { useStore1Selector } from "index";
 const Profile = () => {
 
     const userDet = useStore1Selector(loginUser)
+    console.log(" userDet : ", userDet?.data?.data?.role)
 
     return (
         <React.Fragment>

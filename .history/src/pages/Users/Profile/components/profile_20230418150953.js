@@ -142,7 +142,7 @@ function AccountForm() {
 
                             <Col md={6} lg={6}>
                                 <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.streetAddress} name="address" label="Address" type="text" required />
+                                    <AvField value={userDet?.data?.data?.address} name="address" label="Address" type="text" required />
                                 </div>
 
                                 <Row>

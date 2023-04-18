@@ -4,13 +4,8 @@ import { Container, Row, CardBody, Card, Col } from "reactstrap";
 import AccountForm from "./components/profile";
 import MetaTagComp from "components/MetaTag";
 import Breadcrumb from "components/Common/Breadcrumb";
-import AdminAccountForm from "./components/adminProfile";
-import { loginUser } from "Redux/Slices/userSlice";
-import { useStore1Selector } from "index";
 
 const Profile = () => {
-
-    const userDet = useStore1Selector(loginUser)
 
     return (
         <React.Fragment>
@@ -23,9 +18,7 @@ const Profile = () => {
                         <CardBody className="px-4">
                             <Row>
                                 <Col className="account" md={12}>
-                                    {
-                                        userDet?.data?.data?.role === "user" ? <AccountForm /> : <AdminAccountForm />
-                                    }
+                                    <AccountForm />
                                 </Col>
                             </Row>
                         </CardBody>
