@@ -78,6 +78,8 @@ function AdminAccountForm() {
         history.push(LoginRoute)
     }
 
+    console.log(" userDet?.data?.data?.photoProfile : ", userDet?.data?.data?.photoProfile)
+
     return (
         <>
             <AvForm
