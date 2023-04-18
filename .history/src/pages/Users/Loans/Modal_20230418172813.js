@@ -2,13 +2,12 @@ import React from 'react'
 import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
-import { Spinner } from 'reactstrap';
 
-function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery }) {
+function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery, loadBtn }) {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
-    const { execute, data, pending } = usePost()
+    const { execute, data } = usePost()
 
     const notificationDisplay = `Successfully deleted`
 
@@ -27,7 +26,7 @@ function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery }) {
 
     return (
         <button className='btn text-white w-100' onClick={changeStatusFunc}>
-            {pending ? <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span> : btnName}
+            {!loadBtn ? btnName : null}
         </button>
     )
 }

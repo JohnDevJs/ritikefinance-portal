@@ -60,58 +60,66 @@ const Table = ({ reFetch, data, hideStatus }) => {
                         <div className="">
                             {
                                 data?.map((data, i) => {
-                                    return (
-                                        <Card className="mb-2 card-border-radius" key={i}>
-                                            <CardBody>
-                                                {/* <div className='d-flex justify-content-between'>
+                                    if (data.length > 0) {
+
+
+                                        return (
+                                            <Card className="mb-2 card-border-radius" key={i}>
+                                                <CardBody>
+                                                    {/* <div className='d-flex justify-content-between'>
                                                     <p>Loan date: {data?.createdAt.split("T")[0]}</p>
                                                     <p>Duration: {data?.duration}</p>
                                                 </div> */}
 
-                                                {/* <div className='image__container'>
+                                                    {/* <div className='image__container'>
                                                     <img className="avatar-lg" src={`${process.env.REACT_APP_IMG_API}img/bankStatement/${"img"}`} />
                                                 </div> */}
 
 
-                                                <div className='d-flex justify-content-between'>
-                                                    {/* 
+                                                    <div className='d-flex justify-content-between'>
+                                                        {/* 
                                                     <p>Duration: {data?.duration}</p>
                                                     <p>Loan date: {data?.createdAt.split("T")[0]}</p>
                                                     <p>Paid date: {"2022-05-20"}</p> */}
 
-                                                    <p>Amount: {data?.amount}</p>
+                                                        <p>Amount: {data?.amount}</p>
 
-                                                    {data?.status === "pending" ? <p> Status: <b className="text-warning p-2"> Pending </b> </p> : null}
-                                                    {data?.status === "decline" ? <p> Status:  <b className="text-danger  p-2"> Declined </b>  </p> : null}
-                                                    {data?.status === "verification" ? <p> Status: <b className="text-info  p-2"> Verification </b> </p> : null}
-                                                    {data?.status === "approve" ? <p> Status: <b className="text-primary  p-2"> Approved </b> </p> : null}
-                                                    {data?.status === "paid" ? <p> Status:  <b className="text-success p-2"> Paid </b>  </p> : null}
+                                                        {data?.status === "pending" ? <p> Status: <b className="text-warning p-2"> Pending </b> </p> : null}
+                                                        {data?.status === "decline" ? <p> Status:  <b className="text-danger  p-2"> Declined </b>  </p> : null}
+                                                        {data?.status === "verification" ? <p> Status: <b className="text-info  p-2"> Verification </b> </p> : null}
+                                                        {data?.status === "approve" ? <p> Status: <b className="text-primary  p-2"> Approved </b> </p> : null}
+                                                        {data?.status === "paid" ? <p> Status:  <b className="text-success p-2"> Paid </b>  </p> : null}
 
-                                                </div>
+                                                    </div>
 
-                                                <div className='d-flex justify-content-between mt-2'>
-                                                    <button className='btn text-white' onClick={() => viewDetails(data?._id)}>
-                                                        <IoIosEye size={22} />View more
-                                                    </button>
+                                                    <div className='d-flex justify-content-between mt-2'>
+                                                        <button className='btn text-white' onClick={() => viewDetails(data?._id)}>
+                                                            <IoIosEye size={22} />View more
+                                                        </button>
 
-                                                    {data?.status === "pending" ? (
-                                                        <>
-                                                            <button className='btn text-white' onClick={() => deleteUserFunc(data?._id)}>
-                                                                <MdDeleteForever size={20} />
-                                                            </button>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <button className='btn text-white' disabled>
-                                                                <MdDeleteForever size={20} />
-                                                            </button>
-                                                        </>
-                                                    )}
-                                                </div>
+                                                        {data?.status === "pending" ? (
+                                                            <>
+                                                                <button className='btn text-white' onClick={() => deleteUserFunc(data?._id)}>
+                                                                    <MdDeleteForever size={20} />
+                                                                </button>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <button className='btn text-white' disabled>
+                                                                    <MdDeleteForever size={20} />
+                                                                </button>
+                                                            </>
+                                                        )}
+                                                    </div>
 
-                                            </CardBody>
-                                        </Card>
-                                    )
+                                                </CardBody>
+                                            </Card>
+                                        )
+                                    } else {
+                                        <div>
+                                            <p> You have no loans yet </p>
+                                        </div>
+                                    }
                                 })
                             }
                         </div>
@@ -154,7 +162,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
 
                                     {
                                         data?.map((data, i) => {
-
                                             return (
                                                 <tbody key={i}>
                                                     <tr key={"_tr_" + "key"} >
@@ -202,7 +209,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
                                                     </tr>
                                                 </tbody>
                                             )
-
                                         })
                                     }
 

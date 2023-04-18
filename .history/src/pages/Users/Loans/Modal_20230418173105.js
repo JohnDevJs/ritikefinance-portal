@@ -4,7 +4,7 @@ import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
 import { Spinner } from 'reactstrap';
 
-function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery }) {
+function DeleteComp({ reFetch, onClose, request_Id, btnName, apiQuery, loadBtn }) {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;

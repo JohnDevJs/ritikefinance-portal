@@ -155,54 +155,62 @@ const Table = ({ reFetch, data, hideStatus }) => {
                                     {
                                         data?.map((data, i) => {
 
-                                            return (
-                                                <tbody key={i}>
-                                                    <tr key={"_tr_" + "key"} >
-                                                        <td>
-                                                            <div className="form-check font-size-16">
-                                                                <input type="checkbox" className="form-check-input" id={"id"} />
-                                                                <label className="form-check-label" htmlFor={"idd"}> &nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td>{data?.user?.firstName}</td>
-                                                        <td>{data?.user?.lastName}</td>
-                                                        <td>{data?.amount}</td>
-                                                        <td>{data?.duration}</td>
-                                                        <td>{data?.createdAt.split("T")[0]}</td>
-                                                        <td>{"2022-05-20"}</td>
+                                            if (data.length > 0) {
 
-                                                        {data?.status === "pending" ? <td> <Badge className="bg-warning p-2"> {data?.status} </Badge></td> : null}
-                                                        {data?.status === "decline" ? <td> <Badge className="bg-danger  p-2"> {data?.status} </Badge></td> : null}
-                                                        {data?.status === "verification" ? <td> <Badge className="bg-info  p-2"> {data?.status} </Badge></td> : null}
-                                                        {data?.status === "approve" ? <td> <Badge className="bg-primary  p-2"> {data?.status} </Badge></td> : null}
-                                                        {data?.status === "paid" ? <td> <Badge className="bg-success  p-2"> {data?.status} </Badge></td> : null}
-                                                        {
-                                                            hideStatus ?
+                                                return (
+                                                    <tbody key={i}>
+                                                        <tr key={"_tr_" + "key"} >
+                                                            <td>
+                                                                <div className="form-check font-size-16">
+                                                                    <input type="checkbox" className="form-check-input" id={"id"} />
+                                                                    <label className="form-check-label" htmlFor={"idd"}> &nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            <td>{data?.user?.firstName}</td>
+                                                            <td>{data?.user?.lastName}</td>
+                                                            <td>{data?.amount}</td>
+                                                            <td>{data?.duration}</td>
+                                                            <td>{data?.createdAt.split("T")[0]}</td>
+                                                            <td>{"2022-05-20"}</td>
 
-                                                                <td>
-                                                                    <div className="text-center">{data?.loanPercentage}%</div> <Progress
-                                                                        color={data?.loanPercentage <= 50 ? "danger" : data?.loanPercentage <= 99 ? "info" : "success"}
-                                                                        value={data?.loanPercentage}
-                                                                    />
-                                                                </td> : null
-                                                        }
-                                                        <td> <button className='btn text-white' onClick={() => viewDetails(data?._id)}> <IoIosEye size={22} /> </button> </td>
+                                                            {data?.status === "pending" ? <td> <Badge className="bg-warning p-2"> {data?.status} </Badge></td> : null}
+                                                            {data?.status === "decline" ? <td> <Badge className="bg-danger  p-2"> {data?.status} </Badge></td> : null}
+                                                            {data?.status === "verification" ? <td> <Badge className="bg-info  p-2"> {data?.status} </Badge></td> : null}
+                                                            {data?.status === "approve" ? <td> <Badge className="bg-primary  p-2"> {data?.status} </Badge></td> : null}
+                                                            {data?.status === "paid" ? <td> <Badge className="bg-success  p-2"> {data?.status} </Badge></td> : null}
+                                                            {
+                                                                hideStatus ?
 
-                                                        {
-                                                            data?.status === "pending" ?
-                                                                <td> <button className='btn text-white'
-                                                                    onClick={() => deleteUserFunc(data?._id)}
-                                                                >
-                                                                    <MdDeleteForever size={20} />
-                                                                </button>
-                                                                </td> : <td> <button className='btn text-white' disabled> <MdDeleteForever size={20} /> </button>
-                                                                </td>
-                                                        }
+                                                                    <td>
+                                                                        <div className="text-center">{data?.loanPercentage}%</div> <Progress
+                                                                            color={data?.loanPercentage <= 50 ? "danger" : data?.loanPercentage <= 99 ? "info" : "success"}
+                                                                            value={data?.loanPercentage}
+                                                                        />
+                                                                    </td> : null
+                                                            }
+                                                            <td> <button className='btn text-white' onClick={() => viewDetails(data?._id)}> <IoIosEye size={22} /> </button> </td>
 
-                                                    </tr>
-                                                </tbody>
-                                            )
+                                                            {
+                                                                data?.status === "pending" ?
+                                                                    <td> <button className='btn text-white'
+                                                                        onClick={() => deleteUserFunc(data?._id)}
+                                                                    >
+                                                                        <MdDeleteForever size={20} />
+                                                                    </button>
+                                                                    </td> : <td> <button className='btn text-white' disabled> <MdDeleteForever size={20} /> </button>
+                                                                    </td>
+                                                            }
 
+                                                        </tr>
+                                                    </tbody>
+                                                )
+                                            } else {
+                                                return (
+                                                    <div>
+                                                        <p> No data yet</p>
+                                                    </div>
+                                                )
+                                            }
                                         })
                                     }
 

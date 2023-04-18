@@ -154,7 +154,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
 
                                     {
                                         data?.map((data, i) => {
-
                                             return (
                                                 <tbody key={i}>
                                                     <tr key={"_tr_" + "key"} >
@@ -202,7 +201,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
                                                     </tr>
                                                 </tbody>
                                             )
-
                                         })
                                     }
 
@@ -214,6 +212,14 @@ const Table = ({ reFetch, data, hideStatus }) => {
 
                 }
             </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -230,9 +236,7 @@ const Table = ({ reFetch, data, hideStatus }) => {
                 onClose={() => setDeleteUser(false)}
                 ModalTitle="Are you sure you want to delete this request ?"
                 cancel="close"
-                Components={<Modal reFetch={reFetch} onClose={() => setDeleteUser(false)} request_Id={requestId} btnName={btnName} apiQuery="query" loadBtn={loadBtn} />
-
-                }
+                Components={<Modal onClose={() => setDeleteUser(false)} request_Id={requestId} btnName={btnName} apiQuery="query" loadBtn={loadBtn} />}
             />
 
         </React.Fragment>

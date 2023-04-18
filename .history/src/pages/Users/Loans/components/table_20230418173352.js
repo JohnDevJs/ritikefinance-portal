@@ -154,7 +154,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
 
                                     {
                                         data?.map((data, i) => {
-
                                             return (
                                                 <tbody key={i}>
                                                     <tr key={"_tr_" + "key"} >
@@ -202,7 +201,6 @@ const Table = ({ reFetch, data, hideStatus }) => {
                                                     </tr>
                                                 </tbody>
                                             )
-
                                         })
                                     }
 
@@ -214,6 +212,14 @@ const Table = ({ reFetch, data, hideStatus }) => {
 
                 }
             </div>
+
+
+
+
+
+
+
+
 
 
 
