@@ -38,7 +38,7 @@ const Charts = () => {
                 data: [1000, 800, 700, 750, 950, 900, 800, 780, 100, 600, 500, 100],
             },
         ],
-        colors: ['#8392AB'],
+        colors: ['#008ad3'],
         xaxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },

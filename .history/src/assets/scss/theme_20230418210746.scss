@@ -722,11 +722,96 @@ ul li {
 }
 
 .custom-color {
-    color: #e70826;
+    color: #000;
 }
 
 .btn-custom-color {
-    color: #556ee6;
+    color: #008ad3;
+}
+
+.user__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user__name .btn {
+    background: #c208e7 !important;
+}
+
+.image__container {
+    width: 50% !important;
+    display: flex;
+    gap: 1em;
+}
+
+.img__container img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #cacaca !important;
+    border-radius: 15px;
+}
+
+.image__container img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #cacaca !important;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.avatar-lg {
+    border-radius: 15px;
+}
+
+.loan__form {
+    padding: 2px;
+}
+
+.title {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.payslip__img__container {
+    border-radius: 15px !important;
+}
+
+.payslip__title {
+    text-align: center !important;
+}
+
+.modal__header {
+    background-color: #303d83;
+    color: white;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+}
+
+// !!!! NEW CHANGE
+.fixed_height {
+    min-height: 100vh;
+    overflow: hidden !important;
+}
+
+.container__zero__lenght {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.message__display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #777;
+}
+
+.message__display__small {
+    font-size: 16px;
+    color: #999;
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {
@@ -738,5 +823,16 @@ ul li {
 @media (min-width: 768px) {
     .input-card {
         width: 60%;
+    }
+}
+
+//* this is for the Toastify
+@media screen and (max-width: 600px) {
+    .Toastify__toast-container,
+    .Toastify__toast {
+        font-size: 16px;
+        width: 100%;
+        padding: 0 10px;
+        margin-top: 0.5em;
     }
 }

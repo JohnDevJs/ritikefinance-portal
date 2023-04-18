@@ -615,7 +615,7 @@ ul li {
 }
 
 .apply__btn {
-    background: $client__color !important;
+    background: #303d83 !important;
 }
 
 .btn__table {
@@ -650,7 +650,7 @@ ul li {
 }
 
 .color__blue {
-    background: $client__color;
+    background: #303d83;
     color: #ffffff;
 }
 
@@ -722,11 +722,11 @@ ul li {
 }
 
 .custom-color {
-    color: $custom__text_color;
+    color: #e70826;
 }
 
 .btn-custom-color {
-    color: $client__color;
+    color: #c208e7;
 }
 
 .user__name {
@@ -736,7 +736,7 @@ ul li {
 }
 
 .user__name .btn {
-    background: $client__color !important;
+    background: #c208e7 !important;
 }
 
 .image__container {
@@ -783,7 +783,7 @@ ul li {
 }
 
 .modal__header {
-    background-color: $client__color;
+    background-color: #303d83;
     color: white;
 }
 
@@ -805,17 +805,7 @@ ul li {
 .message__display {
     font-size: 24px;
     font-weight: bold;
-    color: $custom__text_color;
-}
-
-.message__display__small {
-    font-size: 16px;
-    color: #999;
-    margin-top: 20px;
-}
-
-.user__name {
-    color: $client__color !important;
+    color: #777;
 }
 
 @media (max-width: 768px) {

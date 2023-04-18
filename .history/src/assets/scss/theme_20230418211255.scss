@@ -722,7 +722,7 @@ ul li {
 }
 
 .custom-color {
-    color: $custom__text_color;
+    color: #000;
 }
 
 .btn-custom-color {
@@ -805,17 +805,13 @@ ul li {
 .message__display {
     font-size: 24px;
     font-weight: bold;
-    color: $custom__text_color;
+    color: #777;
 }
 
 .message__display__small {
     font-size: 16px;
     color: #999;
     margin-top: 20px;
-}
-
-.user__name {
-    color: $client__color !important;
 }
 
 @media (max-width: 768px) {

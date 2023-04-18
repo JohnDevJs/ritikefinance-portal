@@ -12,7 +12,6 @@ import usePost from '../../../hooks/usePost';
 import { Link } from 'react-router-dom';
 import { LoansRoute } from "components/RouteName";
 import { BsArrowLeft } from 'react-icons/bs';
-import EmptyMessage from "components/EmptyMessage";
 
 const ApproveLoan = () => {
     const userDet = useStore1Selector(loginUser);
@@ -39,21 +38,8 @@ const ApproveLoan = () => {
                     <div className="page-title-box mx-4">
                         <Link to={LoansRoute}> <BsArrowLeft /> Back </Link>
                         <div className="mt-3">
-                            {/* {pending ? <Loading /> : <Table data={data?.data?.data} hideStatus={false} />} */}
-
-                            {pending ? (
-                                <Loading />
-                            ) : (
-                                <>
-                                    {data?.data?.data?.length > 0 ? (
-                                        <Table data={data.data.data} hideStatus={false} />
-                                    ) : (
-                                        <EmptyMessage />
-                                    )}
-                                </>
-                            )}
-
-
+                            {pending ? <Loading /> : <Table data={data?.data?.data} hideStatus={false} />}
+                            <p>heyy</p>
                         </div>
                     </div>
                 </Container>

@@ -12,7 +12,6 @@ import usePost from '../../../hooks/usePost';
 import { Link } from 'react-router-dom';
 import { LoansRoute } from "components/RouteName";
 import { BsArrowLeft } from 'react-icons/bs';
-import EmptyMessage from "components/EmptyMessage";
 
 const ApproveLoan = () => {
     const userDet = useStore1Selector(loginUser);
@@ -48,11 +47,10 @@ const ApproveLoan = () => {
                                     {data?.data?.data?.length > 0 ? (
                                         <Table data={data.data.data} hideStatus={false} />
                                     ) : (
-                                        <EmptyMessage />
+                                        <p>Data is empty.</p>
                                     )}
                                 </>
                             )}
-
 
                         </div>
                     </div>

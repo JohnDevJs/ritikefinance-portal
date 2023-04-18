@@ -12,7 +12,6 @@ import usePost from '../../../hooks/usePost';
 import { Link } from 'react-router-dom';
 import { LoansRoute } from "components/RouteName";
 import { BsArrowLeft } from 'react-icons/bs';
-import EmptyMessage from "components/EmptyMessage";
 
 const ApproveLoan = () => {
     const userDet = useStore1Selector(loginUser);
@@ -48,7 +47,10 @@ const ApproveLoan = () => {
                                     {data?.data?.data?.length > 0 ? (
                                         <Table data={data.data.data} hideStatus={false} />
                                     ) : (
-                                        <EmptyMessage />
+                                        <div className="container__zero__lenght">
+                                            <p className="message__display">Oops, looks like there's no data to display!</p>
+                                            <p className="message__display__small">Don't worry, though. You can try again later or check back with us soon.</p>
+                                        </div>
                                     )}
                                 </>
                             )}

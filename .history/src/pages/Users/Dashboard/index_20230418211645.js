@@ -47,7 +47,7 @@ const Dashboard = () => {
                     <div className="page-title-box">
 
                         <div className="user__name">
-                            <h3 className="mb-5 
+                            <h3 className="mb-5 text-primary
                             ">Hi, {userDet?.data?.data?.firstName} {userDet?.data?.data?.lastName} </h3>
                             <Link to="/loans" className="btn text-white apply__btn mb-4"> Apply for a new loan</Link>
                         </div>
