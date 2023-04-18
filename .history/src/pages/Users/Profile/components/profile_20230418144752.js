@@ -177,7 +177,7 @@ function AccountForm() {
                                         label="Passport Photo"
                                         className="form-control"
                                         type="file"
-                                        // required
+                                        required
                                         onChange={handlePhotoPassport}
                                     />
                                 </div>

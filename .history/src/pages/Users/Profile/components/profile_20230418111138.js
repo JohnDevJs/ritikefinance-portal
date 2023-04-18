@@ -7,7 +7,6 @@ import usePost from "hooks/usePost";
 import { useHistory } from "react-router-dom";
 import { UpdatePasswordMsg, updateProfileMsg } from "components/NotifyMessage";
 import { LoginRoute } from "components/RouteName";
-import { FcAddImage } from "react-icons/fc";
 
 
 function AccountForm() {
@@ -47,7 +46,7 @@ function AccountForm() {
         formdata.append("accountNumber", values.accountNumber);
         formdata.append("bankName", values.bankName);
         formdata.append("accountType", values.accountType);
-        // formdata.append("passportPhoto", photoPassport);
+        formdata.append("passportPhoto", photoPassport);
         formdata.append("photoProfile", profileServer);
         execute(endPoint, formdata, Method, updateProfileMsg, token, isJSON)
     }
@@ -98,7 +97,7 @@ function AccountForm() {
                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
                         onClick={onThumbChangeClick}
                     >
-                        <FcAddImage size={40} />
+                        <i className="ion ion-md-image"></i>
                     </Button>
                     <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
                 </div>
@@ -177,7 +176,7 @@ function AccountForm() {
                                         label="Passport Photo"
                                         className="form-control"
                                         type="file"
-                                        // required
+                                        required
                                         onChange={handlePhotoPassport}
                                     />
                                 </div>
@@ -268,17 +267,17 @@ function AccountForm() {
                                 </div>
                             </Col>
                         </Row>
-                        <div className="mb-3 profile__btn">
-                            <button className="btn  w-100 text-white text-center" type="submit">
-                                {
-                                    !loadBtn ? <span className="me-2">Update password</span> : null
-                                }
-                                {
-                                    !loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>
-                                }
-                            </button>
-                        </div>
                     </CardBody>
+                    <div className="mb-3 profile__btn">
+                        <button className="btn  w-100 text-white text-center" type="submit">
+                            {
+                                !loadBtn ? <span className="me-2">Update password</span> : null
+                            }
+                            {
+                                !loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>
+                            }
+                        </button>
+                    </div>
                 </Card>
             </AvForm>
 

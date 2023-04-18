@@ -47,7 +47,7 @@ function AccountForm() {
         formdata.append("accountNumber", values.accountNumber);
         formdata.append("bankName", values.bankName);
         formdata.append("accountType", values.accountType);
-        // formdata.append("passportPhoto", photoPassport);
+        formdata.append("passportPhoto", photoPassport);
         formdata.append("photoProfile", profileServer);
         execute(endPoint, formdata, Method, updateProfileMsg, token, isJSON)
     }
@@ -177,7 +177,7 @@ function AccountForm() {
                                         label="Passport Photo"
                                         className="form-control"
                                         type="file"
-                                        // required
+                                        required
                                         onChange={handlePhotoPassport}
                                     />
                                 </div>

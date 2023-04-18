@@ -47,7 +47,7 @@ function AccountForm() {
         formdata.append("accountNumber", values.accountNumber);
         formdata.append("bankName", values.bankName);
         formdata.append("accountType", values.accountType);
-        // formdata.append("passportPhoto", photoPassport);
+        formdata.append("passportPhoto", photoPassport);
         formdata.append("photoProfile", profileServer);
         execute(endPoint, formdata, Method, updateProfileMsg, token, isJSON)
     }
@@ -98,7 +98,7 @@ function AccountForm() {
                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
                         onClick={onThumbChangeClick}
                     >
-                        <FcAddImage size={40} />
+                        <FcAddImage />
                     </Button>
                     <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
                 </div>
@@ -177,7 +177,7 @@ function AccountForm() {
                                         label="Passport Photo"
                                         className="form-control"
                                         type="file"
-                                        // required
+                                        required
                                         onChange={handlePhotoPassport}
                                     />
                                 </div>
