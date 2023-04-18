@@ -2,11 +2,12 @@ import React from 'react'
 import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
+import { Spinner } from 'reactstrap';
 
 function SuspendComp({ reFetch, onClose, user_Id, btnName, apiQuery }) {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
-    const { execute, data } = usePost()
+    const { execute, data, pending } = usePost()
 
     const notificationDisplay = `Successfully ${apiQuery}`
 
@@ -24,7 +25,9 @@ function SuspendComp({ reFetch, onClose, user_Id, btnName, apiQuery }) {
     }
 
     return (
-        <button className='btn text-white w-100' onClick={changeStatusFunc}> {btnName} </button>
+        <button className='btn text-white w-100' onClick={changeStatusFunc}>
+            {pending ? <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span> : btnName}
+        </button>
     )
 }
 
