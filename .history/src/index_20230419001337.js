@@ -30,7 +30,7 @@ const app = () => {
     if (error?.status === 401) {
       history.push('/login');
     }
-  }, [error, history]);
+  }, [dispatch, error, history]);
 
 
   return (

@@ -23,14 +23,16 @@ let persistedStore = persistStore(Redux_store);
 const app = () => {
 
   const history = useHistory()
+  // const dispatch = useStore1Dispatch();
 
   const { error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, token);
 
   useEffect(() => {
     if (error?.status === 401) {
+      // dispatch(loginUser(''));
       history.push('/login');
     }
-  }, [error, history]);
+  }, [dispatch, error, history]);
 
 
   return (
