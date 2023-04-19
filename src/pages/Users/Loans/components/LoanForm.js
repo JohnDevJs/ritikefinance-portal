@@ -23,7 +23,7 @@ function LoanForm({ onClose, reFetch }) {
     const [inputValue2, setInputValue2] = React.useState('');
     const percentage = inputValue2 > 15 ? 40 : 22.5;
     const Total = inputValue * percentage;
-    const Total_pay_back = Total / 100;
+    const totalInterest = Total / 100;
 
     const refFileUploadPaySleep = React.useRef(null);
     const refFileUploadBankStatement = React.useRef(null);
@@ -93,7 +93,7 @@ function LoanForm({ onClose, reFetch }) {
         formdata.append("amount", inputValue);
         formdata.append("duration", inputValue2);
         formdata.append("paymentDate", paymentDate);
-        formdata.append("totalAmount", Total_pay_back);
+        formdata.append("totalAmount", totalInterest);
         formdata.append("paySlip", paySleepServer);
         formdata.append("bankStatement", bankStatementServer);
         formdata.append("loanPercentage", 0);
@@ -161,7 +161,7 @@ function LoanForm({ onClose, reFetch }) {
 
                     <div className="d-flex justify-content-between p-3">
                         <h5><b> Total to pay back </b></h5>
-                        <h5> <b> R {Math.round(Total_pay_back)} </b>  </h5>
+                        <h5> <b> R {Math.round(totalInterest)} </b>  </h5>
                     </div>
 
 
