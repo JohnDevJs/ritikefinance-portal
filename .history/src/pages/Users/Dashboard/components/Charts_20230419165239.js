@@ -10,15 +10,20 @@ const Charts = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
+    const { data, loading, length, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
 
-    const totalAmount = data?.map((item) => item.totalAmount);
-    const months = data?.map((item) => item.month);
+    console.log(" Res : ", data)
+    console.log(" Res : ", data)
+
+    const newArray = data?.map((item) => ({
+        name: item.type,
+        value: item.cost,
+    }));
 
     const series = [
         {
-            name: "Amount loan",
-            data: totalAmount,
+            name: "Loan amount",
+            data: [1000, 800, 700, 750, 950, 900, 800, 780, 100, 600, 500, 100],
         },
     ]
     const options = {
@@ -44,13 +49,13 @@ const Charts = () => {
         },
         series: [
             {
-                name: "Amount loan",
-                data: totalAmount,
+                name: "Loan amount",
+                data: [1000, 800, 700, 750, 950, 900, 800, 780, 100, 600, 500, 100],
             },
         ],
         colors: ['#008ad3'],
         xaxis: {
-            categories: months
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },
         yaxis: {
             title: {

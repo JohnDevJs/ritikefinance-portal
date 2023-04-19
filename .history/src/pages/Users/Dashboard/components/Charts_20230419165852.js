@@ -44,7 +44,7 @@ const Charts = () => {
         },
         series: [
             {
-                name: "Amount loan",
+                name: "Loan amount",
                 data: totalAmount,
             },
         ],

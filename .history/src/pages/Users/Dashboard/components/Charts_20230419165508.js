@@ -10,17 +10,21 @@ const Charts = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
+    const { data, loading, length, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
 
-    const totalAmount = data?.map((item) => item.totalAmount);
-    const months = data?.map((item) => item.month);
+    console.log(" Res : ", data)
+    console.log(" Res : ", data)
 
-    const series = [
-        {
-            name: "Amount loan",
-            data: totalAmount,
-        },
-    ]
+    const newArray = data?.map((item) => ({
+        name: item.month,
+        value: item.totalAmount,
+    }));
+
+    const monthly = data?.map((item) => item.month);
+
+    console.log(" newArray : ", monthly)
+
+    const series = newArray
     const options = {
         chart: {
             toolbar: {
@@ -42,15 +46,10 @@ const Charts = () => {
             width: 2,
             colors: ['transparent']
         },
-        series: [
-            {
-                name: "Amount loan",
-                data: totalAmount,
-            },
-        ],
+        series: newArray,
         colors: ['#008ad3'],
         xaxis: {
-            categories: months
+            categories: monthly,
         },
         yaxis: {
             title: {

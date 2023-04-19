@@ -10,14 +10,17 @@ const Charts = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
-    const { data, } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
+    const { data, loading, length, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
+
+    console.log(" Res : ", data)
+    console.log(" Res : ", data)
 
     const totalAmount = data?.map((item) => item.totalAmount);
     const months = data?.map((item) => item.month);
 
     const series = [
         {
-            name: "Amount loan",
+            name: "Loan amount",
             data: totalAmount,
         },
     ]
@@ -44,7 +47,7 @@ const Charts = () => {
         },
         series: [
             {
-                name: "Amount loan",
+                name: "Loan amount",
                 data: totalAmount,
             },
         ],
