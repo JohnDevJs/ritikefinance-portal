@@ -13,10 +13,25 @@ import store from "./store"
 import { Redux_store } from './Redux/store/store';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
-
+// import useFetch from "hooks/useFecth";
+// import { loginUser } from "Redux/Slices/userSlice";
 let persistedStore = persistStore(Redux_store);
 
+
+
+
 const app = (
+
+  // const history = useHistory()
+
+  // const { error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, token);
+
+  // useEffect(() => {
+  //   if (error?.status === 401) {
+  //     history.push('/login');
+  //   }
+  // }, [error, history]);
+
 
   <Provider store={Redux_store} context={store1Context}>
     <PersistGate loading={null} persistor={persistedStore}>

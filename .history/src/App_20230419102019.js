@@ -22,8 +22,7 @@ const App = props => {
 
   const userDet = useStore1Selector(loginUser);
   const dispatch = useStore1Dispatch();
-  // const token = userDet?.token;
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2IxNjEwMDYzNGIxNzFhZDU5ODZmZSIsImlhdCI6MTY4MTg5MTgwOCwiZXhwIjoxNjgyMzIzODA4fQ.zEMCgxJDFLNB1U79dXY5KaoYmcXEf263PAwWzia-LbU";
+  const token = userDet?.token;
   const history = useHistory()
   const { error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, token);
 

@@ -27,12 +27,15 @@ const App = props => {
   const history = useHistory()
   const { error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, token);
 
+  console.log(" Errors : ", error.status)
+
   useEffect(() => {
     if (error?.status === 401) {
       dispatch(Login(""));
       history.push('/login');
     }
-  }, [error, history, dispatch, token]);
+  }, [error, history]);
+
 
   useEffect(() => {
     AOS.init({

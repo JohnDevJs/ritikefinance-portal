@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useEffect } from "react"
-import { Switch, BrowserRouter as Router, useHistory } from "react-router-dom"
+import { Switch, BrowserRouter as Router } from "react-router-dom"
 import { connect } from "react-redux"
 import { userRoutes, authRoutes } from "./routes/allRoutes"
 import Authmiddleware from "./routes/middleware/Authmiddleware"
@@ -14,25 +14,7 @@ fakeBackend()
 import AOS from "aos"
 import "aos/dist/aos.css"
 
-import useFetch from "hooks/useFecth";
-import { loginUser } from "Redux/Slices/userSlice";
-import { useStore1Dispatch, useStore1Selector } from 'index'
-
 const App = props => {
-
-  const userDet = useStore1Selector(loginUser);
-  const dispatch = useStore1Dispatch();
-  // const token = userDet?.token;
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2IxNjEwMDYzNGIxNzFhZDU5ODZmZSIsImlhdCI6MTY4MTg5MTgwOCwiZXhwIjoxNjgyMzIzODA4fQ.zEMCgxJDFLNB1U79dXY5KaoYmcXEf263PAwWzia-LbU";
-  const history = useHistory()
-  const { error } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, token);
-
-  useEffect(() => {
-    if (error?.status === 401) {
-      dispatch(Login(""));
-      history.push('/login');
-    }
-  }, [error, history, dispatch, token]);
 
   useEffect(() => {
     AOS.init({
