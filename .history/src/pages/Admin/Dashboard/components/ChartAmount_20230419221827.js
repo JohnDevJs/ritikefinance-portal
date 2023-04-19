@@ -9,6 +9,7 @@ const ChartAmount = () => {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
+    const userId = userDet?.data?.data?._id;
     const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals`, token);
 
     const totalAmount = data?.map((item) => item.totalAmount);
@@ -58,8 +59,7 @@ const ChartAmount = () => {
         ],
         colors: ['#303d83', '#008ad3'],
         xaxis: {
-            // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            categories: months,
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },
         yaxis: {
             title: {

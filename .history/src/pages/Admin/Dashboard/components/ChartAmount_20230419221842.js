@@ -9,6 +9,7 @@ const ChartAmount = () => {
 
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
+    const userId = userDet?.data?.data?._id;
     const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals`, token);
 
     const totalAmount = data?.map((item) => item.totalAmount);
