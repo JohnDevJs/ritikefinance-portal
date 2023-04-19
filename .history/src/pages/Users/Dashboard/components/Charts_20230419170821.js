@@ -3,7 +3,7 @@ import useFetch from "hooks/useFecth";
 import { useStore1Selector } from "index";
 import React from "react"
 import ReactApexChart from "react-apexcharts"
-import { Card, CardBody } from 'reactstrap';
+import { Card } from 'reactstrap';
 
 const Charts = () => {
 
@@ -13,7 +13,7 @@ const Charts = () => {
     const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/monthlyTotals/${userId}`, token);
 
     const totalAmount = data?.map((item) => item.totalAmount);
-    const months = data?.map((item) => item.month);
+    // const months = data?.map((item) => item.month);
 
     const series = [
         {
@@ -50,8 +50,7 @@ const Charts = () => {
         ],
         colors: ['#008ad3'],
         xaxis: {
-            // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            categories: months
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },
         yaxis: {
             title: {
@@ -63,6 +62,7 @@ const Charts = () => {
         },
         fill: {
             opacity: 1
+
         },
         tooltip: {
             y: {
@@ -75,9 +75,6 @@ const Charts = () => {
 
     return (
         <Card className='card-border-radius'>
-            <CardBody>
-                <p>Monthly loan amount</p>
-            </CardBody>
             <ReactApexChart options={options} series={series} type="bar" height={240} className="apex-charts" />
         </Card>
     )
