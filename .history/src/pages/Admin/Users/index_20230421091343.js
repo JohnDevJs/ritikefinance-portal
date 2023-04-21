@@ -25,7 +25,7 @@ import UserDetails from "./components/UserDetails";
 const Index = () => {
 
     const [openModal_2, setOpenModal_2] = React.useState(false);
-    const [deleteUser, setDeleteUser] = React.useState(false);
+    const [generateReport, setGenerateReport] = React.useState(false);
     const [viewUserDet, setViewUserDet] = React.useState(false);
     const [btnName, setBtnName] = React.useState();
     const [userId, setUserId] = React.useState();
@@ -67,8 +67,8 @@ const Index = () => {
     const generateReportFunc = (id) => {
         setOpenModal_2(true)
         setUserId(id)
-        setBtnName("Generate Graph Report")
-        setApiQuery("Generated")
+        setBtnName("Generate Report")
+        setApiQuery("Deleted")
     }
     const deleteUserFunc = (id) => {
         setDeleteUser(true)

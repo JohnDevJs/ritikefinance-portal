@@ -3,17 +3,13 @@ import { Container } from "reactstrap";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
 import MetaTag from "../../../components/MetaTag";
 import { LoanRequestPage } from "components/SCO_Name";
-import { UserTitle } from "components/BreadCrum";
-import { UsersRoute, LoanRequestRoute } from "components/RouteName";
+import { LoanRequestRoute } from "components/RouteName";
 import useFetch from '../../../hooks/useFecth';
-import { ApprovedLoanMsg, DeclinedLoanMsg, ServerError, VerificationLoanMsg } from "components/NotifyMessage";
+import { SendFormMsg, ServerError } from "components/NotifyMessage";
 import Loading from "components/Loading";
 import LoanTable from "./components/LoanTable";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
-import { RiCheckDoubleLine, RiFileExcel2Fill } from "react-icons/ri";
-import { ImCross } from "react-icons/im";
-import { MdDeleteForever } from "react-icons/md";
 import usePost from "hooks/usePost";
 import SmallModal from './../../../SmallModal';
 import Modal from "./components/Modal";
@@ -32,7 +28,9 @@ const Index = () => {
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
+    const [modalTitle, setModalTitle] = React.useState();
     const [viewUserDet, setViewUserDet] = React.useState(false);
+    const { execute, pending } = usePost()
 
     if (error) return <ErrorPage message={ServerError} />
 
@@ -40,25 +38,45 @@ const Index = () => {
         setOpenModal(true)
         setStatus("verification")
         setLoanId(id)
-        setBtnName("Verification")
+        setBtnName("Submit")
+        setModalTitle("Verified")
     }
+
     const approveFunc = (id) => {
         setOpenModal(true)
         setStatus("approve")
         setLoanId(id)
         setBtnName("Move to approve")
+        setModalTitle("Approved")
     }
+
     const declineFunc = (id) => {
         setOpenModal(true)
         setStatus("decline")
         setLoanId(id)
         setBtnName("Move to decline")
+        setModalTitle("Declined")
     }
 
     const viewDetails = (id) => {
         setViewUserDet(true)
         setLoanId(id)
     }
+
+    const sendFormFunc = (reqUserId, loanId) => {
+        const Method = 'POST', endPoint = 'mandates';
+        const raw = JSON.stringify({
+            debitedAgree: false,
+            debitedAgree2: false,
+            trackingOfDate: false,
+            authorized: false,
+            agreement: false,
+            user: reqUserId,
+            loan: loanId
+        });
+        execute(endPoint, raw, Method, SendFormMsg, token)
+    }
+
 
     const filterArr = () => {
         data.forEach(res => {
@@ -68,11 +86,12 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
-                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verification </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View request </button>,
+                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verified </button>,
+
+                downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send A form  </button>,
                 approveBtn: <button className="btn btn__table color__green" onClick={() => approveFunc(res?._id)}> Approved </button>,
                 declineBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res?._id)}> Declined </button>,
-                downloadBtn: <button className="btn btn__table color__download"> Download <RiFileExcel2Fill size={18} /> </button>,
             })
         });
     }
@@ -91,7 +110,6 @@ const Index = () => {
                 </Container>
             </div>
 
-
             <ModalComp
                 ModalTitle="View more details"
                 open={viewUserDet}
@@ -100,11 +118,10 @@ const Index = () => {
                 Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
             />
 
-
             <SmallModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                ModalTitle="Move to verification"
+                ModalTitle={modalTitle}
                 cancel="close"
                 Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
             />

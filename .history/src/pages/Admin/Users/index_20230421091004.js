@@ -45,7 +45,7 @@ const Index = () => {
                 active: <button className="btn-status text-white color__green"> {res?.verified ? <RiCheckDoubleLine size={18} /> : <ImCross />} </button>,
                 viewBtn: <button className="btn btn-danger color__blue" onClick={() => viewDetails(res._id)}> View </button>,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,
-                generateReport: <button className="btn btn-dark" onClick={() => generateReportFunc(res._id)}> Generate R </button>,
+                report: <button className="btn btn-dark" onClick={() => generateReportFunc(res._id)}> Generate R </button>,
                 deleteBtn: <button className="btn btn-danger" onClick={() => deleteUserFunc(res._id)}> <MdDeleteForever size={22} /> </button>,
             })
         });
@@ -64,13 +64,13 @@ const Index = () => {
         setBtnName("Unsuspend")
         setApiQuery("un-suspended")
     }
-    const generateReportFunc = (id) => {
-        setOpenModal_2(true)
-        setUserId(id)
-        setBtnName("Generate Graph Report")
-        setApiQuery("Generated")
-    }
     const deleteUserFunc = (id) => {
+        setDeleteUser(true)
+        setUserId(id)
+        setBtnName("Delete")
+        setApiQuery("Deleted")
+    }
+    const generateReportFunc = (id) => {
         setDeleteUser(true)
         setUserId(id)
         setBtnName("Delete")

@@ -86,7 +86,7 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View request </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
                 verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verified </button>,
 
                 downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send A form  </button>,

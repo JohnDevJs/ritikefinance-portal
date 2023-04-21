@@ -28,7 +28,6 @@ const Index = () => {
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
-    const [modalTitle, setModalTitle] = React.useState();
     const [viewUserDet, setViewUserDet] = React.useState(false);
     const { execute, pending } = usePost()
 
@@ -39,7 +38,6 @@ const Index = () => {
         setStatus("verification")
         setLoanId(id)
         setBtnName("Submit")
-        setModalTitle("Verified")
     }
 
     const approveFunc = (id) => {
@@ -47,7 +45,6 @@ const Index = () => {
         setStatus("approve")
         setLoanId(id)
         setBtnName("Move to approve")
-        setModalTitle("Approved")
     }
 
     const declineFunc = (id) => {
@@ -55,7 +52,6 @@ const Index = () => {
         setStatus("decline")
         setLoanId(id)
         setBtnName("Move to decline")
-        setModalTitle("Declined")
     }
 
     const viewDetails = (id) => {
@@ -86,12 +82,13 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View request </button>,
-                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verified </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
+                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verification </button>,
 
-                downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send A form  </button>,
+                downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send appl form  </button>,
                 approveBtn: <button className="btn btn__table color__green" onClick={() => approveFunc(res?._id)}> Approved </button>,
                 declineBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res?._id)}> Declined </button>,
+                // formBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res?._id)}> Send a form </button>,
             })
         });
     }
@@ -121,7 +118,7 @@ const Index = () => {
             <SmallModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                ModalTitle={modalTitle}
+                ModalTitle="Verify the request"
                 cancel="close"
                 Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
             />

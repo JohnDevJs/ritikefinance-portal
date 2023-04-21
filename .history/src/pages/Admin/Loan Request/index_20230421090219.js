@@ -39,7 +39,7 @@ const Index = () => {
         setStatus("verification")
         setLoanId(id)
         setBtnName("Submit")
-        setModalTitle("Verified")
+        setModalTitle("Verify")
     }
 
     const approveFunc = (id) => {
@@ -47,7 +47,7 @@ const Index = () => {
         setStatus("approve")
         setLoanId(id)
         setBtnName("Move to approve")
-        setModalTitle("Approved")
+        setModalTitle("Approve")
     }
 
     const declineFunc = (id) => {
@@ -55,7 +55,7 @@ const Index = () => {
         setStatus("decline")
         setLoanId(id)
         setBtnName("Move to decline")
-        setModalTitle("Declined")
+        setModalTitle("Delete")
     }
 
     const viewDetails = (id) => {
@@ -86,12 +86,13 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View request </button>,
-                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verified </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
+                verifyBtn: <button className="btn btn__table color__verify" onClick={() => verifyFunc(res?._id)}>  Verification </button>,
 
-                downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send A form  </button>,
+                downloadBtn: <button className="btn btn__table color__download" onClick={() => sendFormFunc(res?.user?._id, res?._id)}> Send appl form  </button>,
                 approveBtn: <button className="btn btn__table color__green" onClick={() => approveFunc(res?._id)}> Approved </button>,
                 declineBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res?._id)}> Declined </button>,
+                // formBtn: <button className="btn btn__table color__red" onClick={() => declineFunc(res?._id)}> Send a form </button>,
             })
         });
     }

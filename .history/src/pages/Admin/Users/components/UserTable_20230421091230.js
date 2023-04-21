@@ -13,6 +13,7 @@ const column = [
     { label: "Active", field: "active", sort: "asc", width: 150 },
     { label: "View", field: "viewBtn", sort: "asc", width: 150 },
     { label: "Action", field: "actionBtn", sort: "asc", width: 150 },
+    { label: "Report", field: "generateReport", sort: "asc", width: 150 },
     { label: "Delete", field: "deleteBtn", sort: "asc", width: 150 },
 ];
 

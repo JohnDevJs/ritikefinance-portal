@@ -67,7 +67,7 @@ const Index = () => {
     const generateReportFunc = (id) => {
         setOpenModal_2(true)
         setUserId(id)
-        setBtnName("Generate Graph Report")
+        setBtnName("Generate Report")
         setApiQuery("Generated")
     }
     const deleteUserFunc = (id) => {
