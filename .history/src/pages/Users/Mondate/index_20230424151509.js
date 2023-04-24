@@ -9,7 +9,7 @@ import { DashboardPageDefault } from "components/BreadCrum";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
 import useFetch from "hooks/useFecth";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CustomBtn from "components/CustomBtn";
 import usePost from "hooks/usePost";
 import { FormCompletedMsg } from "components/NotifyMessage";
@@ -17,7 +17,6 @@ import { FormCompletedMsg } from "components/NotifyMessage";
 
 const MondateForm = () => {
     const { id } = useParams()
-    const history = useHistory()
 
     const { execute, pending, data } = usePost()
     const [signature, setSignature] = useState(null);
@@ -43,12 +42,6 @@ const MondateForm = () => {
             signatureData: signature
         });
         execute(endPoint, raw, Method, FormCompletedMsg, token)
-    }
-
-    if (data?.status === 'success') {
-        window.setTimeout(() => {
-            history.push("/dashboard");
-        }, 2000);
     }
 
     const handleClear = () => {

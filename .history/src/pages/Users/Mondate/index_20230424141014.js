@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import SignaturePad from 'react-signature-canvas';
+import React from "react"
 import { AvField, AvCheckboxGroup, AvCheckbox, AvForm } from "availity-reactstrap-validation"
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Breadcrumb from "../../../components/Common/Breadcrumb";
@@ -9,57 +8,29 @@ import { DashboardPageDefault } from "components/BreadCrum";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
 import useFetch from "hooks/useFecth";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CustomBtn from "components/CustomBtn";
 import usePost from "hooks/usePost";
-import { FormCompletedMsg } from "components/NotifyMessage";
+import { LoginMsg } from "components/NotifyMessage";
 
 
 const MondateForm = () => {
-    const { id } = useParams()
-    const history = useHistory()
 
     const { execute, pending, data } = usePost()
-    const [signature, setSignature] = useState(null);
-    const signaturePad = useRef(null);
     const userDet = useStore1Selector(loginUser);
-    const token = userDet?.token;
 
     const handleValidSubmit = (e, values) => {
         e.preventDefault();
-
-        if (!signature) {
-            alert('Please sign the form');
-            return;
-        }
-
-        const Method = 'PATCH', endPoint = `mandates/${id}`;
+        const Method = 'PATCH', endPoint = 'mandates';
         var raw = JSON.stringify({
-            debitedAgree: values.debitedAgree[0],
-            debitedAgree2: values.debitedAgree2[0],
-            trackingOfDate: values.trackingOfDate[0],
-            authorized: values.authorized[0],
-            agreement: values.agreement[0],
-            signatureData: signature
+            debitedAgree: values.debitedAgree,
+            debitedAgree2: values.debitedAgree2,
+            trackingOfDate: values.trackingOfDate,
+            authorized: values.authorized,
+            agreement: values.agreement
         });
-        execute(endPoint, raw, Method, FormCompletedMsg, token)
+        execute(endPoint, raw, Method, LoginMsg)
     }
-
-    if (data?.status === 'success') {
-        window.setTimeout(() => {
-            history.push("/dashboard");
-        }, 2000);
-    }
-
-    const handleClear = () => {
-        signaturePad.current.clear();
-        setSignature(null);
-    };
-
-    // const handleSave = () => {
-    //     const dataURL = signaturePad.current.toDataURL();
-    //     setSignature(dataURL);
-    // };
 
     return (
         <React.Fragment>
@@ -116,20 +87,14 @@ const MondateForm = () => {
 
 
                                     <div>
-                                        <h5>Please sign bellow</h5>
-                                        <div className="signature__container">
-                                            <SignaturePad
-                                                ref={signaturePad}
-                                                canvasProps={{ className: 'signature-pad' }}
-                                                onEnd={() => {
-                                                    const dataURL = signaturePad.current.toDataURL();
-                                                    setSignature(dataURL);
-                                                }}
-                                            />
-                                        </div>
+                                        <h1>Signature Pad Example</h1>
+                                        <SignaturePad
+                                            ref={signaturePad}
+                                            canvasProps={{ className: 'signature-pad' }}
+                                        />
                                         <div>
-                                            <button className='btn text-white me-4' onClick={handleClear}>Clear</button>
-                                            {/* <button className='btn text-white' onClick={handleSave}>Save</button> */}
+                                            <button onClick={handleClear}>Clear</button>
+                                            <button onClick={handleSave}>Save</button>
                                         </div>
                                         {signature && <img src={signature} alt="Signature" />}
                                     </div>

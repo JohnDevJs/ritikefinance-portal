@@ -818,11 +818,16 @@ ul li {
     color: $client__color !important;
 }
 
-.signature-pad {
+.signature__container {
     background-color: #f0f0f0;
     border-radius: 15px;
-    height: 200px;
     margin: 1em 0;
+}
+
+#signature-pad {
+    border: 1px solid #ccc;
+    height: 200px;
+    margin-bottom: 20px;
     width: 100%;
 }
 

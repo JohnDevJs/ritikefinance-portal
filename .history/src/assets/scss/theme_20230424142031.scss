@@ -818,12 +818,10 @@ ul li {
     color: $client__color !important;
 }
 
-.signature-pad {
-    background-color: #f0f0f0;
+.signature__container {
+    border: 2px solid black;
+    background-color: #cacaca;
     border-radius: 15px;
-    height: 200px;
-    margin: 1em 0;
-    width: 100%;
 }
 
 @media (max-width: 768px) {

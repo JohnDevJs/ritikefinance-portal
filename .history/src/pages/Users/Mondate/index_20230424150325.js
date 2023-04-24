@@ -9,21 +9,20 @@ import { DashboardPageDefault } from "components/BreadCrum";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
 import useFetch from "hooks/useFecth";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CustomBtn from "components/CustomBtn";
 import usePost from "hooks/usePost";
-import { FormCompletedMsg } from "components/NotifyMessage";
+import { LoginMsg } from "components/NotifyMessage";
 
 
 const MondateForm = () => {
-    const { id } = useParams()
-    const history = useHistory()
 
     const { execute, pending, data } = usePost()
     const [signature, setSignature] = useState(null);
     const signaturePad = useRef(null);
     const userDet = useStore1Selector(loginUser);
-    const token = userDet?.token;
+
+    console.log(signature)
 
     const handleValidSubmit = (e, values) => {
         e.preventDefault();
@@ -33,22 +32,17 @@ const MondateForm = () => {
             return;
         }
 
-        const Method = 'PATCH', endPoint = `mandates/${id}`;
+
+        const Method = 'PATCH', endPoint = 'mandates';
         var raw = JSON.stringify({
-            debitedAgree: values.debitedAgree[0],
-            debitedAgree2: values.debitedAgree2[0],
-            trackingOfDate: values.trackingOfDate[0],
-            authorized: values.authorized[0],
-            agreement: values.agreement[0],
+            debitedAgree: values.debitedAgree,
+            debitedAgree2: values.debitedAgree2,
+            trackingOfDate: values.trackingOfDate,
+            authorized: values.authorized,
+            agreement: values.agreement,
             signatureData: signature
         });
-        execute(endPoint, raw, Method, FormCompletedMsg, token)
-    }
-
-    if (data?.status === 'success') {
-        window.setTimeout(() => {
-            history.push("/dashboard");
-        }, 2000);
+        execute(endPoint, raw, Method, LoginMsg)
     }
 
     const handleClear = () => {

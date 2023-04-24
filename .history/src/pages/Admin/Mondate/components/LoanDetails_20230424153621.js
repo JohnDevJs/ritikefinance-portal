@@ -23,6 +23,8 @@ function LoanDetails({ loan_Id }) {
         saveAs(blob, 'loan_details.pdf');
     }
 
+    console.log(data)
+
     return (
         <Card>
             <CardBody>
@@ -74,9 +76,6 @@ function LoanDetails({ loan_Id }) {
                     <h5>ASSIGNMENT</h5>
                     <p>I/We agree that although this authority and mandate may be cancelled by me/us, such cancellation will not cancel the Agreement. I/We also understand that I/we cannot reclaim amounts, which have been withdrawn from my/our account (paid) in terms of this authority and mandate if such amounts were legally owing to you.</p>
                 </div>
-
-
-                {!data.signatureData ? null : <img src={data.signatureData} alt="Signature" />}
 
                 <button className='btn btn__table text-white' onClick={handleDownload}> Download in PDF </button>
 
