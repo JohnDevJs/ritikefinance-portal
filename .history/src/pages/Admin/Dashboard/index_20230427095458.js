@@ -28,6 +28,8 @@ const Index = () => {
     const [requestId, setRequestId] = React.useState();
     const [apiQuery, setApiQuery] = React.useState();
 
+    console.log(" userDet : ", userDet?.data?.data?.role)
+
     const res_data = [];
     let pendingLenght, paidLenght;
     const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans`, null);
@@ -81,7 +83,7 @@ const Index = () => {
                             loading ? <Loading /> : (
                                 <>
                                     <Cards length={data.length} paidLenght={paidLenght} pendingLenght={pendingLenght} />
-                                    {userDet?.data?.data?.role === "admin" ? <ChartAmount data={data} /> : null}
+                                    <ChartAmount data={data} />
                                     <LoanTable data={res_data} />
                                 </>
                             )

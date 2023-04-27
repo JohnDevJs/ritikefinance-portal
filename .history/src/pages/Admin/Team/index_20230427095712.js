@@ -74,8 +74,7 @@ const Index = () => {
                 <MetaTag title_sco={UsersPage} />
 
                 <Container fluid>
-                    <button className="btn btn__table  color__blue" onClick={() => setOpenModal(true)}> <h6> + add a new team member </h6>  </button>
-
+                    {userDet?.data?.data?.role === "admin" ? <button className="btn btn__table  color__blue" onClick={() => setOpenModal(true)}> <h6> + add a new team member </h6>  </button> : null}
                     <div className="page-title-box">
                         {loading ? <Loading /> : (<TeamTable data={res_data} />)}
                     </div>

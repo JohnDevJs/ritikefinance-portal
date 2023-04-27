@@ -15,15 +15,20 @@ import { ServerError } from "components/NotifyMessage";
 import { MdDeleteForever } from "react-icons/md";
 import SmallModal from "SmallModal";
 import ModalComp from "./components/ModalComp";
+import { loginUser } from "Redux/Slices/userSlice";
+import { useStore1Selector } from "index";
 
 
 const Index = () => {
 
+    const userDet = useStore1Selector(loginUser)
     const [openModal_2, setOpenModal_2] = React.useState(false);
     const [deleteRequest, setDeleteRequest] = React.useState(false);
     const [btnName, setBtnName] = React.useState();
     const [requestId, setRequestId] = React.useState();
     const [apiQuery, setApiQuery] = React.useState();
+
+    console.log(" userDet : ", userDet?.data?.data?.role)
 
     const res_data = [];
     let pendingLenght, paidLenght;
@@ -78,7 +83,8 @@ const Index = () => {
                             loading ? <Loading /> : (
                                 <>
                                     <Cards length={data.length} paidLenght={paidLenght} pendingLenght={pendingLenght} />
-                                    <ChartAmount data={data} />
+                                    {userDet?.data?.data?.role === "admin" ? <ChartAmount data={data} /> : null}
+
                                     <LoanTable data={res_data} />
                                 </>
                             )
