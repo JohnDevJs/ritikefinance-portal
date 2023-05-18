@@ -6,7 +6,18 @@ function FormInput1() {
     return (
         <div>
             <Row>
-
+                <Col md={6}>
+                    <div className="mb-3">
+                        <AvField
+                            name="idNumber"
+                            label="ID Number"
+                            className="form-control"
+                            placeholder="Enter your ID Number"
+                            type="text"
+                            required
+                        />
+                    </div>
+                </Col>
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
@@ -89,19 +100,6 @@ function FormInput1() {
                     </div>
                 </Col>
             </Row>
-
-            <Col md={12}>
-                <div className="mb-3">
-                    <AvField
-                        name="idNumber"
-                        label="ID Number"
-                        className="form-control"
-                        placeholder="Enter your ID Number"
-                        type="text"
-                        required
-                    />
-                </div>
-            </Col>
         </div>
     )
 }

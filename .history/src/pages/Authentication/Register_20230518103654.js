@@ -45,7 +45,7 @@ const Register = () => {
     formdata.append("passportPhoto", photoPassport);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
-    formdata.append("idNumber", values.idNumber);
+    formdata.append("passwordConfirm", values.idNumber);
     execute(endPoint, formdata, Method, RegisterMsg, token, isJSON)
   }
 

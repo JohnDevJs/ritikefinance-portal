@@ -170,10 +170,6 @@ function AccountForm() {
                                             <AvField value={userDet?.data?.data?.referralCode} name="referralCode" label="Referral Code" type="text" required />
                                         </div>
                                     </Col>
-
-                                    <div className="mb-3">
-                                        <AvField value={userDet?.data?.data?.idNumber} name="idNumber" label="ID Number" className="form-control" type="text" required />
-                                    </div>
                                 </Row>
 
 
