@@ -23,6 +23,7 @@ function LoanDetails({ loan_Id }) {
         saveAs(blob, 'loan_details.pdf');
     }
 
+    console.log(" data : ", data)
 
     return (
         <Card>
@@ -86,7 +87,9 @@ function LoanDetails({ loan_Id }) {
                     <p>I/We acknowledge that this authority may be ceded or assigned to a third party if the Agreement is also ceded or assigned to that third party.</p>
                 </div>
 
+
                 {!data.signatureData ? null : <img src={data.signatureData} alt="Signature" />}
+
                 <button className='btn btn__table text-white' onClick={handleDownload}> Download in PDF </button>
 
             </CardBody>

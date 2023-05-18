@@ -19,11 +19,9 @@ function LoanForm({ onClose, reFetch }) {
     const { execute, pending, data } = usePost()
     const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
 
-    const durationNumber = paymentDate.split('-')[2]
-
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
-    const percentage = inputValue2 > 15 ? 30 : 22.5;
+    const percentage = inputValue2 > 15 ? 40 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
 
@@ -91,22 +89,24 @@ function LoanForm({ onClose, reFetch }) {
 
     const applyLoan = () => {
 
+        console.log("paymentDate : ", paymentDate)
+
         if (!paySleepServer && !bankStatementServer) {
             alert('Please upload images');
             return;
         }
 
-        const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
-        const formdata = new FormData();
-        formdata.append("amount", inputValue);
-        formdata.append("duration", inputValue2);
-        formdata.append("paymentDate", paymentDate);
-        formdata.append("totalAmount", totalInterest);
-        formdata.append("paySlip", paySleepServer);
-        formdata.append("bankStatement", bankStatementServer);
-        formdata.append("loanPercentage", 0);
-        formdata.append("user", userId);
-        execute(endPoint, formdata, Method, ApplyLongMsg, token, isJSON)
+        // const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
+        // const formdata = new FormData();
+        // formdata.append("amount", inputValue);
+        // formdata.append("duration", inputValue2);
+        // formdata.append("paymentDate", paymentDate);
+        // formdata.append("totalAmount", totalInterest);
+        // formdata.append("paySlip", paySleepServer);
+        // formdata.append("bankStatement", bankStatementServer);
+        // formdata.append("loanPercentage", 0);
+        // formdata.append("user", userId);
+        // execute(endPoint, formdata, Method, ApplyLongMsg, token, isJSON)
     }
 
     if (data?.status === 'success') {
@@ -158,7 +158,7 @@ function LoanForm({ onClose, reFetch }) {
                                 min="1"
                                 max="30"
                                 type="number"
-                                value={durationNumber}
+                                value={inputValue2}
                                 className="form-control"
                                 onChange={handleInputChange2}
                                 disabled

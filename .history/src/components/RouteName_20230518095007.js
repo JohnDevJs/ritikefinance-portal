@@ -41,6 +41,5 @@ export {
     TeamRoute,
     ApprovedLoanRoute,
     MondateFormroute,
-    MondateApplicationRoute,
-    MondateFormrouteID
+    MondateApplicationRoute
 } 

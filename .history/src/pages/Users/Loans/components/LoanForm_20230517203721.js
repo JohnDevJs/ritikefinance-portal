@@ -23,7 +23,7 @@ function LoanForm({ onClose, reFetch }) {
 
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
-    const percentage = inputValue2 > 15 ? 30 : 22.5;
+    const percentage = inputValue2 > 15 ? 40 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
 
@@ -158,10 +158,10 @@ function LoanForm({ onClose, reFetch }) {
                                 min="1"
                                 max="30"
                                 type="number"
-                                value={durationNumber}
+                                // value={inputValue2}
                                 className="form-control"
                                 onChange={handleInputChange2}
-                                disabled
+                            // disabled
                             />
 
                         </div>

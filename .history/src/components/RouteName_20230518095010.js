@@ -41,6 +41,7 @@ export {
     TeamRoute,
     ApprovedLoanRoute,
     MondateFormroute,
-    MondateApplicationRoute,
-    MondateFormrouteID
+    ,
+    const MondateFormrouteID = "/mondate-form/:id"
+
 } 

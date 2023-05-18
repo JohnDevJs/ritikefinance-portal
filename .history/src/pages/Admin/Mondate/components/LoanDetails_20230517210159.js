@@ -23,7 +23,6 @@ function LoanDetails({ loan_Id }) {
         saveAs(blob, 'loan_details.pdf');
     }
 
-
     return (
         <Card>
             <CardBody>
@@ -67,8 +66,8 @@ function LoanDetails({ loan_Id }) {
                 </div>
 
                 <div className="mt-4">
-                    <p>Subsequent payment instructions will continue to be delivered in terms of this authority until the obligations in terms of the Agreement have been paid or until this authority is cancelled by me/us by giving you notice in writing:  <h5 className="text-primary">{data?.dateSignedAt?.split('T')[0]}</h5> </p>
-
+                    <p>Subsequent payment instructions will continue to be delivered in terms of this authority until the obligations in terms of the Agreement have been paid or until this authority is cancelled by me/us by giving you notice in writing:</p>
+                    <h5 className="text-primary">{data?.dateSignedAt?.split('T')[0]}</h5>
                 </div>
 
                 <div className="mt-4">
@@ -86,7 +85,9 @@ function LoanDetails({ loan_Id }) {
                     <p>I/We acknowledge that this authority may be ceded or assigned to a third party if the Agreement is also ceded or assigned to that third party.</p>
                 </div>
 
+
                 {!data.signatureData ? null : <img src={data.signatureData} alt="Signature" />}
+
                 <button className='btn btn__table text-white' onClick={handleDownload}> Download in PDF </button>
 
             </CardBody>

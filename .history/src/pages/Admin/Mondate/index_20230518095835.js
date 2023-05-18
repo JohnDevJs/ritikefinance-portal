@@ -66,7 +66,7 @@ const Index = () => {
                 email: res?.user?.email,
                 // email: res?.paymentDate?.split('T')[0],
                 // image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue"> <Link className="text-white" to={`/mondate-form/${res?._id}`}>  <BsEyeFill size={14} /> View </Link> </button>,
+                viewBtn: <button className="btn btn__table  color__blue text-white"> <Link to={`/mondate-form/${res?._id}`}>  <BsEyeFill size={14} /> View </Link> </button>,
                 // viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
                 verifyBtn: res?.status === "approved" ? null : <button className="btn btn__table color__verify" onClick={() => updatePayment(res?._id)}>  Approved </button>,
                 status: <button
