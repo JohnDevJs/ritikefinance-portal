@@ -87,7 +87,7 @@ function LoanForm({ onClose, reFetch }) {
         setPaymentDate(newDate);
     };
 
-    const totalDisplay = totalInterest + parseInt(inputValue);
+    const totalDisplay = totalInterest + inputValue;
 
     const applyLoan = () => {
 

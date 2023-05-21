@@ -89,6 +89,8 @@ function LoanForm({ onClose, reFetch }) {
 
     const totalDisplay = totalInterest + parseInt(inputValue);
 
+    console.log(inputValue)
+
     const applyLoan = () => {
 
         if (!paySleepServer && !bankStatementServer) {
