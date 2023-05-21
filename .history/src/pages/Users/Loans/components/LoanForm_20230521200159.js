@@ -21,9 +21,9 @@ function LoanForm({ onClose, reFetch }) {
 
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
-    const percentage = inputValue2 > 15 ? 40 : 22.5;
+    const percentage = inputValue2 > 15 ? 30 : 22.5;
     const Total = inputValue * percentage;
-    const Total_pay_back = Total / 100;
+    const totalInterest = Total / 100;
 
     const refFileUploadPaySleep = React.useRef(null);
     const refFileUploadBankStatement = React.useRef(null);
@@ -88,12 +88,18 @@ function LoanForm({ onClose, reFetch }) {
     };
 
     const applyLoan = () => {
+
+        if (!paySleepServer && !bankStatementServer) {
+            alert('Please upload images');
+            return;
+        }
+
         const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
         const formdata = new FormData();
         formdata.append("amount", inputValue);
         formdata.append("duration", inputValue2);
         formdata.append("paymentDate", paymentDate);
-        formdata.append("totalAmount", Total_pay_back);
+        formdata.append("totalAmount", totalInterest);
         formdata.append("paySlip", paySleepServer);
         formdata.append("bankStatement", bankStatementServer);
         formdata.append("loanPercentage", 0);
@@ -141,7 +147,7 @@ function LoanForm({ onClose, reFetch }) {
                     <div className='mt-5'>
                         <div className="d-flex justify-content-between px-3">
                             <p className='title'> 5 to 15 days = 22.5% </p>
-                            <p className='title'> 16 to 30 days = 40% </p>
+                            <p className='title'> 16 to 30 days = 30% </p>
                         </div>
 
                         <div className="px-3">
@@ -150,9 +156,9 @@ function LoanForm({ onClose, reFetch }) {
                                 min="1"
                                 max="30"
                                 type="number"
-                                value={inputValue2}
                                 className="form-control"
                                 onChange={handleInputChange2}
+                                disabled
                             />
 
                         </div>
@@ -161,7 +167,7 @@ function LoanForm({ onClose, reFetch }) {
 
                     <div className="d-flex justify-content-between p-3">
                         <h5><b> Total to pay back </b></h5>
-                        <h5> <b> R {Math.round(Total_pay_back)} </b>  </h5>
+                        <h5> <b> R {Math.round(totalInterest)} </b>  </h5>
                     </div>
 
 

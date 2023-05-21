@@ -19,6 +19,8 @@ function LoanForm({ onClose, reFetch }) {
     const { execute, pending, data } = usePost()
     const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
 
+    const durationNumber = paymentDate.split('-')[2]
+
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
     const percentage = inputValue2 > 15 ? 30 : 22.5;
@@ -156,8 +158,10 @@ function LoanForm({ onClose, reFetch }) {
                                 min="1"
                                 max="30"
                                 type="number"
+                                value={durationNumber}
                                 className="form-control"
                                 onChange={handleInputChange2}
+                                disabled
                             />
 
                         </div>

@@ -21,7 +21,7 @@ function LoanForm({ onClose, reFetch }) {
 
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
-    const percentage = inputValue2 > 15 ? 40 : 22.5;
+    const percentage = inputValue2 > 15 ? 30 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
 
@@ -88,6 +88,12 @@ function LoanForm({ onClose, reFetch }) {
     };
 
     const applyLoan = () => {
+
+        if (!paySleepServer && !bankStatementServer) {
+            alert('Please upload images');
+            return;
+        }
+
         const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
         const formdata = new FormData();
         formdata.append("amount", inputValue);
@@ -141,7 +147,7 @@ function LoanForm({ onClose, reFetch }) {
                     <div className='mt-5'>
                         <div className="d-flex justify-content-between px-3">
                             <p className='title'> 5 to 15 days = 22.5% </p>
-                            <p className='title'> 16 to 30 days = 40% </p>
+                            <p className='title'> 16 to 30 days = 30% </p>
                         </div>
 
                         <div className="px-3">
@@ -150,7 +156,6 @@ function LoanForm({ onClose, reFetch }) {
                                 min="1"
                                 max="30"
                                 type="number"
-                                value={inputValue2}
                                 className="form-control"
                                 onChange={handleInputChange2}
                             />
