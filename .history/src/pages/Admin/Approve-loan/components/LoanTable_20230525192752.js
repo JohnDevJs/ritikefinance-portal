@@ -5,7 +5,7 @@ import { FaBeer } from 'react-icons/fa';
 
 const column = [
     { label: "Name", field: "firstName", sort: "asc", width: 150 },
-    { label: "Surname", field: "lastName", sort: "asc", width: 150 },
+    { label: "SurName", field: "lastName", sort: "asc", width: 150 },
     { label: "amount", field: "amount", sort: "asc", width: 150 },
     { label: "duration", field: "duration", sort: "asc", width: 150 },
     { label: "Payment Date", field: "payment_Date", sort: "asc", width: 150 },
