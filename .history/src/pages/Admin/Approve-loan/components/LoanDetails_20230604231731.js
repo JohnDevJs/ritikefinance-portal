@@ -14,34 +14,29 @@ function LoanDetails({ loan_Id }) {
     return (
         <Row>
             <Col md={6}>
+
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Amount :</span> {data?.amount},</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Total Amount :</span>  {data?.totalAmount} </p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Duration : </span> {data?.duration} </p>
-            </Col>
 
-            <Col md={6}>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Status : </span>{data?.status}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan percentage : </span>{data?.loanPercentage}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Payment data : </span>{data?.paymentDate?.split('T')[0]}</p>
             </Col>
 
             <div>
-                <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
-                {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
+                <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Bank Statement  : </h4>
+                {
+                    data?.bankStatement?.map((img) => (
+                        <img className="avatar-lg" src={img} />
+                    ))
+                }
             </div>
 
-            <div className='mt-5'>
-                <h6 style={{ fontWeight: 'bold', fontSize: '22px' }}> Bank Statements and payslip : </h6>
-                {
-                    data?.bankStatement_and_payslip?.map((PDF, i) => {
-                        return (
-                            <div key={i} className="file-container">
-                                <embed src={PDF} type="application/pdf" width="100%" height="400px" />
-                            </div>
-                        )
-                    }
-                    )
-                }
+
+            <div className="profile__img">
+                <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Payslip : </h4>
+                <img className="img-thumbnail" src={data?.paySlip} />
             </div>
 
         </Row>
