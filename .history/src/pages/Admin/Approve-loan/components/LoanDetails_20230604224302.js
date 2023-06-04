@@ -9,7 +9,8 @@ function LoanDetails({ loan_Id }) {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
 
-    const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/${loan_Id}`, token);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/${loan_Id}`, token);
+    console.log(" Data : ", data)
 
     return (
         <Row>

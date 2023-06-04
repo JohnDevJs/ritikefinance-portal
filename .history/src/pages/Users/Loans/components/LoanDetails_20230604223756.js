@@ -26,7 +26,7 @@ function LoanDetails({ loan_Id }) {
 
             <div>
                 <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
-                {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
+                {!data.loanSignature ? null : <img src={data.loanSignature} alt="Signature" />}
             </div>
 
             <div className='mt-5'>

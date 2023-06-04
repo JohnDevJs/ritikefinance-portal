@@ -69,9 +69,9 @@ function LoanForm({ onClose, reFetch }) {
         formdata.append("duration", inputValue2);
         formdata.append("paymentDate", paymentDate);
         formdata.append("totalAmount", totalInterest);
-        formdata.append("loanSignature", signature);
         formdata.append("bankStatement_and_payslip", payslipFile);
         formdata.append("bankStatement_and_payslip", bankStatementFile);
+        formdata.append("loanSignature", signature);
         formdata.append("loanPercentage", 0);
         formdata.append("user", userId);
         execute(endPoint, formdata, Method, ApplyLongMsg, token, isJSON)

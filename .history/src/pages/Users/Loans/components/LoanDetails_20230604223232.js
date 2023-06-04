@@ -10,8 +10,10 @@ function LoanDetails({ loan_Id }) {
     const token = userDet?.token;
     const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/${loan_Id}`, token);
 
+    console.log("data : ", data)
+
     return (
-        <Row className=''>
+        <Row className='m-5'>
             <Col md={6}>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Amount :</span> {data?.amount}  </p>
                 <p> <span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Total Amount :</span>  {data?.totalAmount}  </p>
@@ -25,8 +27,8 @@ function LoanDetails({ loan_Id }) {
             </Col>
 
             <div>
-                <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
-                {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
+                <p>Signature : </p>
+                {!data.loanSignature ? null : <img src={data.loanSignature} alt="Signature" />}
             </div>
 
             <div className='mt-5'>

@@ -10,32 +10,35 @@ function LoanDetails({ loan_Id }) {
     const token = userDet?.token;
     const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/${loan_Id}`, token);
 
+    console.log(" data : ", data);
+
     return (
-        <Row className=''>
+        <Row className='m-5'>
             <Col md={6}>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Amount :</span> {data?.amount}  </p>
                 <p> <span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Total Amount :</span>  {data?.totalAmount}  </p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Duration : </span> {data?.duration} </p>
-            </Col>
-
-            <Col md={6}>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Status : </span>{data?.status}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan percentage : </span>{data?.loanPercentage}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Payment data : </span>{data?.paymentDate?.split('T')[0]}</p>
             </Col>
 
-            <div>
-                <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
-                {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
-            </div>
+            {/* <Col md={6}>
+                <div>
+                    <h6 style={{ fontWeight: 'bold', fontSize: '22px' }}> Payslip  </h6>
+                    <div className='img__container'>
+                        <img className="img-thumbnail" src={`${process.env.REACT_APP_IMG_API}img/payslip/${data?.paySlip}`} />
+                    </div>
+                </div>
+            </Col> */}
 
             <div className='mt-5'>
                 <h6 style={{ fontWeight: 'bold', fontSize: '22px' }}> Bank Statements and payslip : </h6>
                 {
-                    data?.bankStatement_and_payslip?.map((PDF, i) => {
+                    data?.bankStatement_and_payslip?.map((URL, i) => {
                         return (
                             <div key={i} className="file-container">
-                                <embed src={PDF} type="application/pdf" width="100%" height="400px" />
+                                <embed src={URL} type="application/pdf" width="100%" height="400px" />
                             </div>
                         )
                     }

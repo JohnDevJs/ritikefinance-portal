@@ -83,7 +83,7 @@ function AdminAccountForm() {
             <AvForm
                 className="form-horizontal mt-4 " onValidSubmit={(e, v) => { handleValidSubmit(e, v) }} >
                 <div className="d-flex justify-content-center align-items-center mb-3">
-                    <img src={profile ? profile : `${process.env.REACT_APP_IMG_API}img/users/${userDet?.data?.data?.photoProfile}`} alt="Upload image" className="rounded-circle" width={100} height={100} />
+                    <img src={profile ? profile : userDet?.data?.data?.photoProfile} alt="Upload image" className="rounded-circle" width={100} height={100} />
                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
                         onClick={onThumbChangeClick}
                     >

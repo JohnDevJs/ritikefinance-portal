@@ -69,9 +69,9 @@ function LoanForm({ onClose, reFetch }) {
         formdata.append("duration", inputValue2);
         formdata.append("paymentDate", paymentDate);
         formdata.append("totalAmount", totalInterest);
-        formdata.append("loanSignature", signature);
         formdata.append("bankStatement_and_payslip", payslipFile);
         formdata.append("bankStatement_and_payslip", bankStatementFile);
+        formdata.append("loanSignature", signature);
         formdata.append("loanPercentage", 0);
         formdata.append("user", userId);
         execute(endPoint, formdata, Method, ApplyLongMsg, token, isJSON)
@@ -99,7 +99,9 @@ function LoanForm({ onClose, reFetch }) {
                     </form>
 
                     <div className="mt-4">
-                        <h4 className="font-size-14 mb-3 mt-0">  Enter Loan amount  </h4>
+                        <h4 className="font-size-14 mb-3 mt-0">
+                            Enter Loan amount
+                        </h4>
                         <span className="float-start ">From   R 100</span>
                         <span className="float-end ">up to    R 2000</span>
                         <input
@@ -137,7 +139,9 @@ function LoanForm({ onClose, reFetch }) {
                             <span className="float-start ">Number of days </span>
                             <input min="1" max="30" type="number" className="form-control" onChange={handleInputChange2}
                             />
+
                         </div>
+
                     </div>
 
                     <div className="d-flex justify-content-between p-3">
@@ -163,6 +167,7 @@ function LoanForm({ onClose, reFetch }) {
                 <div className="px-3">
                     <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
                 </div>
+
             </Row>
         </>
     )

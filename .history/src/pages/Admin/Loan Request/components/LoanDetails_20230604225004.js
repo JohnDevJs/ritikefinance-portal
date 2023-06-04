@@ -34,7 +34,7 @@ function LoanDetails({ loan_Id }) {
 
             <div className="profile__img">
                 <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}> Payslip : </h4>
-                <img className="img-thumbnail" src={data?.paySlip} />
+                <img className="img-thumbnail" src={`${process.env.REACT_APP_IMG_API}img/payslip/${data?.paySlip}`} />
             </div>
 
         </Row>

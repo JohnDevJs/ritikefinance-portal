@@ -16,7 +16,7 @@ function UserDetails({ user_Id }) {
             <Col md={6}>
                 <h4 style={{ fontWeight: 'bold', fontSize: '22px' }}>Person details : </h4>
                 <div className="profile__img">
-                    <img className="avatar-lg" src={data?.photoProfile} />
+                    <img className="avatar-lg" src={`${process.env.REACT_APP_IMG_API}img/users/${data?.photoProfile}`} />
                 </div>
 
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Full Name :</span> {data?.firstName} {data?.lastName} </p>
