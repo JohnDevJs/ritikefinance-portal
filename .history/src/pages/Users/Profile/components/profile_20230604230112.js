@@ -49,6 +49,7 @@ function AccountForm() {
         formdata.append("accountType", values.accountType);
         // formdata.append("passportPhoto", photoPassport);
         formdata.append("photoProfile", profileServer);
+        formdata.append("idNumber", values.idNumber);
         execute(endPoint, formdata, Method, updateProfileMsg, token, isJSON)
     }
 
@@ -94,7 +95,7 @@ function AccountForm() {
             <AvForm
                 className="form-horizontal mt-4 " onValidSubmit={(e, v) => { handleValidSubmit(e, v) }} >
                 <div className="d-flex justify-content-center align-items-center mb-3">
-                    <img src={profile} alt="Upload image" className="rounded-circle" width={100} height={100} />
+                    <img src={profile ? profile : userDet?.data?.data?.photoProfile} alt="Upload image" className="rounded-circle" width={100} height={100} />
                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
                         onClick={onThumbChangeClick}
                     >
@@ -142,7 +143,7 @@ function AccountForm() {
 
                             <Col md={6} lg={6}>
                                 <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.address} name="address" label="Address" type="text" required />
+                                    <AvField value={userDet?.data?.data?.streetAddress} name="address" label="Address" type="text" required />
                                 </div>
 
                                 <Row>
@@ -169,6 +170,10 @@ function AccountForm() {
                                             <AvField value={userDet?.data?.data?.referralCode} name="referralCode" label="Referral Code" type="text" required />
                                         </div>
                                     </Col>
+
+                                    <div className="mb-3">
+                                        <AvField value={userDet?.data?.data?.idNumber} name="idNumber" label="ID Number" className="form-control" type="text" required />
+                                    </div>
                                 </Row>
 
 

@@ -10,7 +10,7 @@ import { LoginRoute } from "components/RouteName";
 import { FcAddImage } from "react-icons/fc";
 
 
-function AccountForm() {
+function AdminAccountForm() {
 
     const history = useHistory()
     const dispatch = useStore1Dispatch();
@@ -37,17 +37,6 @@ function AccountForm() {
         formdata.append("lastName", values.lastName);
         formdata.append("phoneNumber", values.phoneNumber);
         formdata.append("email", values.email);
-        formdata.append("address", values.address);
-        formdata.append("companyName", values.companyName);
-        formdata.append("jobTitle", values.jobTitle);
-        formdata.append("province", values.province);
-        formdata.append("city", values.city);
-        formdata.append("postalCode", values.postalCode);
-        formdata.append("referralCode", values.referralCode);
-        formdata.append("accountNumber", values.accountNumber);
-        formdata.append("bankName", values.bankName);
-        formdata.append("accountType", values.accountType);
-        // formdata.append("passportPhoto", photoPassport);
         formdata.append("photoProfile", profileServer);
         execute(endPoint, formdata, Method, updateProfileMsg, token, isJSON)
     }
@@ -94,7 +83,7 @@ function AccountForm() {
             <AvForm
                 className="form-horizontal mt-4 " onValidSubmit={(e, v) => { handleValidSubmit(e, v) }} >
                 <div className="d-flex justify-content-center align-items-center mb-3">
-                    <img src={profile} alt="Upload image" className="rounded-circle" width={100} height={100} />
+                    <img src={profile ? profile : userDet?.data?.data?.photoProfile} alt="Upload image" className="rounded-circle" width={100} height={100} />
                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
                         onClick={onThumbChangeClick}
                     >
@@ -129,89 +118,11 @@ function AccountForm() {
                                             <AvField value={userDet?.data?.data?.phoneNumber} name="phoneNumber" label="Phone Number" type="number" required />
                                         </div>
                                     </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.companyName} name="companyName" label="company Name" type="text" required />
-                                        </div>
-                                    </Col>
                                 </Row>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.jobTitle} name="jobTitle" label="Job Title" className="form-control" type="text" required />
-                                </div>
-                            </Col>
-
-                            <Col md={6} lg={6}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.address} name="address" label="Address" type="text" required />
-                                </div>
-
-                                <Row>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.city} name="city" label="City" type="text" required />
-                                        </div>
-                                    </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.province} name="province" label="Province" type="text" required />
-                                        </div>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.postalCode} name="postalCode" label="Postal Code" type="text" required />
-                                        </div>
-                                    </Col>
-                                    <Col md={6}>
-                                        <div className="mb-3">
-                                            <AvField value={userDet?.data?.data?.referralCode} name="referralCode" label="Referral Code" type="text" required />
-                                        </div>
-                                    </Col>
-                                </Row>
-
-
-
-                                {/* <div className="mb-3">
-                                    <AvField
-                                        name="passportPhoto"
-                                        label="Passport Photo"
-                                        className="form-control"
-                                        type="file"
-                                        onChange={handlePhotoPassport}
-                                    />
-                                </div> */}
-
-
-
                             </Col>
                         </Row>
 
-                        <Row>
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.accountNumber} name="accountNumber" label="Account Number" type="number" required />
-                                </div>
-                            </Col>
 
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField name="accountType" value={userDet?.data?.data?.accountType} label="Account Type" type="select" required>
-                                        <option> {userDet?.data?.data?.accountType} </option>
-                                        <option> Savings </option>
-                                        <option> Current/Cheque </option>
-                                    </AvField>
-                                </div>
-                            </Col>
-
-                            <Col md={4}>
-                                <div className="mb-3">
-                                    <AvField value={userDet?.data?.data?.bankName} name="bankName" label="Bank Name" type="text" required />
-                                </div>
-                            </Col>
-
-                        </Row>
 
                         <div className="mb-3 profile__btn">
                             <button className="btn  w-100 text-white text-center" type="submit">
@@ -290,4 +201,4 @@ function AccountForm() {
     )
 }
 
-export default AccountForm
+export default AdminAccountForm
