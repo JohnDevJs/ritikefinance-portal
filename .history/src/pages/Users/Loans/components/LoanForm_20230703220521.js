@@ -22,9 +22,7 @@ function LoanForm({ onClose, reFetch }) {
     const userId = userDet?.data?.data?._id;
 
     const { execute, pending, data } = usePost()
-    // const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
-    const [paymentDate, setPaymentDate] = React.useState(new Date().toISOString().split('T')[0]);
-
+    const [paymentDate, setPaymentDate] = React.useState(moment().format('YYYY-MM-DD'));
 
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
