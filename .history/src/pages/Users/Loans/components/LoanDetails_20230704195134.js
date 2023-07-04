@@ -16,9 +16,6 @@ function LoanDetails({ loan_Id }) {
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Amount :</span> {data?.amount}  </p>
                 <p> <span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Total Amount :</span>  {data?.totalAmount}  </p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Duration : </span> {data?.duration} </p>
-                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Dependents : </span> {data?.dependents} </p>
-                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan credit : </span> {data?.loanCredit} </p>
-                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Other expenses : </span> {data?.otherExpenses} </p>
             </Col>
 
             <Col md={6}>
@@ -30,7 +27,7 @@ function LoanDetails({ loan_Id }) {
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Car Installments : </span>{data?.carInstallments}</p>
             </Col>
 
-            <div className='mt-5'>
+            <div>
                 <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
                 {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
             </div>

@@ -1,4 +1,4 @@
-import { ApproveLoanRoute, MandateUserRoute, DeclineLoanRoute, LoansRoute } from 'components/RouteName';
+import { ApproveLoanRoute, DashboardRoute, DeclineLoanRoute, LoansRoute } from 'components/RouteName';
 import React from 'react'
 import { Link } from 'react-router-dom';
 
@@ -12,8 +12,8 @@ function userSidebarLinks() {
                     </Link>
                 </li>
                 <li>
-                    <Link to={MandateUserRoute} >
-                        <i className="ti-wallet"></i> <span>Mandate Submissions</span>
+                    <Link to={LoansRoute} >
+                        <i className="ti-wallet"></i> <span>Apply for loan</span>
                     </Link>
                 </li>
                 <li>

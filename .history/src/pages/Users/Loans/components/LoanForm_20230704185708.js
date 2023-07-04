@@ -28,12 +28,6 @@ function LoanForm({ onClose, reFetch }) {
 
     const [inputValue, setInputValue] = React.useState('');
     const [inputValue2, setInputValue2] = React.useState('');
-    const [inputValue3, setInputValue3] = React.useState('');
-    const [inputValue4, setInputValue4] = React.useState('');
-    const [inputValue5, setInputValue5] = React.useState('');
-    const [inputValue6, setInputValue6] = React.useState('');
-    const [inputValue7, setInputValue7] = React.useState('');
-    const [inputValue8, setInputValue8] = React.useState('');
     const percentage = inputValue2 > 15 ? 30 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
@@ -51,42 +45,22 @@ function LoanForm({ onClose, reFetch }) {
 
     const handleInputChange = (event) => {
         const value = event.target.value;
-        if (value <= 5000) {
+        if (value <= 2000) {
             setInputValue(value);
         }
     };
 
     const handleInputChange2 = (event) => {
         const value = event.target.value;
-        if (value <= 5000) {
-            setInputValue2(value);
+        if (value <= 30) {
+            setInputValue2(event.target.value);
         }
-
     };
-    const handleInputChange3 = (event) => {
-        setInputValue3(event.target.value)
 
-    };
-    const handleInputChange4 = (event) => {
-        setInputValue4(event.target.value)
-
-    };
-    const handleInputChange5 = (event) => {
-        setInputValue5(event.target.value)
-
-    };
-    const handleInputChange6 = (event) => {
-        setInputValue6(event.target.value)
-
-    };
-    const handleInputChange7 = (event) => {
-        setInputValue7(event.target.value)
-
-    };
-    const handleInputChange8 = (event) => {
-        setInputValue8(event.target.value)
-
-    };
+    // const onChangeDate = ({ target }) => {
+    //     const newDate = moment(target.value.timeStamp).format('YYYY-MM-DD');
+    //     setPaymentDate(newDate);
+    // };
 
     const onChangeDate = ({ target }) => {
         const newDate = target.value;
@@ -105,12 +79,6 @@ function LoanForm({ onClose, reFetch }) {
         const formdata = new FormData();
         formdata.append("amount", inputValue);
         formdata.append("duration", inputValue2);
-        formdata.append("monthlyIncomeGross", inputValue3);
-        formdata.append("bondRent", inputValue4);
-        formdata.append("carInstallments", inputValue5);
-        formdata.append("dependents", inputValue6);
-        formdata.append("loanCredit", inputValue7);
-        formdata.append("otherExpenses", inputValue8);
         formdata.append("paymentDate", paymentDate);
         formdata.append("totalAmount", totalInterest);
         formdata.append("loanSignature", signature);
@@ -145,10 +113,10 @@ function LoanForm({ onClose, reFetch }) {
                     <div className="mt-4">
                         <h4 className="font-size-14 mb-3 mt-0">  Enter Loan amount  </h4>
                         <span className="float-start ">From   R 100</span>
-                        <span className="float-end ">up to    R 5000</span>
+                        <span className="float-end ">up to    R 2000</span>
                         <input
                             min="100"
-                            max="5000"
+                            max="2000"
                             type="number"
                             value={inputValue}
                             className="form-control"
@@ -194,23 +162,23 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start ">Monthly income gross</p>
                         <div>
-                            <input type="text" className="form-control" name="monthlyIncomeGross" onChange={handleInputChange3} />
+                            <input type="text" className="form-control" name="monthlyIncomeGross" />
                         </div>
 
                         <div className='mt-5'>
-                            <p className="float-start ">Bond Rent</p>
-                            <input type="text" className="form-control" name="bondRent" onChange={handleInputChange4} />
+                            <p className="float-start ">Upload your bank statement</p>
+                            <input type="text" className="form-control" name="bondRent" />
                         </div>
                     </Col>
                     <Col md={6}>
                         <p className="float-start ">Car Installments </p>
                         <div>
-                            <input type="text" className="form-control" name="carInstallments" onChange={handleInputChange5} />
+                            <input type="text" className="form-control" name="carInstallments" />
                         </div>
 
                         <div className='mt-5'>
                             <p className="float-start ">Dependents</p>
-                            <input type="text" className="form-control" name="dependents" onChange={handleInputChange6} />
+                            <input type="text" className="form-control" name="dependents" />
                         </div>
                     </Col>
 
@@ -221,16 +189,17 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start ">Loan Credit </p>
                         <div>
-                            <input type="text" className="form-control" name="loanCredit" onChange={handleInputChange7} />
+                            <input type="text" className="form-control" name="loanCredit" />
                         </div>
                     </Col>
 
                     <Col md={6}>
-                        <p className="float-start ">Other Expenses</p>
                         <div className='mt-5'>
-                            <input type="text" className="form-control" name="otherExpenses" onChange={handleInputChange8} />
+                            <p className="float-start ">Other Expenses</p>
+                            <input type="text" className="form-control" name="otherExpenses" />
                         </div>
                     </Col>
+
                 </Row>
 
                 <div>

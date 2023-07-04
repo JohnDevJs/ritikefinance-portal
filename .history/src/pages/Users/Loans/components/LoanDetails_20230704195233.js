@@ -30,7 +30,7 @@ function LoanDetails({ loan_Id }) {
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Car Installments : </span>{data?.carInstallments}</p>
             </Col>
 
-            <div className='mt-5'>
+            <div>
                 <p style={{ fontWeight: 'bold', fontSize: '14px' }}> Signature : </p>
                 {!data.loanSignature ? null : <img width={300} src={data.loanSignature} alt="Signature" />}
             </div>

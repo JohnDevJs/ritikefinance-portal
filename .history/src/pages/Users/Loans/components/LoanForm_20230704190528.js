@@ -105,12 +105,6 @@ function LoanForm({ onClose, reFetch }) {
         const formdata = new FormData();
         formdata.append("amount", inputValue);
         formdata.append("duration", inputValue2);
-        formdata.append("monthlyIncomeGross", inputValue3);
-        formdata.append("bondRent", inputValue4);
-        formdata.append("carInstallments", inputValue5);
-        formdata.append("dependents", inputValue6);
-        formdata.append("loanCredit", inputValue7);
-        formdata.append("otherExpenses", inputValue8);
         formdata.append("paymentDate", paymentDate);
         formdata.append("totalAmount", totalInterest);
         formdata.append("loanSignature", signature);
@@ -194,23 +188,23 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start ">Monthly income gross</p>
                         <div>
-                            <input type="text" className="form-control" name="monthlyIncomeGross" onChange={handleInputChange3} />
+                            <input type="text" className="form-control" name="monthlyIncomeGross" />
                         </div>
 
                         <div className='mt-5'>
-                            <p className="float-start ">Bond Rent</p>
-                            <input type="text" className="form-control" name="bondRent" onChange={handleInputChange4} />
+                            <p className="float-start ">Upload your bank statement</p>
+                            <input type="text" className="form-control" name="bondRent" />
                         </div>
                     </Col>
                     <Col md={6}>
                         <p className="float-start ">Car Installments </p>
                         <div>
-                            <input type="text" className="form-control" name="carInstallments" onChange={handleInputChange5} />
+                            <input type="text" className="form-control" name="carInstallments" />
                         </div>
 
                         <div className='mt-5'>
                             <p className="float-start ">Dependents</p>
-                            <input type="text" className="form-control" name="dependents" onChange={handleInputChange6} />
+                            <input type="text" className="form-control" name="dependents" />
                         </div>
                     </Col>
 
@@ -221,14 +215,14 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start ">Loan Credit </p>
                         <div>
-                            <input type="text" className="form-control" name="loanCredit" onChange={handleInputChange7} />
+                            <input type="text" className="form-control" name="loanCredit" />
                         </div>
                     </Col>
 
                     <Col md={6}>
-                        <p className="float-start ">Other Expenses</p>
                         <div className='mt-5'>
-                            <input type="text" className="form-control" name="otherExpenses" onChange={handleInputChange8} />
+                            <p className="float-start ">Other Expenses</p>
+                            <input type="text" className="form-control" name="otherExpenses" />
                         </div>
                     </Col>
                 </Row>

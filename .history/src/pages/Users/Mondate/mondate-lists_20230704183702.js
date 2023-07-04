@@ -1,0 +1,36 @@
+import React, { useRef, useState } from 'react';
+import { Container } from "reactstrap";
+import Breadcrumb from "../../../components/Common/Breadcrumb";
+import MetaTag from "../../../components/MetaTag";
+import { MandateUserRoute } from "components/SCO_Name";
+import { useStore1Selector } from "index";
+import { loginUser } from "Redux/Slices/userSlice";
+import useFetch from "hooks/useFecth";
+import { useHistory, useParams } from "react-router-dom";
+import usePost from "hooks/usePost";
+
+
+const MondateForm = () => {
+    const { execute, pending, data } = usePost()
+    const userDet = useStore1Selector(loginUser);
+    const token = userDet?.token;
+
+
+    return (
+        <React.Fragment>
+            <div className="page-content">
+                <Breadcrumb default={MandateUserRoute} title={"Mandate form"} />
+                <MetaTag title_sco={"Mandate form lists"} />
+
+                <Container fluid>
+                    <div className="page-title-box">
+                        <h1> Opps! Nothing for now </h1>
+                    </div>
+                </Container>
+
+            </div>
+        </React.Fragment>
+    )
+}
+
+export default MondateForm

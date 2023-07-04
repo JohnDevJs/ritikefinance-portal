@@ -7,13 +7,13 @@ function userSidebarLinks() {
         <>
             <li>
                 <li>
-                    <Link to={DashboardRoute} >
+                    <Link to={LoansRoute} >
                         <i className="ti-layout-grid2-alt"></i> <span>Dashboard</span>
                     </Link>
                 </li>
                 <li>
                     <Link to={LoansRoute} >
-                        <i className="ti-wallet"></i> <span>Apply for loan</span>
+                        <i className="ti-wallet"></i> <span>Mandate Submissions</span>
                     </Link>
                 </li>
                 <li>

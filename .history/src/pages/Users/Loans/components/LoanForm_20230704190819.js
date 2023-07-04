@@ -198,7 +198,7 @@ function LoanForm({ onClose, reFetch }) {
                         </div>
 
                         <div className='mt-5'>
-                            <p className="float-start ">Bond Rent</p>
+                            <p className="float-start ">Upload your bank statement</p>
                             <input type="text" className="form-control" name="bondRent" onChange={handleInputChange4} />
                         </div>
                     </Col>
@@ -226,8 +226,8 @@ function LoanForm({ onClose, reFetch }) {
                     </Col>
 
                     <Col md={6}>
-                        <p className="float-start ">Other Expenses</p>
                         <div className='mt-5'>
+                            <p className="float-start ">Other Expenses</p>
                             <input type="text" className="form-control" name="otherExpenses" onChange={handleInputChange8} />
                         </div>
                     </Col>
