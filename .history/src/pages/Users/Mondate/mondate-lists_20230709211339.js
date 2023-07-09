@@ -10,6 +10,7 @@ const MandateForm = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
+
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/mandates/status/${userId}`, token);
 
     if (loading) return (
@@ -62,6 +63,7 @@ const MandateForm = () => {
                                     </div>
                                 </Card>
                             )
+
                         })}
 
                     </div>

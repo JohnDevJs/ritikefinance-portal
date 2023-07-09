@@ -10,7 +10,10 @@ const MandateForm = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
+
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/mandates/status/${userId}`, token);
+
+    console.log("data : ", data)
 
     if (loading) return (
         <React.Fragment>
@@ -32,7 +35,7 @@ const MandateForm = () => {
                             return (
                                 <Card className="p-4" key={index}>
                                     <div className="my-2">
-                                        <h4>  <b className="text-primary"> Date sign :  {dataItem?.dateSignedAt.split('T')[0]} </b> </h4>
+                                        <h2>  <b className="text-primary"> Date sign :  {dataItem?.dateSignedAt} </b> </h2>
                                     </div>
                                     <div className="my-2">
                                         <p>
@@ -62,6 +65,7 @@ const MandateForm = () => {
                                     </div>
                                 </Card>
                             )
+
                         })}
 
                     </div>

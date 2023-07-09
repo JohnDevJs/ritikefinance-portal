@@ -10,7 +10,7 @@ import MetaTagComp from 'components/MetaTag';
 import usePost from "hooks/usePost"
 import CustomBtn from "../../components/CustomBtn"
 import { LoginPage } from "../../components/SCO_Name"
-import { AdminDashboardRoute, DashboardRoute, RegisterRoute } from "../../components/RouteName"
+import { AdminDashboardRoute, LoansRoute, RegisterRoute } from "../../components/RouteName"
 import LoginRightLabel from "./components/LoginRightLabel";
 import FromWraper from "./components/FromWraper";
 
@@ -34,7 +34,7 @@ const LoginComp = () => {
   const handleLoginSuccess = (data) => {
     dispatch(Login(data));
     window.setTimeout(() => {
-      history.push(`${userDet?.data?.data?.role === "user" ? DashboardRoute : AdminDashboardRoute}`);
+      history.push(`${userDet?.data?.data?.role === "user" ? LoansRoute : AdminDashboardRoute}`);
     }, 2000);
   }
 

@@ -4,13 +4,13 @@ import { AvForm } from "availity-reactstrap-validation"
 import { useHistory, Link } from "react-router-dom"
 import LoginForm from "./components/LoginForm";
 import { LoginMsg } from "../../components/NotifyMessage"
-import { useStore1Dispatch } from "../../index";
-import { Login } from "../../Redux/Slices/userSlice";
+import { useStore1Dispatch, useStore1Selector } from "../../index";
+import { Login, loginUser } from "../../Redux/Slices/userSlice";
 import MetaTagComp from 'components/MetaTag';
 import usePost from "hooks/usePost"
 import CustomBtn from "../../components/CustomBtn"
 import { LoginPage } from "../../components/SCO_Name"
-import { AdminDashboardRoute, DashboardRoute, RegisterRoute } from "../../components/RouteName"
+import { AdminDashboardRoute, LoansRoute, RegisterRoute } from "../../components/RouteName"
 import LoginRightLabel from "./components/LoginRightLabel";
 import FromWraper from "./components/FromWraper";
 
@@ -19,6 +19,7 @@ const LoginComp = () => {
   const history = useHistory()
   const dispatch = useStore1Dispatch();
   const { execute, pending, data } = usePost()
+  const userDet = useStore1Selector(loginUser);
 
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
@@ -30,31 +31,11 @@ const LoginComp = () => {
     execute(endPoint, raw, Method, LoginMsg)
   }
 
-  // if (data?.status === 'success') {
-  //   dispatch(Login(data));
-
-  //   if (data?.data?.role === "user") {
-  //     window.setTimeout(() => {
-  //       history.push(DashboardRoute);
-  //     }, 2000);
-  //   } else {
-  //     window.setTimeout(() => {
-  //       history.push(AdminDashboardRoute);
-  //     }, 2000);
-  //   }  
-  // }
-
   const handleLoginSuccess = (data) => {
     dispatch(Login(data));
-    if (data?.data?.role === "user") {
-      window.setTimeout(() => {
-        history.push(DashboardRoute);
-      }, 2000);
-    } else {
-      window.setTimeout(() => {
-        history.push(AdminDashboardRoute);
-      }, 2000);
-    }
+    window.setTimeout(() => {
+      history.push(`${userDet?.data?.data?.role === "user" ? LoansRoute : AdminDashboardRoute}`);
+    }, 2000);
   }
 
   if (data?.status === 'success') {

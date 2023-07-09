@@ -10,7 +10,10 @@ const MandateForm = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const userId = userDet?.data?.data?._id;
+
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/mandates/status/${userId}`, token);
+
+    console.log("data : ", data)
 
     if (loading) return (
         <React.Fragment>
@@ -31,9 +34,6 @@ const MandateForm = () => {
                         {data.map((dataItem, index) => {
                             return (
                                 <Card className="p-4" key={index}>
-                                    <div className="my-2">
-                                        <h4>  <b className="text-primary"> Date sign :  {dataItem?.dateSignedAt.split('T')[0]} </b> </h4>
-                                    </div>
                                     <div className="my-2">
                                         <p>
                                             If however, the date of the payment instruction falls on a non-processing day (weekend or public holiday) I agree that the payment instruction may be debited against my account on the following business day: <b className="text-primary"> {dataItem?.agreement ? "Yes" : "No"} </b>
@@ -62,6 +62,7 @@ const MandateForm = () => {
                                     </div>
                                 </Card>
                             )
+
                         })}
 
                     </div>
