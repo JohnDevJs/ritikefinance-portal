@@ -48,9 +48,10 @@ const Index = () => {
         setLoanId(id)
     }
 
-
+    
     const filterArr = () => {
         data.forEach(res => {
+            console.log("paid loans : ", res.paymentDate)
             res_data.push({
                 ...res,
                 firstName: res?.user?.firstName,

@@ -48,7 +48,6 @@ const Index = () => {
         setLoanId(id)
     }
 
-
     const filterArr = () => {
         data.forEach(res => {
             res_data.push({

@@ -48,6 +48,7 @@ const Index = () => {
         setLoanId(id)
     }
 
+    console.log("paid loans : ", data)
 
     const filterArr = () => {
         data.forEach(res => {
