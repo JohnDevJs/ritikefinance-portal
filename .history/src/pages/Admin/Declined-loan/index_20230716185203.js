@@ -7,14 +7,14 @@ import { LoanRequestRoute } from "components/RouteName";
 import useFetch from '../../../hooks/useFecth';
 import { ServerError } from "components/NotifyMessage";
 import Loading from "components/Loading";
-import LoanTable from "./components/PaidLoanTable";
+import LoanDeclinedTable from "./components/LoanDeclinedTable";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
 import { RiFileExcel2Fill } from "react-icons/ri";
+import SmallModal from './../../../SmallModal';
 import LoanDetails from "./components/LoanDetails";
 import { BsEyeFill } from "react-icons/bs";
 import ModalComp from '../../../Modal';
-import ErrorPage from "components/ErrorPage";
 
 
 const Index = () => {
@@ -22,7 +22,7 @@ const Index = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const res_data = [];
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=paid`, token);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=decline`, token);
     const [openModal, setOpenModal] = React.useState(false);
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
@@ -32,36 +32,28 @@ const Index = () => {
 
     if (error) return <ErrorPage message={ServerError} />
 
-    const updatePayment = (id) => {
-        setOpenModal(true)
-        setStatus("verification")
-        setLoanId(id)
-        setBtnName("Verification")
-    }
-
     const viewDetails = (id) => {
         setViewUserDet(true)
         setLoanId(id)
     }
 
-    const downLoadExcel = (id) => {
-        setOpenDownloadModal(true)
-        setLoanId(id)
-    }
+    // const downLoadExcel = (id) => {
+    //     setOpenDownloadModal(true)
+    //     setLoanId(id)
+    // }
 
+    console.log(" declined :  : ", data)
 
     const filterArr = () => {
-        data.reverse().forEach(res => {
+        data.forEach(res => {
             res_data.push({
                 ...res,
                 firstName: res?.user?.firstName,
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
-                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
-                verifyBtn: <button className="btn btn__table color__verify" onClick={() => updatePayment(res?._id)}>  Paid amount </button>,
-                approveBtn: <button className="btn btn__table color__green"> Approved </button>,
-                downloadBtn: <button className="btn btn__table color__download" onClick={() => downLoadExcel(res._id)}> Download <RiFileExcel2Fill size={18} /> </button>,
+                viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View Declined reason </button>,
+                // downloadBtn: <button className="btn btn__table color__download" onClick={() => downLoadExcel(res._id)}> Download <RiFileExcel2Fill size={18} /> </button>,
             })
         });
     }
@@ -70,42 +62,24 @@ const Index = () => {
     return (
         <React.Fragment>
             <div className="page-content px-5">
-                <Breadcrumb default={LoanRequestRoute} defaultName="Paid Loans" title={"Loans"} />
+                <Breadcrumb default={LoanRequestRoute} defaultName="Declined Loans" title={"Loans"} />
                 <MetaTag title_sco={LoanRequestPage} />
 
                 <Container fluid>
                     <div className="page-title-box">
-                        {loading ? <Loading /> : (<LoanTable data={res_data} />)}
+                        {loading ? <Loading /> : (<LoanDeclinedTable data={res_data} />)}
                     </div>
                 </Container>
             </div>
 
 
             <ModalComp
-                ModalTitle="View more details"
+                ModalTitle="Loan declined reason"
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"
                 Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
             />
-
-
-            {/* <SmallModal
-                open={openModal}
-                onClose={() => setOpenModal(false)}
-                ModalTitle="AMOUNT PAID"
-                cancel="close"
-                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
-            />
-
-            <SmallModal
-                open={openDownloadModal}
-                onClose={() => setOpenDownloadModal(false)}
-                ModalTitle="Download the excel "
-                cancel="close"
-                Components={<DownloadExcelComp reFetch={reFetch} onClose={() => setOpenDownloadModal(false)} status={status} loanId={loanId} btnName={btnName} />}
-            /> */}
-
         </React.Fragment>
     )
 }

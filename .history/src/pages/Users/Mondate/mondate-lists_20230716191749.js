@@ -29,17 +29,14 @@ const MandateForm = () => {
                     <div className="page-title-box">
 
                         {data.map((dataItem, index) => {
+                            console.log(" loan data : ", dataItem.loan)
                             return (
                                 <Card className="p-4" key={index}>
                                     <div className="my-2">
                                         <h4>  <b className="text-primary"> Date sign :  {dataItem?.dateSignedAt.split('T')[0]} </b> </h4>
+                                        <h6>  <b className="text-primary mt-2"> Payment date :  {dataItem?.loan?.paymentDate.split('T')[0]} </b> </h6>
+                                        <h6>  <b className="text-primary mt-2"> Amount to pay :  {dataItem?.loan?.amount + dataItem?.loan?.totalAmount} </b> </h6>
                                     </div>
-
-                                    <div className="my-2">
-                                        <h5>  <b> Payment date :  {dataItem?.loan?.paymentDate.split('T')[0]} </b> </h5>
-                                        <h5>  <b> Amount to pay :  {dataItem?.loan?.amount + dataItem?.loan?.totalAmount} </b> </h5>
-                                    </div>
-
                                     <div className="my-2">
                                         <p>
                                             If however, the date of the payment instruction falls on a non-processing day (weekend or public holiday) I agree that the payment instruction may be debited against my account on the following business day: <b className="text-primary"> {dataItem?.agreement ? "Yes" : "No"} </b>
