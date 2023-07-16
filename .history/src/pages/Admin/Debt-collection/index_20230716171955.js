@@ -49,6 +49,8 @@ const Index = () => {
         setLoanId(id)
     }
 
+    console.log("debt collections  !!! : ", data?.loans)
+
     // const downLoadExcel = (id) => {
     //     setOpenDownloadModal(true)
     //     setLoanId(id)
@@ -76,7 +78,7 @@ const Index = () => {
     return (
         <React.Fragment>
             <div className="page-content px-5">
-                <Breadcrumb default={LoanRequestRoute} defaultName="Debt collections" title={"Debt"} />
+                <Breadcrumb default={LoanRequestRoute} defaultName="Approved Loan" title={"Loans"} />
                 <MetaTag title_sco={LoanRequestPage} />
 
                 <Container fluid>
@@ -99,7 +101,8 @@ const Index = () => {
                 onClose={() => setOpenModal(false)}
                 ModalTitle="AMOUNT PAID"
                 cancel="close"
-                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
+                // Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
+                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} loanId={loanId} btnName={btnName} />}
             />
 
             {/* <SmallModal

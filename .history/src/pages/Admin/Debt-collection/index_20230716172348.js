@@ -49,6 +49,8 @@ const Index = () => {
         setLoanId(id)
     }
 
+    console.log("debt collections  !!! : ", data)
+
     // const downLoadExcel = (id) => {
     //     setOpenDownloadModal(true)
     //     setLoanId(id)

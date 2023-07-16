@@ -49,6 +49,8 @@ const Index = () => {
         setLoanId(id)
     }
 
+    console.log("debt collections  !!! : ", data?.loans)
+
     // const downLoadExcel = (id) => {
     //     setOpenDownloadModal(true)
     //     setLoanId(id)
@@ -99,7 +101,8 @@ const Index = () => {
                 onClose={() => setOpenModal(false)}
                 ModalTitle="AMOUNT PAID"
                 cancel="close"
-                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
+                // Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} status={status} loanId={loanId} btnName={btnName} />}
+                Components={<Modal reFetch={reFetch} onClose={() => setOpenModal(false)} loanId={loanId} btnName={btnName} />}
             />
 
             {/* <SmallModal
