@@ -36,7 +36,7 @@ const Index = () => {
     if (error) return <ErrorPage message={ServerError} />
 
     const filterArr = () => {
-        data?.forEach(res => {
+        data.forEach(res => {
             res_data.push({
                 ...res,
                 actionBtn: res.status ? <button onClick={() => suspendUser(res._id)} className={`btn color__red`}> Suspend </button> : <button onClick={() => unSuspend(res._id)} className={`btn color__black`}> UnSuspend </button>,

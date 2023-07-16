@@ -51,7 +51,7 @@ const Index = () => {
 
 
     const filterArr = () => {
-        data?.forEach(res => {
+        data.reverse().forEach(res => {
             res_data.push({
                 ...res,
                 firstName: res?.user?.firstName,

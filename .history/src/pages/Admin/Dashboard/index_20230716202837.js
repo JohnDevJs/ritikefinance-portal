@@ -30,14 +30,14 @@ const Index = () => {
 
     const res_data = [];
     let pendingLenght, paidLenght;
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?sort=-createdAt`, null);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?sort=createdAt`, null);
 
     {
-        const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=pending&sort=-createdAt`, null)
+        const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=pending`, null)
         pendingLenght = data.length
     }
     {
-        const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=paid&sort=-createdAt`, null)
+        const { data } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=paid`, null)
         paidLenght = data.length
     }
 

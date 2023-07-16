@@ -7,14 +7,16 @@ import { LoanRequestRoute } from "components/RouteName";
 import useFetch from '../../../hooks/useFecth';
 import { ServerError } from "components/NotifyMessage";
 import Loading from "components/Loading";
-import LoanTable from "./components/PaidLoanTable";
+import LoanTable from "./components/LoanTable";
 import { useStore1Selector } from "index";
 import { loginUser } from "Redux/Slices/userSlice";
 import { RiFileExcel2Fill } from "react-icons/ri";
+import SmallModal from './../../../SmallModal';
+import Modal from "./components/Modal";
 import LoanDetails from "./components/LoanDetails";
+import DebtCollection from "./components/DebtCollection";
 import { BsEyeFill } from "react-icons/bs";
 import ModalComp from '../../../Modal';
-import ErrorPage from "components/ErrorPage";
 
 
 const Index = () => {
@@ -22,13 +24,13 @@ const Index = () => {
     const userDet = useStore1Selector(loginUser);
     const token = userDet?.token;
     const res_data = [];
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=paid&sort=-createdAt`, token);
+    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans?status=approve&status=paid&loanPercentage[lt]=100&sort=-createdAt`, token);
     const [openModal, setOpenModal] = React.useState(false);
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
     const [btnName, setBtnName] = React.useState();
     const [viewUserDet, setViewUserDet] = React.useState(false);
-    const [openDownloadModal, setOpenDownloadModal] = React.useState(false);
+    const [debtCollection, setDebtCollection] = React.useState(false);
 
     if (error) return <ErrorPage message={ServerError} />
 
@@ -44,14 +46,13 @@ const Index = () => {
         setLoanId(id)
     }
 
-    const downLoadExcel = (id) => {
-        setOpenDownloadModal(true)
+    const debtCollectionFunc = (id) => {
+        setDebtCollection(true)
         setLoanId(id)
     }
 
-
     const filterArr = () => {
-        data?.forEach(res => {
+        data.forEach(res => {
             res_data.push({
                 ...res,
                 firstName: res?.user?.firstName,
@@ -61,7 +62,7 @@ const Index = () => {
                 viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
                 verifyBtn: <button className="btn btn__table color__verify" onClick={() => updatePayment(res?._id)}>  Paid amount </button>,
                 approveBtn: <button className="btn btn__table color__green"> Approved </button>,
-                downloadBtn: <button className="btn btn__table color__download" onClick={() => downLoadExcel(res._id)}> Download <RiFileExcel2Fill size={18} /> </button>,
+                downloadBtn: <button className="btn btn__table color__download" onClick={() => debtCollectionFunc(res._id)}> Debt Collection  </button>,
             })
         });
     }
@@ -70,7 +71,7 @@ const Index = () => {
     return (
         <React.Fragment>
             <div className="page-content px-5">
-                <Breadcrumb default={LoanRequestRoute} defaultName="Paid Loans" title={"Loans"} />
+                <Breadcrumb default={LoanRequestRoute} defaultName="Approved Loan" title={"Loans"} />
                 <MetaTag title_sco={LoanRequestPage} />
 
                 <Container fluid>
@@ -86,11 +87,11 @@ const Index = () => {
                 open={viewUserDet}
                 onClose={() => setViewUserDet(false)}
                 cancel="close"
-                Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} />}
+                Component={<LoanDetails onClose={() => setViewUserDet(false)} loan_Id={loanId} reFetch={reFetch} />}
             />
 
 
-            {/* <SmallModal
+            <SmallModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
                 ModalTitle="AMOUNT PAID"
@@ -99,12 +100,12 @@ const Index = () => {
             />
 
             <SmallModal
-                open={openDownloadModal}
-                onClose={() => setOpenDownloadModal(false)}
-                ModalTitle="Download the excel "
+                open={debtCollection}
+                onClose={() => setDebtCollection(false)}
+                ModalTitle="Debt Collection"
                 cancel="close"
-                Components={<DownloadExcelComp reFetch={reFetch} onClose={() => setOpenDownloadModal(false)} status={status} loanId={loanId} btnName={btnName} />}
-            /> */}
+                Components={<DebtCollection reFetch={reFetch} onClose={() => setDebtCollection(false)} status={status} loanId={loanId} btnName={btnName} />}
+            />
 
         </React.Fragment>
     )
