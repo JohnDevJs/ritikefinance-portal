@@ -90,6 +90,9 @@ function AccountForm() {
         history.push(LoginRoute)
     }
 
+
+    console.log(" profile : ", userDet)
+
     return (
         <>
             <AvForm
@@ -172,7 +175,7 @@ function AccountForm() {
                                     </Col>
 
                                     <div className="mb-3">
-                                        <AvField value={userDet?.data?.data?.idNumber} name="idNumber" label="ID Number" className="form-control" type="text" required />
+                                        <AvField value={userDet?.data?.data?.IdNumber} name="idNumber" label="ID Number" className="form-control" type="text" required />
                                     </div>
                                 </Row>
 

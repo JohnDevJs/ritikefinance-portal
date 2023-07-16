@@ -90,6 +90,9 @@ function AccountForm() {
         history.push(LoginRoute)
     }
 
+
+    console.log(" profile : ", userDet)
+
     return (
         <>
             <AvForm
