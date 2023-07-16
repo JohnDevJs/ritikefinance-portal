@@ -18,7 +18,6 @@ import DownloadExcelComp from "./components/DownloadExcelComp";
 import { BsEyeFill } from "react-icons/bs";
 import ModalComp from '../../../Modal';
 import ErrorPage from "components/ErrorPage";
-import { Badge } from "react-bootstrap";
 
 
 const Index = () => {
@@ -27,7 +26,7 @@ const Index = () => {
     const token = userDet?.token;
     const res_data = [];
     // const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/debt?status=debtCollection`, token);
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/debt?status=debtCollection`, token);
+    const { data, loading, error, reFetch } = useFetch(`http://localhost:4000/api/v1/loans?status=paid`, token);
     const [openModal, setOpenModal] = React.useState(false);
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();
@@ -64,7 +63,7 @@ const Index = () => {
                 lastName: res?.user?.lastName,
                 payment_Date: res?.paymentDate?.split('T')[0],
                 debt_start_date: res?.debtStatus?.startDate?.split('T')[0],
-                debt_weekly_duration: <Badge variant="danger" className="p-2">{`${res?.debtStatus?.week} week${res?.debtStatus?.week === 1 ? "" : "s"}`} </Badge>,
+                debt_weekly_duration: `${res?.debtStatus?.week} week ${res?.debtStatus?.week === 1 ? "" : "s"}`,
                 image: <img src={`${process.env.REACT_APP_IMG_API}${res?.user?.photoProfile}`} alt="" width={50} height={40} />,
                 // viewBtn: <button className="btn btn__table  color__blue" onClick={() => viewDetails(res?._id)}> <BsEyeFill size={14} /> View </button>,
                 verifyBtn: <button className="btn btn__table color__verify" onClick={() => updatePayment(res?._id)}> Update to paid </button>,

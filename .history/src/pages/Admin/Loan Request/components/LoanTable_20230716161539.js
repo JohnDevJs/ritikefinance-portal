@@ -22,7 +22,7 @@ const loanTable = ({ data }) => {
         <React.Fragment>
             <Card className='card-border-radius'>
                 <CardBody>
-                    <MDBDataTable entries={25} entriesOptions={[25, 50, 100]} responsive bordered striped hover data={dataDb} fullPagination />
+                    <MDBDataTable entries={25} entriesOptions={[5, 10, 50]} responsive bordered striped hover data={dataDb} fullPagination />
                 </CardBody>
             </Card>
         </React.Fragment>

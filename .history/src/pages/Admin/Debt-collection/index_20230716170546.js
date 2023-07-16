@@ -27,7 +27,7 @@ const Index = () => {
     const token = userDet?.token;
     const res_data = [];
     // const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/debt?status=debtCollection`, token);
-    const { data, loading, error, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/loans/debt?status=debtCollection`, token);
+    const { data, loading, error, reFetch } = useFetch(`http://localhost:4000/api/v1/loans?status=paid`, token);
     const [openModal, setOpenModal] = React.useState(false);
     const [status, setStatus] = React.useState();
     const [loanId, setLoanId] = React.useState();

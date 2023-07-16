@@ -5,12 +5,12 @@ import { FaBeer } from 'react-icons/fa';
 
 const column = [
     { label: "Name", field: "firstName", sort: "asc", width: 150 },
-    { label: "Surname", field: "lastName", sort: "asc", width: 150 },
+    { label: "Surename", field: "lastName", sort: "asc", width: 150 },
     // { label: "amount", field: "amount", sort: "asc", width: 150 },
     // { label: "duration", field: "duration", sort: "asc", width: 150 },
     // { label: "Payment Date", field: "payment_Date", sort: "asc", width: 150 },
     { label: "Debt starting date", field: "debt_start_date", sort: "asc", width: 150 },
-    { label: "Debt weekly Duration", field: "debt_weekly_duration", sort: "asc", width: 150 },
+    { label: "Debt Duration", field: "debt_weekly_duration", sort: "asc", width: 150 },
     { label: "Update", field: "verifyBtn", sort: "asc", width: 150 },
     // { label: "Download", field: "downloadBtn", sort: "asc", width: 150 },
 ];
