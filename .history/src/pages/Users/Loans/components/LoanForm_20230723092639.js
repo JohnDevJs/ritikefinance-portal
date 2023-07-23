@@ -41,8 +41,6 @@ function LoanForm({ onClose, reFetch }) {
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
 
-    const [formValid, setFormValid] = React.useState(false);  // Add this line
-
 
     const handlePayslipFileChange = (event) => {
         const file = event.target.files[0];
@@ -94,25 +92,19 @@ function LoanForm({ onClose, reFetch }) {
     };
 
     const onChangeDate = ({ target }) => {
+        /*
+        const newDate = target.value;
+        setPaymentDate(newDate);
+        */
 
         const newDate = new Date(target.value);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const diffInMs = newDate - today;
         const diffInDays = Math.floor(diffInMs / 86400000);
-
         if (diffInDays < 1) {
-            warningMessage("Choose a correct payment date, that is not less than 16");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
+            warningMessage("Please choose a correct payment date.");
         }
-        if (diffInDays > 30) {
-            warningMessage("Choose a correct payment date that is not greater than 30");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
-        }
-
-        setFormValid(true);
         setNumberOfDays(diffInDays)
         setPaymentDate(newDate);
     };
@@ -159,8 +151,6 @@ function LoanForm({ onClose, reFetch }) {
         signaturePad.current.clear();
         setSignature(null);
     };
-
-
 
     return (
         <>
@@ -282,14 +272,14 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start "> I, the undersigned</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
+                            <input type="text" value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
                         </div>
                     </Col>
 
                     <Col md={6}>
                         <p className="float-start ">ID Number</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
+                            <input type="text" value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
                         </div>
                     </Col>
                 </Row>
@@ -302,7 +292,7 @@ function LoanForm({ onClose, reFetch }) {
                 </div>
 
                 <div className="px-3">
-                    {!formValid ? <p className='btn btn-danger'>Make sure you choose the correct payment date </p> : <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />}
+                    <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
                 </div>
             </Row>
         </>

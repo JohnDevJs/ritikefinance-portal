@@ -10,7 +10,6 @@ import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import { ApplyLongMsg } from 'components/NotifyMessage';
 import CustomBtn from 'components/CustomBtn';
-import { warningMessage } from 'components/Notifications';
 
 function LoanForm({ onClose, reFetch }) {
 
@@ -35,13 +34,9 @@ function LoanForm({ onClose, reFetch }) {
     const [inputValue6, setInputValue6] = React.useState('');
     const [inputValue7, setInputValue7] = React.useState('');
     const [inputValue8, setInputValue8] = React.useState('');
-    const [numberOfDays, setNumberOfDays] = React.useState();
-    // const percentage = inputValue2 > 15 ? 30 : 22.5;
-    const percentage = numberOfDays > 15 ? 30 : 22.5;
+    const percentage = inputValue2 > 15 ? 30 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
-
-    const [formValid, setFormValid] = React.useState(false);  // Add this line
 
 
     const handlePayslipFileChange = (event) => {
@@ -63,10 +58,10 @@ function LoanForm({ onClose, reFetch }) {
 
     const handleInputChange2 = (event) => {
         const value = event.target.value;
-        setInputValue2(value);
-        // if (value <= 1) {
-        //     setInputValue2(value);
-        // }
+        if (value <= 5000) {
+            setInputValue2(value);
+        }
+
     };
     const handleInputChange3 = (event) => {
         setInputValue3(event.target.value)
@@ -94,35 +89,14 @@ function LoanForm({ onClose, reFetch }) {
     };
 
     const onChangeDate = ({ target }) => {
-
-        const newDate = new Date(target.value);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const diffInMs = newDate - today;
-        const diffInDays = Math.floor(diffInMs / 86400000);
-
-        if (diffInDays < 1) {
-            warningMessage("Choose a correct payment date, that is not less than 16");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
-        }
-        if (diffInDays > 30) {
-            warningMessage("Choose a correct payment date that is not greater than 30");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
-        }
-
-        setFormValid(true);
-        setNumberOfDays(diffInDays)
+        const newDate = target.value;
         setPaymentDate(newDate);
     };
 
-    /*
     <form className="px-3">
         <p>Choose the payment date </p>
         <input type="date" className="form-control" onChange={onChangeDate} />
     </form>
-    */
 
     const totalDisplay = totalInterest + parseInt(inputValue);
 
@@ -130,8 +104,7 @@ function LoanForm({ onClose, reFetch }) {
         const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
         const formdata = new FormData();
         formdata.append("amount", inputValue);
-        // formdata.append("duration", inputValue2);
-        formdata.append("duration", numberOfDays);
+        formdata.append("duration", inputValue2);
         formdata.append("monthlyIncomeGross", inputValue3);
         formdata.append("bondRent", inputValue4);
         formdata.append("carInstallments", inputValue5);
@@ -160,13 +133,13 @@ function LoanForm({ onClose, reFetch }) {
         setSignature(null);
     };
 
-
+    console.log(" undesigned : ", userDet?.data?.data?.firstName)
 
     return (
         <>
             <Row className='loan__form'>
                 <Col md={6}>
-                    <form className="">
+                    <form className="px-3">
                         <p >Choose the payment date </p>
                         <input type="date" className="form-control" onChange={onChangeDate} />
                     </form>
@@ -201,21 +174,19 @@ function LoanForm({ onClose, reFetch }) {
 
                 <Col md={12}>
                     <div className='mt-5'>
-                        <div className="d-flex justify-content-between">
-                            <p> 5 to 15 days = 22.5% </p>
-                            <p> 16 to 30 days = 30% </p>
-                            {/* <p className='title'> 5 to 15 days = 22.5% </p>
-                            <p className='title'> 16 to 30 days = 30% </p> */}
+                        <div className="d-flex justify-content-between px-3">
+                            <p className='title'> 5 to 15 days = 22.5% </p>
+                            <p className='title'> 16 to 30 days = 30% </p>
                         </div>
 
-                        <div className="">
-                            <span className="float-start ">Number of days (This is generated automatically by the system) </span>
-                            <input disabled min="1" max="30" type="number" value={numberOfDays} className="form-control" onChange={handleInputChange2}
+                        <div className="px-3">
+                            <span className="float-start ">Number of days </span>
+                            <input min="1" max="30" type="number" className="form-control" onChange={handleInputChange2}
                             />
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between p-3">
                         <h5><b> Total to pay back </b></h5>
                         <h5> <b> R {!Math.round(totalDisplay) ? "00" : Math.round(totalDisplay)} </b>  </h5>
                     </div>
@@ -282,27 +253,20 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start "> I, the undersigned</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
+                            <input type="text" className="form-control" name="undersigned" />
                         </div>
                     </Col>
 
                     <Col md={6}>
-                        <p className="float-start ">ID Number</p>
+                        <p className="float-start ">I Number</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
+                            <input type="text" className="form-control" name="idNumber" />
                         </div>
                     </Col>
                 </Row>
 
-                <div className='mt-5'>
-                    <p> I hereby allow ritikefinance to access my credit Bureau information from XDS, to used solely for the following purposes. </p>
-                    <p> 1.1 Acredit assessment in respect of a consumer as required by section 81(2) of the act. </p>
-                    <p> 1.2  An affordability assessment in respect of a consumer as required by section 81 of the act.   </p>
-                    <p> 2 <span className='mx-2'>   I  consent to XDS releasing a copy of my credit to ritikefinance having sight of the content of my credit report for the above purpose. </span>  </p>
-                </div>
-
                 <div className="px-3">
-                    {!formValid ? <p className='btn btn-danger'>Make sure you choose the correct payment date </p> : <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />}
+                    <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
                 </div>
             </Row>
         </>

@@ -10,7 +10,6 @@ import { useStore1Selector } from 'index';
 import { loginUser } from 'Redux/Slices/userSlice';
 import { ApplyLongMsg } from 'components/NotifyMessage';
 import CustomBtn from 'components/CustomBtn';
-import { warningMessage } from 'components/Notifications';
 
 function LoanForm({ onClose, reFetch }) {
 
@@ -35,13 +34,9 @@ function LoanForm({ onClose, reFetch }) {
     const [inputValue6, setInputValue6] = React.useState('');
     const [inputValue7, setInputValue7] = React.useState('');
     const [inputValue8, setInputValue8] = React.useState('');
-    const [numberOfDays, setNumberOfDays] = React.useState();
-    // const percentage = inputValue2 > 15 ? 30 : 22.5;
-    const percentage = numberOfDays > 15 ? 30 : 22.5;
+    const percentage = inputValue2 > 15 ? 30 : 22.5;
     const Total = inputValue * percentage;
     const totalInterest = Total / 100;
-
-    const [formValid, setFormValid] = React.useState(false);  // Add this line
 
 
     const handlePayslipFileChange = (event) => {
@@ -63,10 +58,10 @@ function LoanForm({ onClose, reFetch }) {
 
     const handleInputChange2 = (event) => {
         const value = event.target.value;
-        setInputValue2(value);
-        // if (value <= 1) {
-        //     setInputValue2(value);
-        // }
+        if (value <= 5000) {
+            setInputValue2(value);
+        }
+
     };
     const handleInputChange3 = (event) => {
         setInputValue3(event.target.value)
@@ -94,26 +89,9 @@ function LoanForm({ onClose, reFetch }) {
     };
 
     const onChangeDate = ({ target }) => {
+        const newDate = target.value;
 
-        const newDate = new Date(target.value);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const diffInMs = newDate - today;
-        const diffInDays = Math.floor(diffInMs / 86400000);
-
-        if (diffInDays < 1) {
-            warningMessage("Choose a correct payment date, that is not less than 16");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
-        }
-        if (diffInDays > 30) {
-            warningMessage("Choose a correct payment date that is not greater than 30");
-            setFormValid(false);  // Add this line
-            return;  // End function execution here
-        }
-
-        setFormValid(true);
-        setNumberOfDays(diffInDays)
+        console.log(" date value : ", newDate)
         setPaymentDate(newDate);
     };
 
@@ -130,8 +108,7 @@ function LoanForm({ onClose, reFetch }) {
         const Method = 'POST', endPoint = 'loans/applyLoan', isJSON = true;
         const formdata = new FormData();
         formdata.append("amount", inputValue);
-        // formdata.append("duration", inputValue2);
-        formdata.append("duration", numberOfDays);
+        formdata.append("duration", inputValue2);
         formdata.append("monthlyIncomeGross", inputValue3);
         formdata.append("bondRent", inputValue4);
         formdata.append("carInstallments", inputValue5);
@@ -159,8 +136,6 @@ function LoanForm({ onClose, reFetch }) {
         signaturePad.current.clear();
         setSignature(null);
     };
-
-
 
     return (
         <>
@@ -209,8 +184,8 @@ function LoanForm({ onClose, reFetch }) {
                         </div>
 
                         <div className="">
-                            <span className="float-start ">Number of days (This is generated automatically by the system) </span>
-                            <input disabled min="1" max="30" type="number" value={numberOfDays} className="form-control" onChange={handleInputChange2}
+                            <span className="float-start ">Number of days </span>
+                            <input min="1" max="30" type="number" className="form-control" onChange={handleInputChange2}
                             />
                         </div>
                     </div>
@@ -282,14 +257,14 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start "> I, the undersigned</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
+                            <input type="text" value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
                         </div>
                     </Col>
 
                     <Col md={6}>
                         <p className="float-start ">ID Number</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
+                            <input type="text" value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
                         </div>
                     </Col>
                 </Row>
@@ -302,7 +277,7 @@ function LoanForm({ onClose, reFetch }) {
                 </div>
 
                 <div className="px-3">
-                    {!formValid ? <p className='btn btn-danger'>Make sure you choose the correct payment date </p> : <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />}
+                    <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />
                 </div>
             </Row>
         </>

@@ -282,14 +282,14 @@ function LoanForm({ onClose, reFetch }) {
                     <Col md={6}>
                         <p className="float-start "> I, the undersigned</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
+                            <input type="text" value={userDet?.data?.data?.firstName + userDet?.data?.data?.lastName} className="form-control" name="undersigned" />
                         </div>
                     </Col>
 
                     <Col md={6}>
                         <p className="float-start ">ID Number</p>
                         <div className='mt-5'>
-                            <input type="text" disabled value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
+                            <input type="text" value={userDet?.data?.data?.idNumber} className="form-control" name="idNumber" />
                         </div>
                     </Col>
                 </Row>
