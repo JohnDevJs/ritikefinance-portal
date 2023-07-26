@@ -304,7 +304,7 @@ function LoanForm({ onClose, reFetch }) {
                     {signature && <img src={signature} alt="Signature" />}
                 </div>
 
-                <div className="p-3">
+                <div className="p-2">
                     {!formValid ? <p className='btn btn-danger'>Make sure you choose the correct payment date </p> : <CustomBtn Pending={pending} btnName="Apply now" onClick={applyLoan} />}
                 </div>
             </Row>

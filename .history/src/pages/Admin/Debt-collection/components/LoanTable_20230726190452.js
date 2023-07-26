@@ -10,7 +10,7 @@ const column = [
     // { label: "Payment Date", field: "payment_Date", sort: "asc", width: 150 },
     { label: "Debt starting date", field: "debt_start_date", sort: "asc", width: 150 },
     { label: "Debt weekly Duration", field: "debt_weekly_duration", sort: "asc", width: 150 },
-    { label: "View details", field: "viewBtn", sort: "asc", width: 150 },
+    { label: "View", field: "viewBtn", sort: "asc", width: 150 },
     { label: "Update ", field: "verifyBtn", sort: "asc", width: 150 },
 ];
 
