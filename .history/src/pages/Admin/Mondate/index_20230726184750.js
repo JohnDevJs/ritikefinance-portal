@@ -61,7 +61,6 @@ const Index = () => {
         data.forEach((res, i) => {
             res_data.push({
                 ...res,
-                // id: i + 1,
                 firstName: res?.user?.firstName,
                 lastName: res?.user?.lastName,
                 email: res?.user?.email,

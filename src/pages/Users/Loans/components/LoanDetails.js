@@ -24,6 +24,7 @@ function LoanDetails({ loan_Id }) {
             <Col md={6}>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Status : </span>{data?.status}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan percentage : </span>{data?.loanPercentage}</p>
+                <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Loan date : </span>{data?.createdAt?.split('T')[0]}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Payment date : </span>{data?.paymentDate?.split('T')[0]}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Monthly Income Gross : </span>{data?.monthlyIncomeGross}</p>
                 <p><span className="customStyle" style={{ fontWeight: 'bold', fontSize: '14px' }}  >Bond Rent : </span>{data?.bondRent}</p>

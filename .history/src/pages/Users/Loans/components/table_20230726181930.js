@@ -144,7 +144,7 @@ const Table = ({ reFetch, data, hideStatus }) => {
                                             <th className="align-middle">Amount</th>
                                             <th className="align-middle">Duration</th>
                                             <th className="align-middle">Loan date</th>
-                                            <th className="align-middle">Payment date</th>
+                                            <th className="align-middle">Paid date</th>
                                             <th className="align-middle">Status</th>
                                             {hideStatus ? <th className="align-middle">Status</th> : null}
                                             <th className="align-middle">View</th>
